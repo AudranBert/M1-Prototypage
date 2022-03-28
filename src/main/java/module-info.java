@@ -9,6 +9,7 @@ module com.example.m1prototyopage {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
 
     opens com.example.m1prototyopage to javafx.fxml;
     exports com.example.m1prototyopage;
