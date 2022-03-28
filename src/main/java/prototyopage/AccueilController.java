@@ -1,9 +1,9 @@
-package com.example.m1prototyopage;
+package prototyopage;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController{
+public class AccueilController {
     private MainApp mainApp;
 
     public void setMainApp(MainApp mainApp)

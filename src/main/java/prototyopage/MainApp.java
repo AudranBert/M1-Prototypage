@@ -1,9 +1,8 @@
-package com.example.m1prototyopage;
+package prototyopage;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,16 +12,16 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hello-view.fxml"));
-        fxmlLoader.setLocation(MainApp.class.getResource("hello-view.fxml")); //On charge la vue souhaitée
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Accueil.fxml"));
+        fxmlLoader.setLocation(MainApp.class.getResource("Accueil.fxml")); //On charge la vue souhaitée
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
         //On charge le controlleur associé a la vue
-        HelloController controller = fxmlLoader.getController();
+        AccueilController controller = fxmlLoader.getController();
         controller.setMainApp(this);
 
         this.stage = stage;
-        this.stage.setTitle("Hello!");
+        this.stage.setTitle("Accueil");
         this.stage.setScene(scene);
         this.stage.show();
     }

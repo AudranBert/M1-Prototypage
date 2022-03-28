@@ -10,6 +10,6 @@ module com.example.m1prototyopage {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens com.example.m1prototyopage to javafx.fxml;
-    exports com.example.m1prototyopage;
+    opens prototyopage to javafx.fxml;
+    exports prototyopage;
 }

@@ -1,7 +1,4 @@
-package com.example.m1prototyopage;
-
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+package prototyopage;
 
 public class ConnectionController {
     private MainApp mainApp;
