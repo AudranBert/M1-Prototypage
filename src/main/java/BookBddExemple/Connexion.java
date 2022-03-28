@@ -3,9 +3,9 @@ package BookBddExemple;
 import java.sql.*;
 
 public class Connexion {
-    private String DBPath = "Chemin aux base de donnée SQLite";
-    private Connection connection = null;
-    private Statement statement = null;
+    protected String DBPath = "Chemin aux base de donnée SQLite";
+    protected Connection connection = null;
+    protected Statement statement = null;
 
     public Connexion(String dBPath) {
         DBPath = dBPath;
@@ -44,6 +44,15 @@ public class Connexion {
             System.out.println("Erreur dans la requet : " + requet);
         }
         return resultat;
+    }
+
+    public void submitQuery(String query){
+        try {
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void addBook(Book book) {
