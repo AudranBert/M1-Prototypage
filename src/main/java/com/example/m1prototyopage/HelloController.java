@@ -3,12 +3,24 @@ package com.example.m1prototyopage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class HelloController{
+    private MainApp mainApp;
+
+    public void setMainApp(MainApp mainApp)
+    {
+        this.mainApp = mainApp;
+    }
+
     @FXML
     private Label welcomeText;
 
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
+    }
+
+    @FXML
+    protected void showConnection() {
+        mainApp.showConnection();
     }
 }

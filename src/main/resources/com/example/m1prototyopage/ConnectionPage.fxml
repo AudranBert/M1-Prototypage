@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.stage.*?>
 
-<Stage title="Connexion" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<Stage title="Connexion" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.m1prototyopage.ConnectionController">
     <scene>
         <Scene>
             <AnchorPane prefHeight="358.0" prefWidth="726.0">
