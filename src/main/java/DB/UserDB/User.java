@@ -1,4 +1,4 @@
-package UserDB;
+package DB.UserDB;
 
 public class User {
     private Integer UserId=-1;

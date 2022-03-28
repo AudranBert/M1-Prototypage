@@ -1,18 +1,28 @@
-package BookBddExemple;
+package DB.SejourDB;
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Sejour {
-    private int SejourId;
+    private static SimpleDateFormat DATE_FORMATER = new SimpleDateFormat("yyyy-MM-DD HH:MM:SS.SSS");
+
+    private int sejourId;
     private String name;
     private String location;
     private Calendar DateBegin;
     private Calendar DateEnd;
 
-    public Sejour(int sejourId, String name, String location, GregorianCalendar dateBegin, GregorianCalendar dateEnd) {
-        this.SejourId = sejourId;
+    public Sejour(int sejourId, String name, String location, Calendar dateBegin, Calendar dateEnd) {
+        this.sejourId = sejourId;
+        this.name = name;
+        this.location = location;
+        this.DateBegin = dateBegin;
+        this.DateEnd = dateEnd;
+    }
+
+    public Sejour(String name, String location, GregorianCalendar dateBegin, GregorianCalendar dateEnd) {
+        this.sejourId = -1;
         this.name = name;
         this.location = location;
         this.DateBegin = dateBegin;
@@ -20,11 +30,11 @@ public class Sejour {
     }
 
     public int getSejourId() {
-        return SejourId;
+        return sejourId;
     }
 
     public void setSejourId(int sejourId) {
-        SejourId = sejourId;
+        this.sejourId = sejourId;
     }
 
     public String getName() {
@@ -57,5 +67,14 @@ public class Sejour {
 
     public void setDateEnd(Calendar dateEnd) {
         DateEnd = dateEnd;
+    }
+
+    @Override
+    public String toString() {
+        return "SejourId : " + this.sejourId
+                + ", Name : " + this.name
+                + ", Location : " + this.location
+                + ", DateBegin : " + DATE_FORMATER.format(this.DateBegin.getTime())
+                + ", DateEnd : " + DATE_FORMATER.format(this.DateEnd.getTime());
     }
 }
