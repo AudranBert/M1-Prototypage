@@ -1,9 +1,5 @@
-package UserDB;
+package DB.UserDB;
 
-import BookBddExemple.Connexion;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDbTest {

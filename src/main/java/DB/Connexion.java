@@ -1,4 +1,4 @@
-package BookBddExemple;
+package DB;
 
 import java.sql.*;
 
