@@ -3,9 +3,9 @@ package BookBddExemple;
 import java.sql.*;
 
 public class Connexion {
-    private String DBPath = "Chemin aux base de donnée SQLite";
-    private Connection connection = null;
-    private Statement statement = null;
+    protected String DBPath = "Chemin aux base de donnée SQLite";
+    protected Connection connection = null;
+    protected Statement statement = null;
 
     public Connexion(String dBPath) {
         DBPath = dBPath;
