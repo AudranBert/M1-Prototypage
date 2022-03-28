@@ -46,21 +46,13 @@ public class Connexion {
         return resultat;
     }
 
-    public void addBook(Book book) {
-        String query = "";
-        query += "INSERT INTO BOOK VALUES (";
-        query += "'" + book.getBookId() + "', ";
-        query += "'" + book.getTitle() + "', ";
-        query += "'" + book.getSubTitle() + "', ";
-        query += book.getPages() + ", ";
-        query += "'" + book.getPublished().toString() + "', ";
-        query += "'" + book.getDescription() + "' )";
+    public void submitQuery(String query){
         try {
             statement.executeUpdate(query);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
+
 }
