@@ -23,4 +23,7 @@ public class AccueilController {
     protected void showConnection() {
         mainApp.showConnection();
     }
+
+    @FXML
+    protected void showSearchBar(){mainApp.showSearchBar();}
 }

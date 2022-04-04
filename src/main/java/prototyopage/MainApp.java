@@ -43,7 +43,23 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+    public void showSearchBar()
+    {
+        try {
+            //Charger le fichier fxml associé
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("Recherche.fxml")); //On charge la vue souhaitée
+            Stage connectionStage = loader.load();
 
+            //On charge le controlleur associé a la vue
+            RechercheController controller = loader.getController();
+            controller.setMainApp(this);
+
+            connectionStage.show(); //Affichage de la fenêtre
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         launch();
     }
