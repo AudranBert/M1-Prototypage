@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.sql.Date;
 
 public class MainBddTest {
-
+/*
     public static void main(String[] args) {
         Connexion connexion = new Connexion("Database/Database.db");
         connexion.connect();
@@ -37,5 +37,5 @@ public class MainBddTest {
 
         connexion.close();
     }
-
+*/
 }
