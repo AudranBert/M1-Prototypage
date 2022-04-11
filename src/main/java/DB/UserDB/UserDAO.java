@@ -1,6 +1,6 @@
-package UserDB;
+package DB.UserDB;
 
-import BookBddExemple.Connexion;
+import DB.Connexion;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
