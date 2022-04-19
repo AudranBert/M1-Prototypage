@@ -24,27 +24,32 @@ public class RechercheController {
 
     private ArrayList<Sejour> listSejour=new ArrayList<>();
 
+    private void addSejourToBox(ArrayList<Sejour> list){
+        for (int i = 0; i < list.size(); i++) {
+            Boolean find = false;
+            for (int j = 0; j < listSejour.size(); j++) {
+                if (listSejour.get(j).getSejourId() == list.get(i).getSejourId()) {
+                    find = true;
+                }
+            }
+            if (find == false) {
+                listSejour.add(list.get(i));
+                Text sejour = new Text();
+                sejour.setText(list.get(i).toString());
+                boxSejour.getChildren().add(sejour);
+            }
+        }
+    }
+
     @FXML
     private void search() {
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
+                boxSejour.getChildren().clear();
                 if (searchBar.getLength() > 1) {
-                    ArrayList<Sejour> list = sejourDao.getSejours();
-                    for (int i = 0; i < list.size(); i++) {
-                        Boolean find = false;
-                        for (int j = 0; j < listSejour.size(); j++) {
-                            if (listSejour.get(j).getSejourId() == list.get(i).getSejourId()) {
-                                find = true;
-                            }
-                        }
-                        if (find == false) {
-                            listSejour.add(list.get(i));
-                            Text sejour = new Text();
-                            sejour.setText(list.get(i).toString());
-                            boxSejour.getChildren().add(sejour);
-                        }
-                    }
+                    addSejourToBox(sejourDao.searchSejourByName(searchBar.getText()));
+                    addSejourToBox(sejourDao.searchSejourByLocation(searchBar.getText()));
                 }
                 return null;
             }

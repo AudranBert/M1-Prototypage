@@ -57,4 +57,36 @@ public class SejourDAO {
         connexion.close();
         return sejourArrayList;
     }
+
+
+    public ArrayList<Sejour> resultToSejourList(ResultSet resultSet){
+        ArrayList<Sejour> sejourArrayList = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                Sejour sejour = resultSetToSejour(resultSet);
+                sejourArrayList.add(sejour);
+            }
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        return sejourArrayList;
+    }
+
+    public ArrayList<Sejour> searchSejourByName(String toSearch){
+        connexion.connect();
+        ResultSet resultSet = connexion.query("SELECT * FROM Sejour WHERE Name LIKE '%"+toSearch+"%';");
+        ArrayList<Sejour> sejourArrayList = resultToSejourList(resultSet);
+        connexion.close();
+        return sejourArrayList;
+
+    }
+
+    public ArrayList<Sejour> searchSejourByLocation(String toSearch){
+        connexion.connect();
+        ResultSet resultSet = connexion.query("SELECT * FROM Sejour WHERE Location LIKE '%"+toSearch+"%';");
+        ArrayList<Sejour> sejourArrayList = resultToSejourList(resultSet);
+        connexion.close();
+        return sejourArrayList;
+
+    }
 }
