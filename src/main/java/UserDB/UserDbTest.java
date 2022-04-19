@@ -11,13 +11,13 @@ public class UserDbTest {
 
     public static void fillDB(){
         UserDAO dao=new UserDAO();
-        User user = new User("Guillaume", "Bonenfant", Boolean.FALSE);
+        User user = new User("Guillaume", "Bonenfant", Boolean.FALSE,"g",3,5);
         dao.addUser(user);
-        User user2 = new User("Audran", "Bert", Boolean.TRUE);
+        User user2 = new User("Audran", "Bert", Boolean.TRUE,"a",3,5);
         dao.addUser(user2);
-        User user3 = new User("Sara", "Bensafi", Boolean.FALSE);
+        User user3 = new User("Sara", "Bensafi", Boolean.FALSE,"s",3,5);
         dao.addUser(user3);
-        User user4 = new User("Nath", "Lefevre", Boolean.FALSE);
+        User user4 = new User("Nath", "Lefevre", Boolean.FALSE,"n",3,5);
         dao.addUser(user4);
     }
 

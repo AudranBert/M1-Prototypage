@@ -37,14 +37,9 @@ public class ControllerProfile {
 
     @FXML
     void modifierProfile(ActionEvent event) {
-
-
         Connexion connexion = new Connexion("Database/User.db");
         connexion.connect();
-        String query = "";
-        query += " UPDATE INTO USER(FirstName,LastName) VALUES (";
-        query += "'" + prenomuser.getText() + "', ";
-        query += "'" + nomuser.getText() + "', ";
+        String query  = "UPDATE `User` SET `FirstName` = '"+prenomuser.getText()+"', `LastName` = '"+nomuser.getText()+"' WHERE `UserId` = "+3;
         connexion.submitQuery(query);
         connexion.close();
     }
@@ -52,17 +47,13 @@ public class ControllerProfile {
 
 
 
-    /*
 
-     */
+
+
     @FXML
     void logout(ActionEvent event) {
-
         Stage stage = (Stage) logoutuser.getScene().getWindow();
-
         stage.close();
-
-
     }
 }
 
