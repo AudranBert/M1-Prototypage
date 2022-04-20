@@ -43,7 +43,21 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+    public void showProfil()  {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ProfilePage.fxml"));
 
+            Scene scene = null;
+            scene = new Scene(fxmlLoader.load(), 1000, 600);
+
+            scene.getStylesheets().add("Style.css");
+            stage.setTitle("Profil");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         launch();
     }

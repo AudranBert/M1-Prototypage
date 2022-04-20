@@ -1,8 +1,9 @@
-package com.example.m1prototyopage;
+package prototyopage;
 
-import BookBddExemple.Connexion;
+import DB.Connexion;
+import DB.UserDB.User;
 import javafx.fxml.FXML;
-import UserDB.User;
+
 
 import java.sql.*;
 import java.util.ArrayList;

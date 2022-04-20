@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.m1prototyopage.ControllerProfile">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.ControllerProfile">
    <left>
       <VBox prefHeight="200.0" prefWidth="340.0" BorderPane.alignment="CENTER">
          <children>
@@ -18,7 +18,7 @@
                <children>
                   <ImageView fitHeight="185.0" fitWidth="188.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" smooth="false">
                      <image>
-                        <Image url="@../../../Images/profile.png" />
+                        <Image url="@../Images/profile.png" />
                      </image>
                      <effect>
                         <ColorAdjust brightness="0.21" />
