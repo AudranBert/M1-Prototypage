@@ -34,10 +34,10 @@ public class UserDAO {
         query += "'" + user.getFirstName() + "', ";
         query += "'" + user.getLastName() + "', ";
         int bi=user.isHost() ? 1 : 0;
-        query += "'" + bi + "' )";
+        query += "'" + bi + "' ,";
         query += "'" + user.getEmail() + "', ";
         query += "'" + user.getAge() + "', ";
-        query += "'" + user.getTelephone() + "', ";
+        query += "'" + user.getTelephone() + "') ";
         connexion.submitQuery(query);
         connexion.close();
     }

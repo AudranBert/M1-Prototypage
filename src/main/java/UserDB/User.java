@@ -5,9 +5,9 @@ public class User {
     private String FirstName;
     private String LastName;
     private boolean Host;
-    private String email;
-    private int age;
-    private int telephone;
+    private String Email;
+    private int Age;
+    private int Telephone;
 
 
     public User(int userId, String firstName, String lastName, Boolean host, String email, int age, int telephone) {
@@ -16,9 +16,9 @@ public class User {
         FirstName = firstName;
         LastName = lastName;
         Host = host;
-        email = email;
-        age=age;
-        telephone= telephone;
+        Email = email;
+        Age=age;
+        Telephone= telephone;
 
 
     }
@@ -27,9 +27,9 @@ public class User {
         FirstName = firstName;
         LastName = lastName;
         Host = host;
-        email = email;
-        age=age;
-        telephone= telephone;
+        Email = email;
+        Age=age;
+        Telephone= telephone;
     }
     public Integer getUserId() {
         return UserId;
@@ -56,25 +56,25 @@ public class User {
         Host = host;
     }
     public void setEmail(String email) {
-        this.email = email;
+        this.Email = email;
     }
     public void setAge(Integer age) {
-        this.age = age;
+        this.Age = age;
     }
 
     public void setTelephone(Integer telephone) {
-        this.telephone = telephone;
+        this.Telephone = telephone;
     }
 
 
     public String getEmail() {
-        return email;
+        return Email;
     }
     public int getAge() {
-        return age;
+        return Age;
     }
     public int getTelephone() {
-        return telephone;
+        return Telephone;
     }
 
 
@@ -85,10 +85,10 @@ public class User {
                 "UserId=" + UserId +
                 ", FirstName='" + FirstName + '\'' +
                 ", LastName='" + LastName + '\'' +
-                ", Host=" + Host +
-                ", email=" + email +
-                ", age=" + age +
-                ", telephone=" + telephone +
+                ", Host=" + Host  + '\'' +
+                ", email=" + Email + '\'' +
+                ", age=" + Age + '\'' +
+                ", telephone=" + Telephone +
                 '}';
     }
 }
