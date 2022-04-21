@@ -11,11 +11,11 @@
         <Scene>
             <AnchorPane prefHeight="358.0" prefWidth="726.0">
             <children>
-               <Button layoutX="290.0" layoutY="271.0" mnemonicParsing="false" text="Connexion">
+               <Button fx:id="connexionButton" layoutX="290.0" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#connect" text="Connexion">
                   <font>
                      <Font size="24.0" />
                   </font></Button>
-               <Label layoutX="63.0" layoutY="84.0" text="Nom">
+               <Label layoutX="63.0" layoutY="84.0" text="Mail">
                   <font>
                      <Font size="24.0" />
                   </font></Label>
@@ -23,13 +23,15 @@
                   <font>
                      <Font size="24.0" />
                   </font></Label>
-               <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Retour">
+               <Button fx:id="closeButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="26.0" prefWidth="94.0" text="Retour">
                   <font>
                      <Font size="18.0" />
                   </font>
                </Button>
-               <TextField layoutX="63.0" layoutY="120.0" prefHeight="30.0" prefWidth="600.0" />
-               <TextField layoutX="63.0" layoutY="209.0" prefHeight="30.0" prefWidth="600.0" />
+               <TextField fx:id="mailField" layoutX="63.0" layoutY="120.0" prefHeight="30.0" prefWidth="600.0" />
+               <Label fx:id="wrongMailLabel" layoutX="64.0" layoutY="150.0" textFill="RED" />
+               <Label fx:id="wrongPasswordLabel" layoutX="63.0" layoutY="239.0" textFill="RED" />
+               <PasswordField fx:id="passwordField" layoutX="63.0" layoutY="209.0" prefHeight="30.0" prefWidth="600.0" />
             </children></AnchorPane>
         </Scene>
     </scene>

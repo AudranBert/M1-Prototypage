@@ -1,5 +1,6 @@
 package prototyopage;
 
+import DB.UserDB.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +10,7 @@ import java.io.IOException;
 
 public class MainApp extends Application {
     Stage stage;
+    private User user = null;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -60,5 +62,14 @@ public class MainApp extends Application {
     }
     public static void main(String[] args) {
         launch();
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser()
+    {
+        return this.user;
     }
 }
