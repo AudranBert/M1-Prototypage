@@ -1,5 +1,6 @@
 package prototyopage;
 
+import DB.UserDB.User;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import java.io.IOException;
 
 public class MainApp extends Application {
     Stage stage;
+    private User user = null;
 
 
     @Override
@@ -50,6 +52,22 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+  
+    public void showProfil()  {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ProfilePage.fxml"));
+
+            Scene scene = null;
+            scene = new Scene(fxmlLoader.load(), 1000, 600);
+            scene.getStylesheets().add("Style.css");
+            stage.setTitle("Profil");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+  
 
     public void showSearchBar()
     {
@@ -87,5 +105,14 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser()
+    {
+        return this.user;
     }
 }

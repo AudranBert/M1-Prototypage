@@ -5,20 +5,35 @@ public class User {
     private String FirstName;
     private String LastName;
     private boolean Host;
+    private String Email;
+    private int Age;
+    private int Telephone;
+    private String Password;
 
-    public User(Integer userId,String firstName, String lastName, Boolean host) {
+
+    public User(int userId, String firstName, String lastName, Boolean host, String email, int age, int telephone, String password) {
         super();
         UserId = userId;
         FirstName = firstName;
         LastName = lastName;
         Host = host;
+        Email = email;
+        Age=age;
+        Telephone= telephone;
+        Password = password;
     }
-    public User(String firstName, String lastName, Boolean host) {
+
+    public User(String firstName, String lastName, Boolean host,String email, int age, int telephone, String password) {
         super();
         FirstName = firstName;
         LastName = lastName;
         Host = host;
+        Email = email;
+        Age=age;
+        Telephone= telephone;
+        Password = password;
     }
+
     public Integer getUserId() {
         return UserId;
     }
@@ -43,6 +58,32 @@ public class User {
     public void setHost(boolean host) {
         Host = host;
     }
+    public void setEmail(String email) {
+        this.Email = email;
+    }
+    public void setAge(Integer age) {
+        this.Age = age;
+    }
+    public void setTelephone(Integer telephone) {
+        this.Telephone = telephone;
+    }
+    public void setPassword(String password) {
+        this.Password = password;
+    }
+
+
+    public String getEmail() {
+        return Email;
+    }
+    public int getAge() {
+        return Age;
+    }
+    public int getTelephone() {
+        return Telephone;
+    }
+    public String getPassword() { return Password; }
+
+
 
     @Override
     public String toString() {
@@ -50,7 +91,11 @@ public class User {
                 "UserId=" + UserId +
                 ", FirstName='" + FirstName + '\'' +
                 ", LastName='" + LastName + '\'' +
-                ", Host=" + Host +
+                ", Host=" + Host  + '\'' +
+                ", email=" + Email + '\'' +
+                ", age=" + Age + '\'' +
+                ", telephone=" + Telephone + '\'' +
+                ", password=" + Password +
                 '}';
     }
 }

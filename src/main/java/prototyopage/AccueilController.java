@@ -7,6 +7,8 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+import java.io.IOException;
+
 public class AccueilController {
     private MainApp mainApp;
     @FXML
@@ -22,7 +24,14 @@ public class AccueilController {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        if (mainApp.getUser() != null)
+        {
+            welcomeText.setText("Bonjour " + mainApp.getUser().getFirstName());
+        }
+        else
+        {
+            welcomeText.setText("Bonjour à vous !");
+        }
     }
 
     @FXML
@@ -39,5 +48,8 @@ public class AccueilController {
 //            e.printStackTrace();
 //        }
         mainApp.showSearchBar();
+    @FXML
+    protected void showProfil() {
+        mainApp.showProfil();
     }
 }
