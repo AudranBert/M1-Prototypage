@@ -18,7 +18,14 @@ public class AccueilController {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        if (mainApp.getUser() != null)
+        {
+            welcomeText.setText("Bonjour " + mainApp.getUser().getFirstName());
+        }
+        else
+        {
+            welcomeText.setText("Bonjour à vous !");
+        }
     }
 
     @FXML

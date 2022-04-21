@@ -5,6 +5,7 @@ import DB.UserDB.UserDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,9 @@ import static DB.UserDB.UserDbTest.fillDB;
 
 public class ConnectionController {
     private MainApp mainApp;
+
+    @FXML
+    private Button closeButton;
 
     @FXML
     private Button connexionButton;
@@ -38,6 +42,8 @@ public class ConnectionController {
                 System.out.println("Vous vous êtes bien connectés !");
                 System.out.println("Bonjour " + user.getFirstName());
                 mainApp.setUser(user);
+                Stage stage = (Stage) closeButton.getScene().getWindow();
+                stage.close();
             }
         }
     }
