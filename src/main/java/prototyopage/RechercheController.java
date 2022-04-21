@@ -2,14 +2,15 @@ package prototyopage;
 
 import DB.SejourDB.Sejour;
 import DB.SejourDB.SejourDAO;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RechercheController {
     private MainApp mainApp;
@@ -23,21 +24,49 @@ public class RechercheController {
     private SejourDAO sejourDao = new SejourDAO();
 
     private ArrayList<Sejour> listSejour=new ArrayList<>();
+    private String lastSearch="";
+
+    public synchronized VBox getBoxSejour(){
+        return this.boxSejour;
+    }
+
+    public synchronized void addToBoxSejour(Button button){
+        VBox bs=this.boxSejour;
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                bs.getChildren().add(button);
+            }
+        });
+
+    }
+
+    public synchronized ArrayList<Sejour> getSejourList(){
+        return this.listSejour;
+    }
+
+    public synchronized void addToSejourList(Sejour sejour){
+        this.listSejour.add(sejour);
+    }
+
+    @FXML
+    public void initialize() {
+        search();
+    }
 
     private void addSejourToBox(ArrayList<Sejour> list){
-        for (int i = 0; i < list.size(); i++) {
-            Boolean find = false;
-            for (int j = 0; j < listSejour.size(); j++) {
-                if (listSejour.get(j).getSejourId() == list.get(i).getSejourId()) {
-                    find = true;
-                }
+        Integer lenght = list.size();
+        for (int i=0;i<lenght;i=i+10) {
+            List<Sejour> sublist;
+            if (i+10<lenght) {
+                sublist = list.subList(i, i + 10);
             }
-            if (find == false) {
-                listSejour.add(list.get(i));
-                Text sejour = new Text();
-                sejour.setText(list.get(i).toString());
-                boxSejour.getChildren().add(sejour);
+            else {
+                sublist = list.subList(i, lenght);
             }
+            Thread t = new Thread(new SearchRunnable(sublist, this));
+            t.start();
+
         }
     }
 
@@ -46,18 +75,35 @@ public class RechercheController {
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                boxSejour.getChildren().clear();
                 if (searchBar.getLength() > 1) {
+                    listSejour.clear();
+                    boxSejour.getChildren().clear();
+                    lastSearch=searchBar.getText();
                     addSejourToBox(sejourDao.searchSejourByName(searchBar.getText()));
                     addSejourToBox(sejourDao.searchSejourByLocation(searchBar.getText()));
+                } else if (lastSearch=="" || lastSearch.length()>1){
+                    listSejour.clear();
+                    boxSejour.getChildren().clear();
+                    lastSearch=" ";
+                    addSejourToBox(sejourDao.searchSejourByName(""));
+                    addSejourToBox(sejourDao.searchSejourByLocation(""));
                 }
                 return null;
             }
         };
         task.run();
     }
+
+    @FXML
+    private void backToHome(){
+        this.mainApp.showHome();
+    }
+
     public void setMainApp(MainApp mainApp)
     {
         this.mainApp = mainApp;
     }
+
+
 }
+

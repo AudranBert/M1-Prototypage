@@ -15,7 +15,7 @@ public class SejourDbTest {
         }
 
         System.out.println("\nAjout d'un Séjour (Hello)\n");
-        Sejour sejour = new Sejour("Hello", "Paris", new GregorianCalendar(2013, 03, 11, 15, 02), new GregorianCalendar(2013, 03, 11, 15, 02));
+        Sejour sejour = new Sejour("Recolte", "Italie", new GregorianCalendar(2014, 07, 2, 15, 02), new GregorianCalendar(2014, 07, 25, 15, 02));
         sejourDao.addSejour(sejour);
 
         list = sejourDao.getSejours();

@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.stage.Stage?>
 
-<Stage title="Recherche" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.RechercheController">
-    <scene>
-        <Scene>
-            <AnchorPane prefHeight="358.0" prefWidth="726.0">
-            <children>
-               <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Retour">
-                  <font>
-                     <Font size="18.0" />
-                  </font>
-               </Button>
-               <TextField fx:id="searchBar" layoutX="63.0" layoutY="66.0" onKeyTyped="#search" prefHeight="30.0" prefWidth="600.0" promptText="Rechercher votre future voyage!" />
-               <ScrollPane layoutX="63.0" layoutY="114.0" prefHeight="200.0" prefWidth="599.0">
-                 <content>
-                   <AnchorPane prefHeight="210.0" prefWidth="578.0">
-                        <children>
-                           <VBox fx:id="boxSejour" prefHeight="210.4" prefWidth="578.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        </children></AnchorPane>
-                 </content>
-               </ScrollPane>
-            </children></AnchorPane>
-        </Scene>
-    </scene>
-</Stage>
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.RechercheController">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="26.0" prefWidth="94.0" text="Retour">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="searchBar" alignment="TOP_CENTER" onAction="#backToHome" onKeyTyped="#search" promptText="Rechercher votre future voyage!" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="80.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
+      <ScrollPane hbarPolicy="NEVER" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="150.0">
+         <content>
+            <AnchorPane prefWidth="1078.0">
+               <children>
+                  <VBox fx:id="boxSejour" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
