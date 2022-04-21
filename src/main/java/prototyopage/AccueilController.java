@@ -3,6 +3,8 @@ package prototyopage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
+
 public class AccueilController {
     private MainApp mainApp;
 
@@ -22,5 +24,11 @@ public class AccueilController {
     @FXML
     protected void showConnection() {
         mainApp.showConnection();
+    }
+
+    @FXML
+    protected void showProfil() {
+        mainApp.showProfil();
+
     }
 }
