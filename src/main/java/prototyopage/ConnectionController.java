@@ -47,4 +47,10 @@ public class ConnectionController {
             }
         }
     }
+
+    @FXML
+    protected void close(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
 }
