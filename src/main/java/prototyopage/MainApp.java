@@ -2,8 +2,12 @@ package prototyopage;
 
 import DB.UserDB.User;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -12,11 +16,12 @@ public class MainApp extends Application {
     Stage stage;
     private User user = null;
 
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Accueil.fxml"));
         fxmlLoader.setLocation(MainApp.class.getResource("Accueil.fxml")); //On charge la vue souhaitée
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
         //On charge le controlleur associé a la vue
         AccueilController controller = fxmlLoader.getController();
@@ -27,6 +32,8 @@ public class MainApp extends Application {
         this.stage.setScene(scene);
         this.stage.show();
     }
+
+
 
     public void showConnection()
     {
@@ -45,13 +52,13 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+  
     public void showProfil()  {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ProfilePage.fxml"));
 
             Scene scene = null;
             scene = new Scene(fxmlLoader.load(), 1000, 600);
-
             scene.getStylesheets().add("Style.css");
             stage.setTitle("Profil");
             stage.setScene(scene);
@@ -60,6 +67,42 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+  
+
+    public void showSearchBar()
+    {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Recherche.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+
+            scene.getStylesheets().add("Style.css");
+            RechercheController controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            stage.setTitle("Recherche");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showHome(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Accueil.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            scene.getStylesheets().add("Style.css");
+            AccueilController controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            stage.setTitle("Accueil");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void main(String[] args) {
         launch();
     }
