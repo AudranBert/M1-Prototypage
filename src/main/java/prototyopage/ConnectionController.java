@@ -17,7 +17,7 @@ public class ConnectionController {
     private Button connexionButton;
 
     @FXML
-    private TextField nameField;
+    private TextField mailField;
 
     @FXML
     private TextField passwordField;
@@ -33,9 +33,11 @@ public class ConnectionController {
 
         ArrayList<User> list=dao.getUsers();
         for(User user : list ) {
-            if (user.getEmail().equals(nameField.getText()) && user.getPassword().equals(passwordField.getText()))
+            if (user.getEmail().equals(mailField.getText()) && user.getPassword().equals(passwordField.getText()))
             {
                 System.out.println("Vous vous êtes bien connectés !");
+                System.out.println("Bonjour " + user.getFirstName());
+                mainApp.setUser(user);
             }
         }
     }

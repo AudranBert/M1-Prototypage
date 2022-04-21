@@ -15,7 +15,7 @@
                   <font>
                      <Font size="24.0" />
                   </font></Button>
-               <Label layoutX="63.0" layoutY="84.0" text="Nom">
+               <Label layoutX="63.0" layoutY="84.0" text="Mail">
                   <font>
                      <Font size="24.0" />
                   </font></Label>
@@ -28,7 +28,7 @@
                      <Font size="18.0" />
                   </font>
                </Button>
-               <TextField fx:id="nameField" layoutX="63.0" layoutY="120.0" prefHeight="30.0" prefWidth="600.0" />
+               <TextField fx:id="mailField" layoutX="63.0" layoutY="120.0" prefHeight="30.0" prefWidth="600.0" />
                <TextField fx:id="passwordField" layoutX="63.0" layoutY="209.0" prefHeight="30.0" prefWidth="600.0" />
             </children></AnchorPane>
         </Scene>
