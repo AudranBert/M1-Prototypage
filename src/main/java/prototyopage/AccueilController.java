@@ -40,7 +40,7 @@ public class AccueilController {
     }
 
     @FXML
-    protected void showSearchBar()   {
+    protected void showSearchBar() {
 //        try{
 //            AnchorPane pane= FXMLLoader.load(getClass().getResource("Recherche.fxml"));
 //            rootPane.getChildren().setAll(pane);
@@ -48,6 +48,8 @@ public class AccueilController {
 //            e.printStackTrace();
 //        }
         mainApp.showSearchBar();
+    }
+
     @FXML
     protected void showProfil() {
         mainApp.showProfil();
