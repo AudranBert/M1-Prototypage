@@ -87,6 +87,25 @@ public class MainApp extends Application {
         }
     }
 
+    public void showChat()
+    {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ChatPage.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load());
+
+            //scene.getStylesheets().add("Style.css");
+            ChatController controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.initializeValues();
+            stage.setTitle("Chat");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void showHome(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Accueil.fxml"));

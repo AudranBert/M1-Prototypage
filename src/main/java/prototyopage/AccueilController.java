@@ -40,6 +40,11 @@ public class AccueilController {
     }
 
     @FXML
+    protected void showChat() {
+        mainApp.showChat();
+    }
+
+    @FXML
     protected void showSearchBar() {
 //        try{
 //            AnchorPane pane= FXMLLoader.load(getClass().getResource("Recherche.fxml"));
