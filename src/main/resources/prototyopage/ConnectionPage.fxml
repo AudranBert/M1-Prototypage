@@ -29,7 +29,9 @@
                   </font>
                </Button>
                <TextField fx:id="mailField" layoutX="63.0" layoutY="120.0" prefHeight="30.0" prefWidth="600.0" />
-               <TextField fx:id="passwordField" layoutX="63.0" layoutY="209.0" prefHeight="30.0" prefWidth="600.0" />
+               <Label fx:id="wrongMailLabel" layoutX="64.0" layoutY="150.0" textFill="RED" />
+               <Label fx:id="wrongPasswordLabel" layoutX="63.0" layoutY="239.0" textFill="RED" />
+               <PasswordField fx:id="passwordField" layoutX="63.0" layoutY="209.0" prefHeight="30.0" prefWidth="600.0" />
             </children></AnchorPane>
         </Scene>
     </scene>
