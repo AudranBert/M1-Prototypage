@@ -117,9 +117,9 @@ public class ControllerDemanSej {
         Connexion connexion = new Connexion("Database/DB.db");
         connexion.connect();
 
-            String query = "UPDATE `Sejour` SET `Etatdemande` = 'refus'  WHERE `SejourID` = " + sejourSelected;
-            connexion.submitQuery(query);
-            connexion.close();
+        String query = "UPDATE `DemSej` SET `validation` = 2  WHERE `sejour` = " + sejourSelected;
+        connexion.submitQuery(query);
+        connexion.close();
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Refus");
         alert.setHeaderText("Information :");
@@ -141,7 +141,7 @@ public class ControllerDemanSej {
     Connexion connexion = new Connexion("Database/DB.db");
     connexion.connect();
 
-    String query = "UPDATE `Sejour` SET `Etatdemande` = 'valide'  WHERE `SejourID` = " + sejourSelected;
+    String query = "UPDATE `DemSej` SET `validation` = 1  WHERE `sejour` = " + sejourSelected;
     connexion.submitQuery(query);
     connexion.close();
     Alert alert = new Alert(AlertType.INFORMATION);
