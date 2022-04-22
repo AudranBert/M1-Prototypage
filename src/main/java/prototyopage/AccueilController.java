@@ -51,6 +51,11 @@ public class AccueilController {
     }
 
     @FXML
+    protected void demSej() {
+        mainApp.showDemSej();
+    }
+
+    @FXML
     protected void showProfil() {
         mainApp.showProfil();
     }
