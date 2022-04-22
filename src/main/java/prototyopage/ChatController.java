@@ -35,10 +35,7 @@ public class ChatController {
     @FXML
     private TextArea messageField;
 
-    public void setMainApp(MainApp mainApp)
-    {
-        this.mainApp = mainApp;
-    }
+    public void setMainApp(MainApp mainApp) { this.mainApp = mainApp; }
 
     public void initializeValues() {
         //Toutes ces valeurs sont fausses, il faut récupérer celles de l'hôte !

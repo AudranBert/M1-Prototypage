@@ -13,37 +13,29 @@ public class Sejour {
     private Calendar DateBegin;
     private Calendar DateEnd;
     private String description;
-    private String Etatdemande;
+    private int IdHost;
 
 
-    public Sejour(int sejourId, String name, String location, Calendar dateBegin, Calendar dateEnd,String description,String Etatdemande) {
+    public Sejour(int sejourId, String name, String location, Calendar dateBegin, Calendar dateEnd,String description, int IdHost) {
         this.sejourId = sejourId;
         this.name = name;
         this.location = location;
         this.DateBegin = dateBegin;
         this.DateEnd = dateEnd;
         this.description=description;
-        this.Etatdemande= Etatdemande;
+        this.IdHost = IdHost;
     }
 
-    public Sejour(String name, String location, GregorianCalendar dateBegin, GregorianCalendar dateEnd,String description,String Etatdemande) {
+    public Sejour(String name, String location, GregorianCalendar dateBegin, GregorianCalendar dateEnd,String description, int IdHost) {
         this.sejourId = -1;
         this.name = name;
         this.location = location;
         this.DateBegin = dateBegin;
         this.DateEnd = dateEnd;
         this.description =  description;
-        this.Etatdemande= Etatdemande;
+        this.IdHost = IdHost;
     }
 
-
-    public String getEtatdemande() {
-        return Etatdemande;
-    }
-
-    public void setEtatdemande(String etatdemande) {
-        Etatdemande = etatdemande;
-    }
 
     public int getSejourId() {
         return sejourId;
@@ -93,6 +85,10 @@ public class Sejour {
         DateEnd = dateEnd;
     }
 
+    public int getIdHost() { return IdHost; }
+
+    public void setIdHost(int idHost) { IdHost = idHost; }
+
     @Override
     public String toString() {
         return "SejourId : " + this.sejourId
@@ -101,6 +97,6 @@ public class Sejour {
                 + ", DateBegin : " + DATE_FORMATER.format(this.DateBegin.getTime())
                 + ", DateEnd : " + DATE_FORMATER.format(this.DateEnd.getTime())
                 + ", description : " + this.description
-                + ", Etatdemande : " + this.Etatdemande;
+                + ", IdHost : " + this.IdHost;
     }
 }
