@@ -43,7 +43,8 @@ public class ControllerDemanSej {
 
         Connexion connexion = new Connexion("Database/DB.db");
         connexion.connect(); //
-        ResultSet resultSet = connexion.query("SELECT * FROM DemSej WHERE host = '" + 14 + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
+//        ResultSet resultSet = connexion.query("SELECT * FROM DemSej WHERE host = '" + 22 + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
+        ResultSet resultSet = connexion.query("SELECT * FROM DemSej join sejour on DemSej.sejour = sejour.SejourId WHERE sejour.IdHost = '" + 22 + "' ;");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
 
         List<String> col = new ArrayList<String>();
         try {
@@ -55,10 +56,11 @@ public class ControllerDemanSej {
            i=i+1;
             }
 
+            combobox.getItems().clear();
             for (int j = 0; j < col.size(); j++) {
 
+                System.out.println(col.get(j));
                 ObservableList obList = FXCollections.observableList(col);
-                combobox.getItems().clear();
                 combobox.setItems(obList);
             }
         } catch (SQLException e) {
