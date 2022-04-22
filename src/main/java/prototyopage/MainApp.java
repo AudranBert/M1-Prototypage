@@ -26,8 +26,7 @@ public class MainApp extends Application {
         this.stage.show();
     }
 
-    public void showConnection()
-    {
+    public void showConnection() {
         try {
             //Charger le fichier fxml associé
             FXMLLoader loader = new FXMLLoader();
@@ -52,6 +51,21 @@ public class MainApp extends Application {
 
             scene.getStylesheets().add("Style.css");
             stage.setTitle("Profil");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    public void showDemSej()  {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("DemanSej.fxml"));
+
+            Scene scene = null;
+            scene = new Scene(fxmlLoader.load(), 1000, 600);
+
+            scene.getStylesheets().add("Style.css");
+            stage.setTitle("Demande Sejour");
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){

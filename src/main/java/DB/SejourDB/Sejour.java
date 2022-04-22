@@ -12,25 +12,49 @@ public class Sejour {
     private String location;
     private Calendar DateBegin;
     private Calendar DateEnd;
+    private String description;
+    private String Etatdemande;
 
-    public Sejour(int sejourId, String name, String location, Calendar dateBegin, Calendar dateEnd) {
+
+    public Sejour(int sejourId, String name, String location, Calendar dateBegin, Calendar dateEnd,String description,String Etatdemande) {
         this.sejourId = sejourId;
         this.name = name;
         this.location = location;
         this.DateBegin = dateBegin;
         this.DateEnd = dateEnd;
+        this.description=description;
+        this.Etatdemande= Etatdemande;
     }
 
-    public Sejour(String name, String location, GregorianCalendar dateBegin, GregorianCalendar dateEnd) {
+    public Sejour(String name, String location, GregorianCalendar dateBegin, GregorianCalendar dateEnd,String description,String Etatdemande) {
         this.sejourId = -1;
         this.name = name;
         this.location = location;
         this.DateBegin = dateBegin;
         this.DateEnd = dateEnd;
+        this.description =  description;
+        this.Etatdemande= Etatdemande;
+    }
+
+
+    public String getEtatdemande() {
+        return Etatdemande;
+    }
+
+    public void setEtatdemande(String etatdemande) {
+        Etatdemande = etatdemande;
     }
 
     public int getSejourId() {
         return sejourId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setSejourId(int sejourId) {
@@ -75,6 +99,8 @@ public class Sejour {
                 + ", Name : " + this.name
                 + ", Location : " + this.location
                 + ", DateBegin : " + DATE_FORMATER.format(this.DateBegin.getTime())
-                + ", DateEnd : " + DATE_FORMATER.format(this.DateEnd.getTime());
+                + ", DateEnd : " + DATE_FORMATER.format(this.DateEnd.getTime())
+                + ", description : " + this.description
+                + ", Etatdemande : " + this.Etatdemande;
     }
 }
