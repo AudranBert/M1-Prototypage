@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class UserDAO {
 
     public ArrayList<User> getUsers(){
-        Connexion connexion = new Connexion("Database/User.db");
+        Connexion connexion = new Connexion("Database/DB.db");
         connexion.connect();
         ResultSet resultSet = connexion.query("SELECT * FROM User");
         ArrayList<User> userArrayList=new ArrayList<>();
@@ -27,7 +27,7 @@ public class UserDAO {
     }
 
     public void addUser(User user) {
-        Connexion connexion = new Connexion("Database/User.db");
+        Connexion connexion = new Connexion("Database/DB.db");
         connexion.connect();
         String query = "";
         query += "INSERT INTO USER(FirstName,LastName,Host,email,age,telephone, password) VALUES (";

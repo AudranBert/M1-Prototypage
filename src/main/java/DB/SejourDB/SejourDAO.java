@@ -16,18 +16,18 @@ public class SejourDAO {
     private SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-DD HH:MM:SS.SSS");
 
     public SejourDAO() {
-        connexion = new Connexion("Database/User.db");
+        connexion = new Connexion("Database/DB.db");
     }
 
     public void addSejour(Sejour sejour) {
         String query = "";
-        query += "INSERT INTO Sejour(Name, Location, DateBegin, DateEnd,description,Etatdemande) VALUES (";
+        query += "INSERT INTO Sejour(Name, Location, DateBegin, DateEnd,description, IdHost) VALUES (";
         query += "'" + sejour.getName() + "', ";
         query += "'" + sejour.getLocation() + "', ";
         query += "'" + dateFormater.format(sejour.getDateBegin().getTime()) + "', ";
         query += "'" + dateFormater.format(sejour.getDateEnd().getTime()) + "' ,";
         query += "'" + sejour.getDescription()+ "' ,";
-        query += "'" + sejour.getEtatdemande()+ "' )";
+        query += "'" + sejour.getIdHost()+ "' )";
         connexion.connect();
         connexion.submitQuery(query);
         connexion.close();
@@ -42,8 +42,8 @@ public class SejourDAO {
         Calendar dateEnd = GregorianCalendar.getInstance();
         dateEnd.setTime(dateFormater.parse(resultSet.getString("DateEnd")));
         String description = resultSet.getString("description");
-        String Etatdemande = resultSet.getString("Etatdemande");
-        return new Sejour(sejourId, name, location, dateBegin, dateEnd,description,Etatdemande);
+        int IdHost = resultSet.getInt("IdHost");
+        return new Sejour(sejourId, name, location, dateBegin, dateEnd,description, IdHost);
     }
 
     public ArrayList<Sejour> getSejours() {

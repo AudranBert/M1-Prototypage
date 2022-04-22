@@ -1,5 +1,6 @@
 package prototyopage;
 
+import DB.SejourDB.Sejour;
 import DB.UserDB.User;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import java.io.IOException;
 public class MainApp extends Application {
     Stage stage;
     private User user = null;
+    private Sejour sejour;
 
 
     @Override
@@ -56,6 +58,11 @@ public class MainApp extends Application {
 
             Scene scene = null;
             scene = new Scene(fxmlLoader.load(), 1000, 600);
+
+            ControllerProfile controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.setProfileValues();
+
             scene.getStylesheets().add("Style.css");
             stage.setTitle("Profil");
             stage.setScene(scene);

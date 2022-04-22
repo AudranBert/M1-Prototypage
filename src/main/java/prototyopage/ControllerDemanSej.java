@@ -41,9 +41,10 @@ public class ControllerDemanSej {
     @FXML
     public void initialize() throws SQLException, ClassNotFoundException{
 
-        Connexion connexion = new Connexion("Database/User.db");
+        Connexion connexion = new Connexion("Database/DB.db");
         connexion.connect(); //
-        ResultSet resultSet = connexion.query("SELECT * FROM DemSej WHERE host = '" + 14 + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
+//        ResultSet resultSet = connexion.query("SELECT * FROM DemSej WHERE host = '" + 22 + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
+        ResultSet resultSet = connexion.query("SELECT * FROM DemSej join sejour on DemSej.sejour = sejour.SejourId WHERE sejour.IdHost = '" + 22 + "' ;");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
 
         List<String> col = new ArrayList<String>();
         try {
@@ -55,10 +56,11 @@ public class ControllerDemanSej {
            i=i+1;
             }
 
+            combobox.getItems().clear();
             for (int j = 0; j < col.size(); j++) {
 
+                System.out.println(col.get(j));
                 ObservableList obList = FXCollections.observableList(col);
-                combobox.getItems().clear();
                 combobox.setItems(obList);
             }
         } catch (SQLException e) {
@@ -75,7 +77,7 @@ public class ControllerDemanSej {
     System.out.println(output);
     //récupérer l'id du voyageur qui a choisie le voyage et afficher ses infor à droite
 
-    Connexion connexion = new Connexion("Database/User.db");
+    Connexion connexion = new Connexion("Database/DB.db");
     connexion.connect(); //
     ResultSet resultSet = connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + output + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
 
@@ -112,12 +114,12 @@ public class ControllerDemanSej {
 //ici je vais seulement refuser le voyage et mettre la colonne Etatdemande à refuser
         //et mettre un if == refuser le voyageur saura que il est refusé
 
-        Connexion connexion = new Connexion("Database/User.db");
+        Connexion connexion = new Connexion("Database/DB.db");
         connexion.connect();
 
-            String query = "UPDATE `Sejour` SET `Etatdemande` = 'refus'  WHERE `SejourID` = " + sejourSelected;
-            connexion.submitQuery(query);
-            connexion.close();
+        String query = "UPDATE `DemSej` SET `validation` = 2  WHERE `sejour` = " + sejourSelected;
+        connexion.submitQuery(query);
+        connexion.close();
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Refus");
         alert.setHeaderText("Information :");
@@ -136,10 +138,10 @@ public class ControllerDemanSej {
         //et mettre un if == accepted le voyageur saura que il est accepté
 
 
-    Connexion connexion = new Connexion("Database/User.db");
+    Connexion connexion = new Connexion("Database/DB.db");
     connexion.connect();
 
-    String query = "UPDATE `Sejour` SET `Etatdemande` = 'valide'  WHERE `SejourID` = " + sejourSelected;
+    String query = "UPDATE `DemSej` SET `validation` = 1  WHERE `sejour` = " + sejourSelected;
     connexion.submitQuery(query);
     connexion.close();
     Alert alert = new Alert(AlertType.INFORMATION);
