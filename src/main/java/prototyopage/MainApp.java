@@ -33,10 +33,7 @@ public class MainApp extends Application {
         this.stage.show();
     }
 
-
-
-    public void showConnection()
-    {
+    public void showConnection() {
         try {
             //Charger le fichier fxml associé
             FXMLLoader loader = new FXMLLoader();
@@ -52,7 +49,7 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-  
+
     public void showProfil()  {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ProfilePage.fxml"));
@@ -67,7 +64,6 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-  
 
     public void showSearchBar()
     {
@@ -122,6 +118,22 @@ public class MainApp extends Application {
 
     }
 
+
+    public void showDemSej()  {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("DemanSej.fxml"));
+
+            Scene scene = null;
+            scene = new Scene(fxmlLoader.load(), 1000, 600);
+
+            scene.getStylesheets().add("Style.css");
+            stage.setTitle("Demande Sejour");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         launch();
     }
