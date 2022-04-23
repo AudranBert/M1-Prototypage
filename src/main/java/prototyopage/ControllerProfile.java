@@ -105,9 +105,6 @@ public class ControllerProfile {
     }
 
 
-
-
-
     @FXML
     void logout(ActionEvent event) {
         mainApp.setUser(null);
