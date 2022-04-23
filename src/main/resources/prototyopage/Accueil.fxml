@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.AccueilController">
 
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.AccueilController">
+   <children>
+      <VBox fx:id="userBox" alignment="CENTER" prefHeight="75.0" prefWidth="120.0" spacing="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/profile.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="userNameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
+            <Text fx:id="userIsTravelerText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
+                  <Button mnemonicParsing="false" onMouseClicked="#showProfil" text="Modifier profil" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="573.0" layoutY="240.0" spacing="20.0">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                </padding>
 
-    <Label fx:id="welcomeText" />
-    <Button onAction="#onHelloButtonClick" text="Hello!" />
-    <Button mnemonicParsing="false" onMouseClicked="#showConnection" text="Connexion" />
-    <Button fx:id="profileButton" mnemonicParsing="false" onMouseClicked="#showProfil" text="Modifier profil" />
-    <Button mnemonicParsing="false" onMouseClicked="#showSearchBar" text="Recherche" />
-    <Button mnemonicParsing="false" onMouseClicked="#demSej" text="dem sej" />
-    <Button mnemonicParsing="false" onMouseClicked="#showVoyagerSejourDetails" text="Afficher un exemple de séjour" />
-    <!-- TODO : intégrer exempleSejour au clic sur un séjour dans la recherche -->
-    <Button layoutX="614.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#showChat" text="Chat" />
-</VBox>
+                <Label fx:id="welcomeText" />
+               <Button mnemonicParsing="false" onMouseClicked="#showSearchBar" text="Recherche" />
+                <Button mnemonicParsing="false" onMouseClicked="#demSej" text="dem sej" />
+            </VBox>
+      <Text layoutX="400.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+            <Button fx:id="connexionButton" layoutX="1174.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#showConnection" text="Connexion" />
+
+   </children>
+</AnchorPane>

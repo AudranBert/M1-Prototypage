@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,15 @@ import java.util.List;
 public class RechercheController {
     private MainApp mainApp;
 
+    // user
+    @FXML
+    private VBox userBox;
+    @FXML
+    private javafx.scene.text.Text userIsTravelerText;
+    @FXML
+    private javafx.scene.text.Text userNameText;
+
+    // search part
     @FXML
     private TextField searchBar;
 
@@ -25,6 +35,8 @@ public class RechercheController {
 
     private ArrayList<Sejour> listSejour=new ArrayList<>();
     private String lastSearch="";
+    // end search part
+
 
     public synchronized VBox getBoxSejour(){
         return this.boxSejour;
@@ -47,6 +59,22 @@ public class RechercheController {
 
     public synchronized void addToSejourList(Sejour sejour){
         this.listSejour.add(sejour);
+    }
+
+    public void setUserBox(){
+        if (mainApp.getUser()!=null){
+            userNameText.setText(mainApp.getUser().getFirstName());
+            if (mainApp.getUser().isHost()){
+                userIsTravelerText.setText("Hote");
+            }
+            else{
+                userIsTravelerText.setText("Voyageur");
+            }
+            userBox.setVisible(true);
+        }
+        else {
+            userBox.setVisible(false);
+        }
     }
 
     @FXML
