@@ -12,12 +12,14 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainApp extends Application {
     Stage stage;
     private User user = null;
-    private Sejour sejour;
-
+    private HashMap<Integer, ArrayList<Message>> chat = new HashMap<Integer, ArrayList<Message>>();
+    Sejour sejour;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -125,6 +127,9 @@ public class MainApp extends Application {
             Scene scene = null;
             scene = new Scene(fxmlLoader.load(), 1000, 600);
 
+            ControllerDemanSej controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+
             scene.getStylesheets().add("Style.css");
             stage.setTitle("Demande Sejour");
             stage.setScene(scene);
@@ -145,4 +150,6 @@ public class MainApp extends Application {
     {
         return this.user;
     }
+
+    public HashMap<Integer, ArrayList<Message>> getChat() { return this.chat; }
 }

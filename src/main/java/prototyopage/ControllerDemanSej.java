@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerDemanSej {
+
+    private MainApp mainApp;
+
     @FXML
     private ComboBox<String> combobox;
     @FXML
@@ -36,7 +39,18 @@ public class ControllerDemanSej {
     @FXML
     private Label telephonelabel;
 
+    @FXML
+    protected void showChat() {
+        if (mainApp.getUser() != null) {
+            mainApp.showChat();
+        }
+        else
+        {
+            System.out.println("Vous n'êtes pas connectés !");
+        }
+    }
 
+    public void setMainApp(MainApp mainApp) { this.mainApp = mainApp; }
 
     @FXML
     public void initialize() throws SQLException, ClassNotFoundException{
@@ -67,8 +81,6 @@ public class ControllerDemanSej {
             e.printStackTrace();
         }
         connexion.close();
-
-
     }
     int sejourSelected;
 @FXML
