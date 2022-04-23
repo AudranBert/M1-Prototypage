@@ -16,7 +16,7 @@ public class UserDAO {
         try {
             while (resultSet.next()) {
                 Boolean b=resultSet.getInt("Host")==1;
-                User u=new User(resultSet.getInt("UserId"),resultSet.getString("FirstName"),resultSet.getString("LastName" ),b,resultSet.getString("email"),resultSet.getInt("age"),resultSet.getInt("telephone"), resultSet.getString("password"));
+                User u=new User(resultSet.getInt("UserId"),resultSet.getString("FirstName"),resultSet.getString("LastName" ),b,resultSet.getString("email"),resultSet.getInt("age"),resultSet.getInt("telephone"), resultSet.getString("password"), resultSet.getString("description"));
                 userArrayList.add(u);
             }
         } catch (SQLException e) {
@@ -30,7 +30,7 @@ public class UserDAO {
         Connexion connexion = new Connexion("Database/DB.db");
         connexion.connect();
         String query = "";
-        query += "INSERT INTO USER(FirstName,LastName,Host,email,age,telephone, password) VALUES (";
+        query += "INSERT INTO USER(FirstName,LastName,Host,email,age,telephone, password, description) VALUES (";
         query += "'" + user.getFirstName() + "', ";
         query += "'" + user.getLastName() + "', ";
         int bi=user.isHost() ? 1 : 0;
@@ -39,6 +39,7 @@ public class UserDAO {
         query += "'" + user.getAge() + "', ";
         query += "'" + user.getTelephone() + "', ";
         query += "'" + user.getPassword() + "');";
+        query += "'" + user.getDescription() + "');";
         connexion.submitQuery(query);
         connexion.close();
     }

@@ -39,27 +39,12 @@
                   </Label>
                </children>
             </HBox>
-            <Label text="Description">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
             <Label fx:id="descriptionProfile" text="descriptionProfile" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Label fx:id="mailProfile" text="mailProfile">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="nbrVoyageurs" text="nbrVoyageurs">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="nbrLits" layoutX="10.0" layoutY="101.0" text="nbrLits">
                <font>
                   <Font size="14.0" />
                </font>

@@ -20,6 +20,7 @@ public class VoyagerSejourDetailsControler implements Initializable {
     private MainApp mainApp;
 
     private int currentSejourId;
+    private Sejour sejour;
 
     @FXML private Label sejourName;
     @FXML private Label locationi;
@@ -65,7 +66,7 @@ public class VoyagerSejourDetailsControler implements Initializable {
     protected void pageSetup(int id) throws SQLException, ParseException {
         System.out.println("pageSetup: " + id);
         SejourDAO sejourDao = new SejourDAO();
-        Sejour sejour = sejourDao.getSejourById(id);
+        sejour = sejourDao.getSejourById(id);
         sejourName.setText(sejour.getName());
         locationi.setText(sejour.getLocation());
         description.setText(sejour.getDescription());
@@ -84,5 +85,16 @@ public class VoyagerSejourDetailsControler implements Initializable {
     @FXML
     private void backToHome(){
         this.mainApp.showHome();
+    }
+
+    @FXML
+    protected void showChat() {
+        if (mainApp.getUser() != null && sejour != null) {
+            mainApp.showChat(mainApp.getUser().getUserId(), sejour.getIdHost(), currentSejourId);
+        }
+        else
+        {
+            System.out.println("Vous n'êtes pas connectés !");
+        }
     }
 }
