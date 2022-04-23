@@ -47,11 +47,6 @@ public class AccueilController {
     }
 
     @FXML
-    protected void showChat() {
-        mainApp.showChat();
-    }
-
-    @FXML
     protected void showSearchBar() {
         mainApp.showSearchBar();
     }

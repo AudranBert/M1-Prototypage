@@ -107,8 +107,8 @@ public class ControllerProfile {
 
     @FXML
     void logout(ActionEvent event) {
-        Stage stage = (Stage) logoutuser.getScene().getWindow();
-        stage.close();
+        mainApp.setUser(null);
+        mainApp.showHome();
     }
 }
 

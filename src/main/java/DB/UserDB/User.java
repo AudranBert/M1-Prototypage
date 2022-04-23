@@ -9,9 +9,10 @@ public class User {
     private int Age;
     private int Telephone;
     private String Password;
+    private String Description;
 
 
-    public User(int userId, String firstName, String lastName, Boolean host, String email, int age, int telephone, String password) {
+    public User(int userId, String firstName, String lastName, Boolean host, String email, int age, int telephone, String password, String description) {
         super();
         UserId = userId;
         FirstName = firstName;
@@ -21,9 +22,10 @@ public class User {
         Age=age;
         Telephone= telephone;
         Password = password;
+        Description = description;
     }
 
-    public User(String firstName, String lastName, Boolean host,String email, int age, int telephone, String password) {
+    public User(String firstName, String lastName, Boolean host,String email, int age, int telephone, String password, String description) {
         super();
         FirstName = firstName;
         LastName = lastName;
@@ -32,6 +34,7 @@ public class User {
         Age=age;
         Telephone= telephone;
         Password = password;
+        Description = description;
     }
 
     public Integer getUserId() {
@@ -70,6 +73,9 @@ public class User {
     public void setPassword(String password) {
         this.Password = password;
     }
+    public void setDescription(String description) {
+        this.Description = description;
+    }
 
 
     public String getEmail() {
@@ -82,6 +88,7 @@ public class User {
         return Telephone;
     }
     public String getPassword() { return Password; }
+    public String getDescription() { return Description; }
 
 
 
@@ -95,7 +102,8 @@ public class User {
                 ", email=" + Email + '\'' +
                 ", age=" + Age + '\'' +
                 ", telephone=" + Telephone + '\'' +
-                ", password=" + Password +
+                ", password=" + Password + '\'' +
+                ", description=" + Description +
                 '}';
     }
 }
