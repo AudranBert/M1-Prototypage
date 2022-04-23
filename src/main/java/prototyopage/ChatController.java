@@ -95,7 +95,6 @@ public class ChatController {
 
     @FXML
     protected void sendMessage(){
-        //to do
         for (int i = 0; i < nbrMessages - 1; i++)
         {
             ((Label) leftVbox.getChildren().get(i)).setText(((Label) leftVbox.getChildren().get(i + 1)).getText());
