@@ -22,7 +22,7 @@ public class ControllerDemanSej {
     private ComboBox<String> combobox;
     @FXML
     private Label emaillabel;
-
+    private Label welText;
     @FXML
     private Label nomlabel;
 
@@ -36,7 +36,14 @@ public class ControllerDemanSej {
     @FXML
     private Label telephonelabel;
 
+    private MainApp mainApp;
 
+
+
+    public void setMainApp(MainApp mainApp)
+    {
+        this.mainApp = mainApp;
+    }
 
     @FXML
     public void initialize() throws SQLException, ClassNotFoundException{
@@ -113,45 +120,74 @@ public class ControllerDemanSej {
 
 //ici je vais seulement refuser le voyage et mettre la colonne Etatdemande à refuser
         //et mettre un if == refuser le voyageur saura que il est refusé
+        if (!nomlabel.getText().trim().isEmpty() && !prenomlabel.getText().trim().isEmpty() && !telephonelabel.getText().trim().isEmpty() && !emaillabel.getText().trim().isEmpty()) {
+            Connexion connexion = new Connexion("Database/DB.db");
+            connexion.connect();
 
-        Connexion connexion = new Connexion("Database/DB.db");
-        connexion.connect();
+            String query = "UPDATE `DemSej` SET `validation` = 2  WHERE `sejour` = " + sejourSelected;
+            connexion.submitQuery(query);
+            connexion.close();
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Refus");
+            alert.setHeaderText("Information :");
+            alert.setContentText("Réservation refusé !");
 
-        String query = "UPDATE `DemSej` SET `validation` = 2  WHERE `sejour` = " + sejourSelected;
-        connexion.submitQuery(query);
-        connexion.close();
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Refus");
-        alert.setHeaderText("Information :");
-        alert.setContentText("Réservation refusé !");
+            alert.showAndWait();
 
-        alert.showAndWait();
+        }else{
 
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Validation ");
+            alert.setHeaderText("Veuiller selectionner une demande de séjour");
+            alert.showAndWait();
+
+        }
 
 
 
     }
+
+
+
+
+
 @FXML
     void Valider(){
 
 //ici je vais seulement accepter le voyage et mettre la colonne Etatdemande à valide
-        //et mettre un if == accepted le voyageur saura que il est accepté
+// et mettre un if == accepted le voyageur saura que il est accepté
 
+//je valide que si l'hote a selectionner un voyage
+    if (!nomlabel.getText().trim().isEmpty() && !prenomlabel.getText().trim().isEmpty() && !telephonelabel.getText().trim().isEmpty() && !emaillabel.getText().trim().isEmpty()) {
+        Connexion connexion = new Connexion("Database/DB.db");
+        connexion.connect();
 
-    Connexion connexion = new Connexion("Database/DB.db");
-    connexion.connect();
+        String query = "UPDATE `DemSej` SET `validation` = 1  WHERE `sejour` = " + sejourSelected;
+        connexion.submitQuery(query);
+        connexion.close();
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Validation ");
+        alert.setHeaderText("Information :");
+        alert.setContentText("Réservation validé !");
+        alert.showAndWait();
 
-    String query = "UPDATE `DemSej` SET `validation` = 1  WHERE `sejour` = " + sejourSelected;
-    connexion.submitQuery(query);
-    connexion.close();
-    Alert alert = new Alert(AlertType.INFORMATION);
-    alert.setTitle("Validation ");
-    alert.setHeaderText("Information :");
-    alert.setContentText("Réservation validé !");
+    }else{
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Validation ");
+        alert.setHeaderText("Veuiller selectionner une demande de séjour");
 
-    alert.showAndWait();
-
-
+        alert.showAndWait();
 
     }
+
+    }
+
+
+    @FXML
+     void retour(){
+        this.mainApp.showHome();
+    }
+
+
+
 }
