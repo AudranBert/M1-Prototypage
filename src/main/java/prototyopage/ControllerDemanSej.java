@@ -70,6 +70,20 @@ public class ControllerDemanSej {
                 ObservableList obList = FXCollections.observableList(col);
                 combobox.setItems(obList);
             }
+
+          //Initialisé la selection pour la première fois
+            combobox.getSelectionModel().select(0);
+            ResultSet resultSINIT= connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + col.get(0) + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
+
+
+                int id_current_voyageurINIT=resultSINIT.getInt("voyageur");
+                sejourSelected=resultSet.getInt("sejour");
+                ResultSet resINIT = connexion.query("SELECT * FROM User WHERE  UserId = '" + id_current_voyageurINIT + "';");
+                //récupérer son nom prénom et email age telephone
+                prenomlabel.setText(resINIT.getString("FirstName"));
+                nomlabel.setText(resINIT.getString("LastName"));
+                emaillabel.setText(resINIT.getString("email"));
+                telephonelabel.setText(resINIT.getString("telephone"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -118,7 +132,7 @@ public class ControllerDemanSej {
     @FXML
     void Decliner(){
 
-//ici je vais seulement refuser le voyage et mettre la colonne Etatdemande à refuser
+         //ici je vais seulement refuser le voyage et mettre la colonne Etatdemande à refuser
         //et mettre un if == refuser le voyageur saura que il est refusé
         if (!nomlabel.getText().trim().isEmpty() && !prenomlabel.getText().trim().isEmpty() && !telephonelabel.getText().trim().isEmpty() && !emaillabel.getText().trim().isEmpty()) {
             Connexion connexion = new Connexion("Database/DB.db");
@@ -156,7 +170,6 @@ public class ControllerDemanSej {
 
 //ici je vais seulement accepter le voyage et mettre la colonne Etatdemande à valide
 // et mettre un if == accepted le voyageur saura que il est accepté
-
 //je valide que si l'hote a selectionner un voyage
     if (!nomlabel.getText().trim().isEmpty() && !prenomlabel.getText().trim().isEmpty() && !telephonelabel.getText().trim().isEmpty() && !emaillabel.getText().trim().isEmpty()) {
         Connexion connexion = new Connexion("Database/DB.db");
