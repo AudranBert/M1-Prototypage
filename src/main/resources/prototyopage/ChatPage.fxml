@@ -52,7 +52,7 @@
          </children>
       </VBox>
       <Button layoutX="1155.0" layoutY="622.0" mnemonicParsing="false" onMouseClicked="#sendMessage" prefHeight="50.0" text="Envoyer" />
-      <TextArea fx:id="messageField" layoutX="380.0" layoutY="610.0" prefHeight="75.0" prefWidth="750.0" />
+      <TextArea fx:id="messageField" layoutX="380.0" layoutY="610.0" onKeyPressed="#onKeyEvent" prefHeight="75.0" prefWidth="750.0" />
       <VBox fx:id="leftVbox" layoutX="380.0" layoutY="50.0" prefHeight="550.0" prefWidth="550.0">
          <children>
             <Label fx:id="leftMessage0" prefHeight="50.0" prefWidth="550.0" wrapText="true" />
