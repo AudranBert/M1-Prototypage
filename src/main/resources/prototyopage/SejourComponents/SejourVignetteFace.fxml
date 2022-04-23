@@ -17,7 +17,7 @@
          <children>
             <ImageView fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/wwoofing-femme-l-gumes.1501939.w740.jpg" />
+                  <Image url="@../../Images/Sejours/1/img_1.jpg" />
                </image>
             </ImageView>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SejourNamePlaceholder" wrappingWidth="262.9501647949219">

@@ -8,6 +8,7 @@ public class Sejour {
     private static SimpleDateFormat DATE_FORMATER = new SimpleDateFormat("yyyy-MM-dd");
 
     private int sejourId;
+    private int imageBundle;
     private String name;
     private String location;
     private Calendar DateBegin;
@@ -16,8 +17,9 @@ public class Sejour {
     private int IdHost;
 
 
-    public Sejour(int sejourId, String name, String location, Calendar dateBegin, Calendar dateEnd,String description, int IdHost) {
+    public Sejour(int sejourId, int imageBundle, String name, String location, Calendar dateBegin, Calendar dateEnd,String description, int IdHost) {
         this.sejourId = sejourId;
+        this.imageBundle = imageBundle;
         this.name = name;
         this.location = location;
         this.DateBegin = dateBegin;
@@ -28,6 +30,7 @@ public class Sejour {
 
     public Sejour(String name, String location, GregorianCalendar dateBegin, GregorianCalendar dateEnd,String description, int IdHost) {
         this.sejourId = -1;
+        this.imageBundle = 0;
         this.name = name;
         this.location = location;
         this.DateBegin = dateBegin;
@@ -40,6 +43,8 @@ public class Sejour {
     public int getSejourId() {
         return sejourId;
     }
+
+    public int getImageBundle() { return imageBundle; }
 
     public String getDescription() {
         return description;
@@ -95,6 +100,7 @@ public class Sejour {
     @Override
     public String toString() {
         return "SejourId : " + this.sejourId
+                + ", ImageBundle: " + this.imageBundle
                 + ", Name : " + this.name
                 + ", Location : " + this.location
                 + ", DateBegin : " + DATE_FORMATER.format(this.DateBegin.getTime())

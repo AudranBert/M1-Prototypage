@@ -41,9 +41,10 @@ public class SearchRunnable implements Runnable {
                 Button button=new Button("",sejour);
                 button.setMaxWidth(10000000);
                 button.setAlignment(Pos.BASELINE_LEFT);
-                button.setId("sejour_"+list.get(i).getSejourId());
+                button.setId(String.valueOf(list.get(i).getSejourId()));
                 button.setOnAction((event) -> {    // lambda expression
-                    System.out.println("open sejour: "+button.getId());
+                    controller.openSejour(Integer.parseInt(button.getId()));
+                    System.out.println("open sejour: " + button.getId());
                 });
                 controller.addToBoxSejour(button);
             }

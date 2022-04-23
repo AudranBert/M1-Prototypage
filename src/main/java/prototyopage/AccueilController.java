@@ -73,7 +73,7 @@ public class AccueilController {
 
     @FXML
     public void showVoyagerSejourDetails() {
-        mainApp.showVoyagerSejourDetails();
+        mainApp.showVoyagerSejourDetails(61);
     }
 
     private void hideProfileButton() {

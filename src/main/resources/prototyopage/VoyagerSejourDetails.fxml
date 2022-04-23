@@ -10,23 +10,29 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.VoyagerSejourDetailsControler">
+   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="26.0" prefWidth="94.0" text="Retour">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
+
    <SVGPath content="M-3.81282e-15,-135.403 C-52.2656,-135.403 -94.7821,-92.8865 -94.7821,-40.6209 C-94.7821,30.3303 -3.81282e-15,135.403 -3.81282e-15,135.403 C-3.81282e-15,135.403 94.7821,30.3303 94.7821,-40.6209 C94.7821,-92.8865 52.2656,-135.403 -3.81282e-15,-135.403 Z M-3.81282e-15,-6.77015 C-18.6856,-6.77015 -33.8508,-21.9353 -33.8508,-40.6209 C-33.8508,-59.3065 -18.6856,-74.4717 -3.81282e-15,-74.4717 C18.6856,-74.4717 33.8508,-59.3065 33.8508,-40.6209 C33.8508,-21.9353 18.6856,-6.77015 -3.81282e-15,-6.77015 Z M-3.81282e-15,-135.403 C-52.2656,-135.403 -94.7821,-92.8865 -94.7821,-40.6209 C-94.7821,30.3303 -3.81282e-15,135.403 -3.81282e-15,135.403 C-3.81282e-15,135.403 94.7821,30.3303 94.7821,-40.6209 C94.7821,-92.8865 52.2656,-135.403 -3.81282e-15,-135.403 Z M-3.81282e-15,-6.77015 C-18.6856,-6.77015 -33.8508,-21.9353 -33.8508,-40.6209 C-33.8508,-59.3065 -18.6856,-74.4717 -3.81282e-15,-74.4717 C18.6856,-74.4717 33.8508,-59.3065 33.8508,-40.6209 C33.8508,-21.9353 18.6856,-6.77015 -3.81282e-15,-6.77015 Z " fill="#106ecd" layoutX="130.0" layoutY="209.0" scaleX="0.12" scaleY="0.12" />
    <Label fx:id="sejourName" layoutX="121.0" layoutY="136.0" text="SejourNamePlaceholder">
       <font>
          <Font size="36.0" />
       </font>
    </Label>
-   <ImageView fitHeight="315.0" fitWidth="350.0" layoutX="121.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="img1" fitHeight="315.0" fitWidth="350.0" layoutX="121.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@../Images/wwoofing-femme-l-gumes.1501939.w740.jpg" />
+         <Image url="@../Images/Sejours/1/img_1.jpg" />
       </image>
    </ImageView>
-   <ImageView fitHeight="315.0" layoutX="506.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="img2" fitHeight="315.0" layoutX="506.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@../Images/Morocco-Luxury-Tour-min-600x450.jpg" />
+         <Image url="@../Images/Sejours/1/img_2.jpg" />
       </image>
    </ImageView>
-   <Text layoutX="121.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DescriptionPlaceHolder" wrappingWidth="211.81571197509766">
+   <Text fx:id="description" layoutX="121.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DescriptionPlaceHolder" wrappingWidth="211.81571197509766">
       <font>
          <Font size="19.0" />
       </font>
@@ -59,5 +65,4 @@
          <Font size="21.0" />
       </font>
    </Text>
-   <Button fx:id="buttoni" layoutX="614.0" layoutY="74.0" mnemonicParsing="false" onAction="#set" text="Button" />
 </AnchorPane>

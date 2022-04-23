@@ -109,12 +109,23 @@ public class MainApp extends Application {
         }
     }
 
-    public void showVoyagerSejourDetails()  {
+    public void showVoyagerSejourDetails(int idSejour)  {
         try {
+            System.out.println("MainApp: " + idSejour);
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("VoyagerSejourDetails.fxml"));
 
             Scene scene = null;
             scene = new Scene(fxmlLoader.load(), 1280, 720);
+
+            VoyagerSejourDetailsControler controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.setCurrentSejourId(idSejour);
+
+            System.out.println("MainApp controler just set: " + controller.getCurrentSejourId());
+
+            controller.initialize();
+            fxmlLoader.setController(controller);
+
             scene.getStylesheets().add("Style.css");
             stage.setTitle("Détail séjour");
             stage.setScene(scene);
