@@ -87,6 +87,21 @@ public class MainApp extends Application {
         }
     }
 
+    public void showVoyagerSejourDetails()  {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("VoyagerSejourDetails.fxml"));
+
+            Scene scene = null;
+            scene = new Scene(fxmlLoader.load(), 1280, 720);
+            scene.getStylesheets().add("Style.css");
+            stage.setTitle("Détail séjour");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public void showHome(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Accueil.fxml"));

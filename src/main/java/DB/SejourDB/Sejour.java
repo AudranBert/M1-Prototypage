@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Sejour {
-    private static SimpleDateFormat DATE_FORMATER = new SimpleDateFormat("yyyy-MM-DD HH:MM:SS.SSS");
+    private static SimpleDateFormat DATE_FORMATER = new SimpleDateFormat("yyyy-MM-dd");
 
     private int sejourId;
     private String name;
@@ -53,9 +53,9 @@ public class Sejour {
         this.location = location;
     }
 
-    public Calendar getDateBegin() {
-        return DateBegin;
-    }
+    public Calendar getDateBegin() { return DateBegin; }
+
+    public String getStrDateBegin() { return DATE_FORMATER.format(this.DateBegin.getTime()); }
 
     public void setDateBegin(Calendar dateBegin) {
         DateBegin = dateBegin;
@@ -64,6 +64,9 @@ public class Sejour {
     public Calendar getDateEnd() {
         return DateEnd;
     }
+
+    public String getStrDateEnd() { return DATE_FORMATER.format(this.DateEnd.getTime()); }
+
 
     public void setDateEnd(Calendar dateEnd) {
         DateEnd = dateEnd;

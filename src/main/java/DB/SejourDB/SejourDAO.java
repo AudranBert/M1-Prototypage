@@ -58,6 +58,15 @@ public class SejourDAO {
         return sejourArrayList;
     }
 
+    public Sejour getSejourById(int id) throws SQLException, ParseException {
+        connexion.connect();
+        ResultSet resultSet = connexion.query("SELECT * FROM Sejour WHERE SejourId LIKE '%" + id + "%';");
+        resultSet.next();
+        Sejour sejour = resultSetToSejour(resultSet);
+        connexion.close();
+        return sejour;
+
+    }
 
     public ArrayList<Sejour> resultToSejourList(ResultSet resultSet){
         ArrayList<Sejour> sejourArrayList = new ArrayList<>();
@@ -87,6 +96,5 @@ public class SejourDAO {
         ArrayList<Sejour> sejourArrayList = resultToSejourList(resultSet);
         connexion.close();
         return sejourArrayList;
-
     }
 }
