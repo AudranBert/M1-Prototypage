@@ -133,5 +133,8 @@ public class RechercheController {
     }
 
 
+    public void openSejour(int idSejour) {
+        mainApp.showVoyagerSejourDetails(idSejour);
+    }
 }
 
