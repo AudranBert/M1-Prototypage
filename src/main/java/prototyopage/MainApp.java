@@ -19,18 +19,8 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Accueil.fxml"));
-        fxmlLoader.setLocation(MainApp.class.getResource("Accueil.fxml")); //On charge la vue souhaitée
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-
-        //On charge le controlleur associé a la vue
-        AccueilController controller = fxmlLoader.getController();
-        controller.setMainApp(this);
-
-        this.stage = stage;
-        this.stage.setTitle("Accueil");
-        this.stage.setScene(scene);
-        this.stage.show();
+        this.stage=stage;
+        showHome();
     }
 
 
@@ -79,7 +69,8 @@ public class MainApp extends Application {
             scene.getStylesheets().add("Style.css");
             RechercheController controller = fxmlLoader.getController();
             controller.setMainApp(this);
-            stage.setTitle("Recherche");
+            controller.setUserBox();
+            stage.setTitle("Adeona");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -94,6 +85,7 @@ public class MainApp extends Application {
             scene.getStylesheets().add("Style.css");
             AccueilController controller = fxmlLoader.getController();
             controller.setMainApp(this);
+            controller.setUserBox();
             stage.setTitle("Accueil");
             stage.setScene(scene);
             stage.show();
