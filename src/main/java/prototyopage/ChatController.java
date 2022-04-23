@@ -15,6 +15,12 @@ public class ChatController {
 
     private int nbrMessages = 7;
 
+    private int idReceiver;
+
+    private int idSender;
+
+    private int numSejour;
+
     @FXML
     private Button closeButton;
 
@@ -47,7 +53,15 @@ public class ChatController {
 
     public void setMainApp(MainApp mainApp) { this.mainApp = mainApp; }
 
-    public void initializeValues() {
+    public void initializeValues(int idReceiverCopy, int idSenderCopy, int numSejourCopy) {
+        //valeurs de la page
+        idSender = idSenderCopy;
+        idReceiver = idReceiverCopy;
+        numSejour = numSejourCopy;
+        System.out.println("sender : " + idSenderCopy);
+        System.out.println("receiver : " + idReceiverCopy);
+        System.out.println("numsejour : " + numSejourCopy);
+
         //Toutes ces valeurs sont fausses, il faut récupérer celles de l'hôte !
         firstNameProfile.setText("fakeFirstName");
         nameProfile.setText("fakeName");
@@ -56,26 +70,18 @@ public class ChatController {
         nbrVoyageurs.setText("3 voyageurs");
         nbrLits.setText("2 lits");
 
-
         //Valeurs du chat :
-        int numSejour = 60;
-        int idHost = 22;
-        int idTraveler = 21;
-        int idUser = 21;
         if (mainApp.getChat().get(numSejour) != null)
         {
             for (Message msg : mainApp.getChat().get(numSejour))
             {
-                if ((msg.getSender() == idHost && msg.getReceiver() == idTraveler) || msg.getSender() == idTraveler && msg.getReceiver() == idHost)
+                if ((msg.getSender() == idSender && msg.getReceiver() == idReceiver))
                 {
-                    if (msg.getSender() == idUser)
-                    {
-                        ((Label) rightVbox.getChildren().get(msg.getNumMessage())).setText(msg.getContent());
-                    }
-                    else
-                    {
-                        ((Label) leftVbox.getChildren().get(msg.getNumMessage())).setText(msg.getContent());
-                    }
+                    ((Label) rightVbox.getChildren().get(msg.getNumMessage())).setText(msg.getContent());
+                }
+                else if (msg.getSender() == idReceiver && msg.getReceiver() == idSender)
+                {
+                    ((Label) leftVbox.getChildren().get(msg.getNumMessage())).setText(msg.getContent());
                 }
             }
         }
@@ -92,15 +98,12 @@ public class ChatController {
         String messageContent = messageField.getText();
         ((Label) rightVbox.getChildren().get(nbrMessages - 1)).setText(messageContent);
         ((Label) leftVbox.getChildren().get(nbrMessages - 1)).setText("");
-        int sender = 21;
-        int receiver = 22;
-        int numSejour = 60;
 
         if (mainApp.getChat().get(numSejour) != null)
         {
             for (Message msg : mainApp.getChat().get(numSejour))
             {
-                if ((msg.getSender() == sender && msg.getReceiver() == receiver) || msg.getSender() == receiver && msg.getReceiver() == sender)
+                if ((msg.getSender() == idSender && msg.getReceiver() == idReceiver) || msg.getSender() == idReceiver && msg.getReceiver() == idSender)
                 {
                     if (msg.getNumMessage() > 0)
                     {
@@ -114,7 +117,7 @@ public class ChatController {
             }
         }
 
-        Message newMessage = new Message(sender, receiver, messageContent, 6);
+        Message newMessage = new Message(idSender, idReceiver, messageContent, 6);
         if (mainApp.getChat().containsKey(numSejour))
         {
             mainApp.getChat().get(numSejour).add(newMessage);

@@ -83,7 +83,7 @@ public class MainApp extends Application {
         }
     }
 
-    public void showChat()
+    public void showChat(int idSender, int idReceiver, int numSejour)
     {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ChatPage.fxml"));
@@ -93,7 +93,7 @@ public class MainApp extends Application {
             //scene.getStylesheets().add("Style.css");
             ChatController controller = fxmlLoader.getController();
             controller.setMainApp(this);
-            controller.initializeValues();
+            controller.initializeValues(idSender, idReceiver, numSejour);
             stage.setTitle("Chat");
             stage.setScene(scene);
             stage.show();

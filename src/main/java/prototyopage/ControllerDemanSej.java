@@ -21,6 +21,10 @@ public class ControllerDemanSej {
 
     private MainApp mainApp;
 
+    private int id_current_voyageur;
+
+    private int sejourSelected;
+
     @FXML
     private ComboBox<String> combobox;
     @FXML
@@ -42,7 +46,7 @@ public class ControllerDemanSej {
     @FXML
     protected void showChat() {
         if (mainApp.getUser() != null) {
-            mainApp.showChat();
+            mainApp.showChat(mainApp.getUser().getUserId(), id_current_voyageur, sejourSelected);
         }
         else
         {
@@ -82,7 +86,6 @@ public class ControllerDemanSej {
         }
         connexion.close();
     }
-    int sejourSelected;
 @FXML
     void getElement(){
     String output = combobox.getSelectionModel().getSelectedItem();
@@ -94,7 +97,7 @@ public class ControllerDemanSej {
     ResultSet resultSet = connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + output + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
 
     try {
-        int id_current_voyageur=resultSet.getInt("voyageur");
+        id_current_voyageur=resultSet.getInt("voyageur");
         sejourSelected=resultSet.getInt("sejour");
         ResultSet res = connexion.query("SELECT * FROM User WHERE  UserId = '" + id_current_voyageur + "';");
         //récupérer son nom prénom et email age telephone
