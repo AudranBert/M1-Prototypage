@@ -1,5 +1,6 @@
 package prototyopage;
 
+import DB.SejourDB.Sejour;
 import DB.UserDB.User;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import java.io.IOException;
 public class MainApp extends Application {
     Stage stage;
     private User user = null;
+    private Sejour sejour;
 
 
     @Override
@@ -33,10 +35,7 @@ public class MainApp extends Application {
         this.stage.show();
     }
 
-
-
-    public void showConnection()
-    {
+    public void showConnection() {
         try {
             //Charger le fichier fxml associé
             FXMLLoader loader = new FXMLLoader();
@@ -59,6 +58,11 @@ public class MainApp extends Application {
 
             Scene scene = null;
             scene = new Scene(fxmlLoader.load(), 1000, 600);
+
+            ControllerProfile controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.setProfileValues();
+
             scene.getStylesheets().add("Style.css");
             stage.setTitle("Profil");
             stage.setScene(scene);
@@ -67,7 +71,6 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-  
 
     public void showSearchBar()
     {
@@ -80,6 +83,25 @@ public class MainApp extends Application {
             RechercheController controller = fxmlLoader.getController();
             controller.setMainApp(this);
             stage.setTitle("Recherche");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showChat()
+    {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ChatPage.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load());
+
+            //scene.getStylesheets().add("Style.css");
+            ChatController controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.initializeValues();
+            stage.setTitle("Chat");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -116,6 +138,23 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
 
+    }
+
+
+    public void showDemSej()  {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("DemanSej.fxml"));
+
+            Scene scene = null;
+            scene = new Scene(fxmlLoader.load(), 1000, 600);
+
+            scene.getStylesheets().add("Style.css");
+            stage.setTitle("Demande Sejour");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

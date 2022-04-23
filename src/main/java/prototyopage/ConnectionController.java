@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 import static DB.UserDB.UserDbTest.fillDB;
+import static DB.UserDB.UserDbTest.main;
 
 public class ConnectionController {
     private MainApp mainApp;
@@ -56,6 +57,7 @@ public class ConnectionController {
                     mainApp.setUser(user);
                     Stage stage = (Stage) closeButton.getScene().getWindow();
                     stage.close();
+                    mainApp.showHome();
                 }
                 else
                 {
@@ -75,5 +77,6 @@ public class ConnectionController {
     protected void close(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+        mainApp.showHome();
     }
 }

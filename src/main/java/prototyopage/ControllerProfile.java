@@ -33,6 +33,11 @@ public class ControllerProfile {
     @FXML
     private TextField telephoneuser;
 
+    private MainApp mainApp;
+
+    public void setMainApp(MainApp mainApp) { this.mainApp = mainApp; }
+
+
 
 
     public void initialize() throws SQLException, ClassNotFoundException{
@@ -58,48 +63,41 @@ public class ControllerProfile {
                 ageuser.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
+    }
 
+    public void setProfileValues() {
 
-    //Diplay after loading from Database
-
-            Connexion connexion = new Connexion("Database/User.db");
+        if (this.mainApp.getUser() != null) {
+            //Diplay after loading from Database
+            Connexion connexion = new Connexion("Database/DB.db");
             connexion.connect();
             ResultSet resultSet = connexion.query("SELECT * FROM User");
-            ArrayList<User> userArrayList=new ArrayList<>();
+            ArrayList<User> userArrayList = new ArrayList<>();
             try {
                 while (resultSet.next()) {
-                    if(resultSet.getInt("UserId")==9){////remplacer id
+                    if (resultSet.getInt("UserId") == mainApp.getUser().getUserId()) {////remplacer id
                         prenomuser.setText(resultSet.getString("FirstName"));
-                        nomuser.setText(resultSet.getString("LastName" ));
+                        nomuser.setText(resultSet.getString("LastName"));
 
                         mailuser.setText(resultSet.getString("email"));
                         ageuser.setText(String.valueOf(resultSet.getInt("age")));
-                         telephoneuser.setText(String.valueOf(resultSet.getInt("telephone")));
-
-
+                        telephoneuser.setText(String.valueOf(resultSet.getInt("telephone")));
                     }
-
-
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             connexion.close();
-
-
-
-
+        }
     }
-
-
 
 
     @FXML
     void modifierProfile(ActionEvent event) {////remplacer id
-        Connexion connexion = new Connexion("Database/User.db");
+        Connexion connexion = new Connexion("Database/DB.db");
         connexion.connect();
         if (!prenomuser.getText().trim().isEmpty() && !nomuser.getText().trim().isEmpty() && !mailuser.getText().trim().isEmpty() && !ageuser.getText().trim().isEmpty() && !telephoneuser.getText().trim().isEmpty()) {
-            String query = "UPDATE `User` SET `FirstName` = '" + prenomuser.getText() + "', `LastName` = '" + nomuser.getText() + "' , `email` = '" + mailuser.getText() + "' , `age` = '" + Integer. parseInt(ageuser.getText()) + "' , `telephone` = '" + Integer. parseInt(telephoneuser.getText()) + "'  WHERE `UserId` = " + 9;
+            String query = "UPDATE `User` SET `FirstName` = '" + prenomuser.getText() + "', `LastName` = '" + nomuser.getText() + "' , `email` = '" + mailuser.getText() + "' , `age` = '" + Integer. parseInt(ageuser.getText()) + "' , `telephone` = '" + Integer. parseInt(telephoneuser.getText()) + "'  WHERE `UserId` = " + mainApp.getUser().getUserId();
             connexion.submitQuery(query);
             connexion.close();
         }

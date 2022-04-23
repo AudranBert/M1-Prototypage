@@ -12,25 +12,41 @@ public class Sejour {
     private String location;
     private Calendar DateBegin;
     private Calendar DateEnd;
+    private String description;
+    private int IdHost;
 
-    public Sejour(int sejourId, String name, String location, Calendar dateBegin, Calendar dateEnd) {
+
+    public Sejour(int sejourId, String name, String location, Calendar dateBegin, Calendar dateEnd,String description, int IdHost) {
         this.sejourId = sejourId;
         this.name = name;
         this.location = location;
         this.DateBegin = dateBegin;
         this.DateEnd = dateEnd;
+        this.description=description;
+        this.IdHost = IdHost;
     }
 
-    public Sejour(String name, String location, GregorianCalendar dateBegin, GregorianCalendar dateEnd) {
+    public Sejour(String name, String location, GregorianCalendar dateBegin, GregorianCalendar dateEnd,String description, int IdHost) {
         this.sejourId = -1;
         this.name = name;
         this.location = location;
         this.DateBegin = dateBegin;
         this.DateEnd = dateEnd;
+        this.description =  description;
+        this.IdHost = IdHost;
     }
+
 
     public int getSejourId() {
         return sejourId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setSejourId(int sejourId) {
@@ -72,12 +88,18 @@ public class Sejour {
         DateEnd = dateEnd;
     }
 
+    public int getIdHost() { return IdHost; }
+
+    public void setIdHost(int idHost) { IdHost = idHost; }
+
     @Override
     public String toString() {
         return "SejourId : " + this.sejourId
                 + ", Name : " + this.name
                 + ", Location : " + this.location
                 + ", DateBegin : " + DATE_FORMATER.format(this.DateBegin.getTime())
-                + ", DateEnd : " + DATE_FORMATER.format(this.DateEnd.getTime());
+                + ", DateEnd : " + DATE_FORMATER.format(this.DateEnd.getTime())
+                + ", description : " + this.description
+                + ", IdHost : " + this.IdHost;
     }
 }

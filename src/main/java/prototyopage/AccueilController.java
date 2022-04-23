@@ -2,6 +2,7 @@ package prototyopage;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -15,9 +16,13 @@ public class AccueilController {
     @FXML
     private AnchorPane rootPane;
 
+    @FXML
+    private Button profileButton;
+
     public void setMainApp(MainApp mainApp)
     {
         this.mainApp = mainApp;
+        hideProfileButton(); //cacher ou non le boutton en fonction du profil
     }
 
     @FXML
@@ -41,6 +46,11 @@ public class AccueilController {
     }
 
     @FXML
+    protected void showChat() {
+        mainApp.showChat();
+    }
+
+    @FXML
     protected void showSearchBar() {
 //        try{
 //            AnchorPane pane= FXMLLoader.load(getClass().getResource("Recherche.fxml"));
@@ -52,11 +62,28 @@ public class AccueilController {
     }
 
     @FXML
+    protected void demSej() {
+        mainApp.showDemSej();
+    }
+
+    @FXML
     protected void showProfil() {
         mainApp.showProfil();
     }
 
+    @FXML
     public void showVoyagerSejourDetails() {
         mainApp.showVoyagerSejourDetails();
+    }
+
+    private void hideProfileButton() {
+        if (mainApp.getUser() != null)
+        {
+            profileButton.setVisible(true);
+        }
+        else
+        {
+            profileButton.setVisible(false);
+        }
     }
 }
