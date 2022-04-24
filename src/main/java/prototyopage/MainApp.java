@@ -1,8 +1,5 @@
 package prototyopage;
 
-import DB.SejourDB.Sejour;
-import DB.SejourDB.SejourDAO;
-import DB.UserDB.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,15 +7,12 @@ import javafx.stage.Stage;
 import prototyopage.Controllers.*;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.Stack;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MainApp extends Application {
     Stage stage;
-    private HashMap<Integer, ArrayList<Message>> chat = new HashMap<Integer, ArrayList<Message>>();
+    private ArrayList<Chat> chats = new ArrayList<Chat>();
     private Stack<Runnable> viewHistory = new Stack<Runnable>();
 
     @Override
@@ -192,7 +186,27 @@ public class MainApp extends Application {
         }
     }
 
+    public void showDiscussions()
+    {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("DiscussionsPage.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+
+            scene.getStylesheets().add("Style.css");
+            DiscussionsController controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.init();
+            controller.setUserBox();
+            stage.setTitle("Adeona");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) { launch(); }
 
-    public HashMap<Integer, ArrayList<Message>> getChat() { return this.chat; }
+    public ArrayList<Chat> getChats() { return this.chats; }
 }

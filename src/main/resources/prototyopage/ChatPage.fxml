@@ -95,7 +95,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label fx:id="rightMessage0" alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="550.0" textAlignment="RIGHT" wrapText="true">
+            <Label fx:id="rightMessage1" alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="550.0" textAlignment="RIGHT" wrapText="true">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
