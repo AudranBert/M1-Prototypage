@@ -1,12 +1,8 @@
-package prototyopage;
+package prototyopage.Controllers;
 
-import DB.UserDB.User;
-import DB.UserDB.UserDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-
-import java.util.ArrayList;
+import prototyopage.MainApp;
 
 public class ChatController {
     private MainApp mainApp;

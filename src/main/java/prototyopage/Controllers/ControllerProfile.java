@@ -1,4 +1,4 @@
-package prototyopage;
+package prototyopage.Controllers;
 
 import DB.Connexion;
 import DB.UserDB.User;
@@ -9,11 +9,11 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import prototyopage.Context;
+import prototyopage.MainApp;
 
 public class ControllerProfile {
 
@@ -67,7 +67,7 @@ public class ControllerProfile {
 
     public void setProfileValues() {
 
-        if (this.mainApp.getUser() != null) {
+        if (Context.getUser() != null) {
             //Diplay after loading from Database
             Connexion connexion = new Connexion("Database/DB.db");
             connexion.connect();
@@ -75,7 +75,7 @@ public class ControllerProfile {
             ArrayList<User> userArrayList = new ArrayList<>();
             try {
                 while (resultSet.next()) {
-                    if (resultSet.getInt("UserId") == mainApp.getUser().getUserId()) {////remplacer id
+                    if (resultSet.getInt("UserId") == Context.getUser().getUserId()) {////remplacer id
                         prenomuser.setText(resultSet.getString("FirstName"));
                         nomuser.setText(resultSet.getString("LastName"));
 
@@ -97,7 +97,7 @@ public class ControllerProfile {
         Connexion connexion = new Connexion("Database/DB.db");
         connexion.connect();
         if (!prenomuser.getText().trim().isEmpty() && !nomuser.getText().trim().isEmpty() && !mailuser.getText().trim().isEmpty() && !ageuser.getText().trim().isEmpty() && !telephoneuser.getText().trim().isEmpty()) {
-            String query = "UPDATE `User` SET `FirstName` = '" + prenomuser.getText() + "', `LastName` = '" + nomuser.getText() + "' , `email` = '" + mailuser.getText() + "' , `age` = '" + Integer. parseInt(ageuser.getText()) + "' , `telephone` = '" + Integer. parseInt(telephoneuser.getText()) + "'  WHERE `UserId` = " + mainApp.getUser().getUserId();
+            String query = "UPDATE `User` SET `FirstName` = '" + prenomuser.getText() + "', `LastName` = '" + nomuser.getText() + "' , `email` = '" + mailuser.getText() + "' , `age` = '" + Integer. parseInt(ageuser.getText()) + "' , `telephone` = '" + Integer. parseInt(telephoneuser.getText()) + "'  WHERE `UserId` = " + Context.getUser().getUserId();
             connexion.submitQuery(query);
             connexion.close();
         }

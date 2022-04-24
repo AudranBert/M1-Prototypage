@@ -1,4 +1,4 @@
-package prototyopage;
+package prototyopage.Controllers;
 
 import DB.SejourDB.Sejour;
 import DB.SejourDB.SejourDAO;
@@ -8,7 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import prototyopage.Context;
+import prototyopage.MainApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,9 +63,9 @@ public class RechercheController {
     }
 
     public void setUserBox(){
-        if (mainApp.getUser()!=null){
-            userNameText.setText(mainApp.getUser().getFirstName());
-            if (mainApp.getUser().isHost()){
+        if (Context.getUser()!=null){
+            userNameText.setText(Context.getUser().getFirstName());
+            if (Context.getUser().isHost()){
                 userIsTravelerText.setText("Hote");
             }
             else{
@@ -77,8 +78,7 @@ public class RechercheController {
         }
     }
 
-    @FXML
-    public void initialize() {
+    public void init() {
         search();
     }
 
@@ -92,7 +92,7 @@ public class RechercheController {
             else {
                 sublist = list.subList(i, lenght);
             }
-            Thread t = new Thread(new SearchRunnable(sublist, this));
+            Thread t = new Thread(new SearchRunnable(sublist, this, this.mainApp));
             t.start();
 
         }
@@ -133,8 +133,8 @@ public class RechercheController {
     }
 
 
-    public void openSejour(int idSejour) {
-        mainApp.showVoyagerSejourDetails(idSejour);
+    public void openSejour() {
+        mainApp.showVoyagerSejourDetails();
     }
 }
 
