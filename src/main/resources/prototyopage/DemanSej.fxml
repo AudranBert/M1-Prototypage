@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.ControllerDemanSej">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.ControllerDemanSej">
    <children>
       <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#befff4" height="480.0" layoutX="643.0" layoutY="55.0" opacity="0.12" stroke="BLACK" strokeType="INSIDE" width="263.0" />
       <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#feffff" height="328.0" layoutX="670.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="213.0" />
@@ -53,7 +53,7 @@
       <Label layoutX="683.0" layoutY="353.0" prefHeight="12.0" prefWidth="60.0" stylesheets="@../Style.css" text="Téléphone" />
       <Label fx:id="emaillabel" layoutX="790.0" layoutY="319.0" prefHeight="18.0" prefWidth="78.0" textFill="RED" />
       <Label fx:id="telephonelabel" layoutX="790.0" layoutY="353.0" prefHeight="18.0" prefWidth="78.0" textFill="RED" />
-      <Button layoutX="675.0" layoutY="484.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="194.0" stylesheets="@../Style.css" text="Discuter avec le voyageur" textAlignment="CENTER">
+      <Button layoutX="675.0" layoutY="484.0" mnemonicParsing="false" onAction="#showChat" prefHeight="26.0" prefWidth="194.0" stylesheets="@../Style.css" text="Discuter avec le voyageur" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
