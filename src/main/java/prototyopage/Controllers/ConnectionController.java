@@ -1,4 +1,4 @@
-package prototyopage;
+package prototyopage.Controllers;
 
 import DB.UserDB.User;
 import DB.UserDB.UserDAO;
@@ -8,11 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import prototyopage.Context;
+import prototyopage.MainApp;
 
 import java.util.ArrayList;
-
-import static DB.UserDB.UserDbTest.fillDB;
-import static DB.UserDB.UserDbTest.main;
 
 public class ConnectionController {
     private MainApp mainApp;
@@ -54,7 +53,7 @@ public class ConnectionController {
                 {
                     System.out.println("Vous vous êtes bien connectés !");
                     System.out.println("Bonjour " + user.getFirstName());
-                    mainApp.setUser(user);
+                    Context.setUser(user);
                     Stage stage = (Stage) closeButton.getScene().getWindow();
                     stage.close();
                     mainApp.showHome();
@@ -79,4 +78,5 @@ public class ConnectionController {
         stage.close();
         mainApp.showHome();
     }
+
 }

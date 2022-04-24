@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.VoyagerSejourDetailsControler">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.VoyagerSejourDetailsControler">
    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="26.0" prefWidth="94.0" text="Retour">
       <font>
          <Font size="18.0" />
@@ -19,7 +22,7 @@
          <Font size="36.0" />
       </font>
    </Label>
-   <ImageView fx:id="img1" fitHeight="315.0" fitWidth="350.0" layoutX="121.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="img1" fitHeight="315.0" layoutX="121.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../Images/Sejours/1/img_1.jpg" />
       </image>
@@ -29,7 +32,7 @@
          <Image url="@../Images/Sejours/1/img_2.jpg" />
       </image>
    </ImageView>
-   <Text fx:id="description" layoutX="121.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DescriptionPlaceHolder" wrappingWidth="211.81571197509766">
+   <Text fx:id="description" layoutX="121.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DescriptionPlaceHolder" wrappingWidth="596.4175796508789">
       <font>
          <Font size="19.0" />
       </font>
@@ -60,6 +63,13 @@
    <Text fx:id="dateEnd" fill="#4a4a4a" layoutX="1063.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XX/XX/XXXX" wrappingWidth="139.864990234375">
       <font>
          <Font size="21.0" />
+      </font>
+   </Text>
+   <Button fx:id="reservationActionButton" layoutX="856.0" layoutY="576.0" mnemonicParsing="false" onAction="#openReservationModal" text="Réserver" />
+   <SVGPath fx:id="statusLogo" content="M0,-143.451 C-79.1851,-143.451 -143.451,-79.1851 -143.451,0 C-143.451,79.1851 -79.472,143.451 0,143.451 C79.1851,143.451 143.451,79.1851 143.451,0 C143.451,-79.1851 79.1851,-143.451 0,-143.451 Z M0,114.761 C-63.4055,114.761 -114.761,63.4055 -114.761,0 C-114.761,-63.4055 -63.4055,-114.761 0,-114.761 C63.4055,-114.761 114.761,-63.4055 114.761,0 C114.761,63.4055 63.4055,114.761 0,114.761 Z M7.17256,-86.0708 L-14.3451,-86.0708 L-14.3451,14.3451 L61.684,59.9626 L72.5863,42.1747 L7.17256,2.86903 L7.17256,-86.0708 Z M0,-143.451 C-79.1851,-143.451 -143.451,-79.1851 -143.451,0 C-143.451,79.1851 -79.472,143.451 0,143.451 C79.1851,143.451 143.451,79.1851 143.451,0 C143.451,-79.1851 79.1851,-143.451 0,-143.451 Z M0,114.761 C-63.4055,114.761 -114.761,63.4055 -114.761,0 C-114.761,-63.4055 -63.4055,-114.761 0,-114.761 C63.4055,-114.761 114.761,-63.4055 114.761,0 C114.761,63.4055 63.4055,114.761 0,114.761 Z M7.17256,-86.0708 L-14.3451,-86.0708 L-14.3451,14.3451 L61.684,59.9626 L72.5863,42.1747 L7.17256,2.86903 L7.17256,-86.0708 Z " fill="#dd7302" layoutX="908.0" layoutY="211.0" scaleX="0.1" scaleY="0.1" strokeMiterLimit="0.0" />
+   <Text fx:id="statusText" layoutX="810.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En attente" textAlignment="RIGHT" wrappingWidth="80.6796289429808">
+      <font>
+         <Font size="16.0" />
       </font>
    </Text>
    <Button layoutX="1008.0" layoutY="517.0" mnemonicParsing="false" onMouseClicked="#showChat" text="Chat avec l'hôte" />

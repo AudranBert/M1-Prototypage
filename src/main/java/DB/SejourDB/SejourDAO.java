@@ -27,7 +27,7 @@ public class SejourDAO {
         query += "'" + dateFormater.format(sejour.getDateBegin().getTime()) + "', ";
         query += "'" + dateFormater.format(sejour.getDateEnd().getTime()) + "' ,";
         query += "'" + sejour.getDescription()+ "' ,";
-        query += "'" + sejour.getIdHost()+ "' )";
+        query += "'" + sejour.getIdHost()+ "' );";
         connexion.connect();
         connexion.submitQuery(query);
         connexion.close();
@@ -70,7 +70,6 @@ public class SejourDAO {
         Sejour sejour = resultSetToSejour(resultSet);
         connexion.close();
         return sejour;
-
     }
 
     public ArrayList<Sejour> resultToSejourList(ResultSet resultSet){

@@ -1,19 +1,24 @@
-package prototyopage;
+package prototyopage.Controllers;
 
+import DB.DemSejDB.DemSejDAO;
 import DB.SejourDB.Sejour;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import prototyopage.Context;
+import prototyopage.MainApp;
 
 import java.util.List;
 
 public class SearchRunnable implements Runnable {
     private List<Sejour> list;
     private RechercheController controller;
+    private MainApp mainApp;
 
-    public SearchRunnable(List<Sejour> list, RechercheController controller) {
+    public SearchRunnable(List<Sejour> list, RechercheController controller, MainApp mainApp) {
         this.list = list;
         this.controller=controller;
+        this.mainApp = mainApp;
     }
 
     public void run() {
@@ -44,7 +49,8 @@ public class SearchRunnable implements Runnable {
                 button.setAlignment(Pos.BASELINE_LEFT);
                 button.setId(String.valueOf(list.get(i).getSejourId()));
                 button.setOnAction((event) -> {    // lambda expression
-                    controller.openSejour(Integer.parseInt(button.getId()));
+                    Context.setSejourById(Integer.parseInt(button.getId()));
+                    controller.openSejour();
                     System.out.println("open sejour: " + button.getId());
                 });
                 controller.addToBoxSejour(button);

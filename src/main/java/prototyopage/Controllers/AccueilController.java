@@ -1,16 +1,12 @@
-package prototyopage;
+package prototyopage.Controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-
-import java.io.IOException;
-
-import java.io.IOException;
+import prototyopage.Context;
+import prototyopage.MainApp;
 
 public class AccueilController {
     private MainApp mainApp;
@@ -66,9 +62,9 @@ public class AccueilController {
 
 
     public void setUserBox(){
-        if (mainApp.getUser()!=null){
-            userNameText.setText(mainApp.getUser().getFirstName());
-            if (mainApp.getUser().isHost()){
+        if (Context.getUser()!=null){
+            userNameText.setText(Context.getUser().getFirstName());
+            if (Context.getUser().isHost()){
                 userIsTravelerText.setText("Hote");
                  voirDemandes.setVisible(true);
             }
@@ -77,7 +73,7 @@ public class AccueilController {
                 voirDemandes.setVisible(false);
             }
             userBox.setVisible(true);
-            welcomeText.setText("Bonjour " + mainApp.getUser().getFirstName());
+            welcomeText.setText("Bonjour " + Context.getUser().getFirstName());
             welcomeText.setVisible(true);
             connexionButton.setVisible(false);
 

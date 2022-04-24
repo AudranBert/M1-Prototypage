@@ -1,4 +1,4 @@
-package prototyopage;
+package prototyopage.Controllers;
 
 import DB.Connexion;
 import javafx.fxml.FXML;
@@ -6,6 +6,9 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import prototyopage.MainApp;
+import prototyopage.Message;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,9 +50,7 @@ public class ChatController{
     @FXML
     private VBox rightVbox;
 
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-    }
+    public void setMainApp(MainApp mainApp) { this.mainApp = mainApp; }
 
     public void initializeValues(int idSenderCopy, int idReceiverCopy, int numSejourCopy) {
         //Valeurs de la page

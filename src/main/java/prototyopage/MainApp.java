@@ -1,30 +1,36 @@
 package prototyopage;
 
 import DB.SejourDB.Sejour;
+import DB.SejourDB.SejourDAO;
 import DB.UserDB.User;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import prototyopage.Controllers.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Stack;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainApp extends Application {
     Stage stage;
-    private User user = null;
     private HashMap<Integer, ArrayList<Message>> chat = new HashMap<Integer, ArrayList<Message>>();
-    Sejour sejour;
+    private Stack<Runnable> viewHistory = new Stack<Runnable>();
 
     @Override
     public void start(Stage stage) throws IOException {
         this.stage=stage;
         showHome();
+    }
+
+    public void backView() {
+        viewHistory.pop();
+        Runnable lastView = viewHistory.pop();
+        lastView.run();
     }
 
     public void showConnection() {
@@ -74,6 +80,7 @@ public class MainApp extends Application {
             scene.getStylesheets().add("Style.css");
             RechercheController controller = fxmlLoader.getController();
             controller.setMainApp(this);
+            controller.init();
             controller.setUserBox();
             stage.setTitle("Adeona");
             stage.setScene(scene);
@@ -102,21 +109,17 @@ public class MainApp extends Application {
         }
     }
 
-    public void showVoyagerSejourDetails(int idSejour)  {
+    public void showVoyagerSejourDetails()  {
         try {
-            System.out.println("MainApp: " + idSejour);
+            viewHistory.push(this::showVoyagerSejourDetails);
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("VoyagerSejourDetails.fxml"));
 
-            Scene scene = null;
-            scene = new Scene(fxmlLoader.load(), 1280, 720);
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
             VoyagerSejourDetailsControler controller = fxmlLoader.getController();
             controller.setMainApp(this);
-            controller.setCurrentSejourId(idSejour);
 
-            System.out.println("MainApp controler just set: " + controller.getCurrentSejourId());
-
-            controller.initialize();
+            controller.init();
             fxmlLoader.setController(controller);
 
             scene.getStylesheets().add("Style.css");
@@ -124,6 +127,27 @@ public class MainApp extends Application {
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void showReservationModal() {
+        try {
+            viewHistory.push(this::showVoyagerSejourDetails);
+            //Charger le fichier fxml associé
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(MainApp.class.getResource("ReservationModal.fxml")); //On charge la vue souhaitée
+            Stage connectionStage = fxmlLoader.load();
+
+            //On charge le controlleur associé a la vue
+            ReservationModalController controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.init();
+
+            fxmlLoader.setController(controller);
+
+            connectionStage.show(); //Affichage de la fenêtre
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -166,18 +190,7 @@ public class MainApp extends Application {
         }
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public User getUser()
-    {
-        return this.user;
-    }
+    public static void main(String[] args) { launch(); }
 
     public HashMap<Integer, ArrayList<Message>> getChat() { return this.chat; }
 }
