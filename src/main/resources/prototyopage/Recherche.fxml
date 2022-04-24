@@ -22,7 +22,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </TextField>
-      <ScrollPane hbarPolicy="NEVER" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="180.0">
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="180.0">
          <content>
             <AnchorPane prefWidth="1078.0">
                <children>

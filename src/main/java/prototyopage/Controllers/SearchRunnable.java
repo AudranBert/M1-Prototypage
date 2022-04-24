@@ -1,6 +1,5 @@
 package prototyopage.Controllers;
 
-import DB.DemSejDB.DemSejDAO;
 import DB.SejourDB.Sejour;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -24,25 +23,29 @@ public class SearchRunnable implements Runnable {
     public void run() {
         for (int i = 0; i < list.size(); i++) {
             Boolean find = false;
-            for (int j = 0; j < controller.getSejourList().size(); j++) {
-                if (controller.getSejourList().get(j).getSejourId() == list.get(i).getSejourId()) {
-                    find = true;
-                }
+
+            if (controller.getListDisplayedSejour().contains(list.get(i))){
+                find = true;
             }
+//            for (int j = 0; j < controller.getSejourList().size(); j++) {
+//                if (j < controller.getSejourList().size() && i < list.size() && controller.getSejourList().get(j).getSejourId() == list.get(i).getSejourId()) {
+//
+//                }
+//            }
             if (find == false) {
-                controller.addToSejourList(list.get(i));
+                controller.addToListDisplayedSejour(list.get(i));
                 Text sejour = new Text();
                 String sejourText="";
                 sejourText+=list.get(i).getName()+"\nOù? ";
                 sejourText+=list.get(i).getLocation()+"\n";
                 String date=list.get(i).getDateBegin().toInstant().toString();
-                //sejourText+="Quand? De ";
-                //String[] separated = date.split("T");
-                //sejourText+=separated[0];
-                //sejourText+=" jusqu'à ";
-                //date=list.get(i).getDateEnd().toInstant().toString();
-                //separated = date.split("T");
-                //sejourText+=separated[0];
+                sejourText+="Quand? De ";
+                String[] separated = date.split("T");
+                sejourText+=separated[0];
+                sejourText+=" jusqu'à ";
+                date=list.get(i).getDateEnd().toInstant().toString();
+                separated = date.split("T");
+                sejourText+=separated[0];
                 sejour.setText(sejourText);
                 Button button=new Button("",sejour);
                 button.setMaxWidth(10000000);
