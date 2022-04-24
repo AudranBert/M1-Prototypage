@@ -73,6 +73,7 @@ public class MainApp extends Application {
     public void showSearchBar()
     {
         try {
+            viewHistory.push(this::showSearchBar);
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Recherche.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -154,6 +155,7 @@ public class MainApp extends Application {
 
     public void showHome(){
         try {
+            viewHistory.push(this::showHome);
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Accueil.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             scene.getStylesheets().add("Style.css");

@@ -126,7 +126,7 @@ public class RechercheController {
 
     @FXML
     private void backToHome(){
-        this.mainApp.showHome();
+        this.mainApp.backView();
     }
 
     public void setMainApp(MainApp mainApp)
