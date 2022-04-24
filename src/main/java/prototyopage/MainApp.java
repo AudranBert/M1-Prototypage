@@ -13,10 +13,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Stack;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainApp extends Application {
     Stage stage;
-
+    private HashMap<Integer, ArrayList<Message>> chat = new HashMap<Integer, ArrayList<Message>>();
     private Stack<Runnable> viewHistory = new Stack<Runnable>();
 
     @Override
@@ -88,17 +90,17 @@ public class MainApp extends Application {
         }
     }
 
-    public void showChat()
+    public void showChat(int idSender, int idReceiver, int numSejour)
     {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ChatPage.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load());
 
-            //scene.getStylesheets().add("Style.css");
+            scene.getStylesheets().add("Style.css");
             ChatController controller = fxmlLoader.getController();
             controller.setMainApp(this);
-            controller.initializeValues();
+            controller.initializeValues(idSender, idReceiver, numSejour);
             stage.setTitle("Chat");
             stage.setScene(scene);
             stage.show();
@@ -116,7 +118,6 @@ public class MainApp extends Application {
 
             VoyagerSejourDetailsControler controller = fxmlLoader.getController();
             controller.setMainApp(this);
-            //controller.setCurrentSejour(this.sejour);
 
             controller.init();
             fxmlLoader.setController(controller);
@@ -168,6 +169,7 @@ public class MainApp extends Application {
 
     }
 
+
     public void showDemSej()  {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("DemanSej.fxml"));
@@ -175,8 +177,12 @@ public class MainApp extends Application {
             Scene scene = null;
             scene = new Scene(fxmlLoader.load(), 1000, 600);
 
+            ControllerDemanSej controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+
             scene.getStylesheets().add("Style.css");
             stage.setTitle("Demande Sejour");
+
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){
@@ -186,4 +192,5 @@ public class MainApp extends Application {
 
     public static void main(String[] args) { launch(); }
 
+    public HashMap<Integer, ArrayList<Message>> getChat() { return this.chat; }
 }
