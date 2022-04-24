@@ -190,6 +190,26 @@ public class MainApp extends Application {
         }
     }
 
+    public void showDiscussions()
+    {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("DiscussionsPage.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+
+            scene.getStylesheets().add("Style.css");
+            DiscussionsController controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.init();
+            controller.setUserBox();
+            stage.setTitle("Adeona");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) { launch(); }
 
     public HashMap<Integer, ArrayList<Message>> getChat() { return this.chat; }

@@ -41,6 +41,9 @@ public class AccueilController {
     private Button connexionButton;
 
     @FXML
+    private Button chatButton;
+
+    @FXML
     protected void showConnection() {
         mainApp.showConnection();
     }
@@ -66,7 +69,7 @@ public class AccueilController {
             userNameText.setText(Context.getUser().getFirstName());
             if (Context.getUser().isHost()){
                 userIsTravelerText.setText("Hote");
-                 voirDemandes.setVisible(true);
+                voirDemandes.setVisible(true);
             }
             else{
                 userIsTravelerText.setText("Voyageur");
@@ -76,14 +79,20 @@ public class AccueilController {
             welcomeText.setText("Bonjour " + Context.getUser().getFirstName());
             welcomeText.setVisible(true);
             connexionButton.setVisible(false);
-
+            chatButton.setVisible(true);
         }
         else {
             userBox.setVisible(false);
             welcomeText.setVisible(false);
             connexionButton.setVisible(true);
             voirDemandes.setVisible(false);
+            chatButton.setVisible(false);
         }
+    }
+
+    @FXML
+    protected void showDiscussions() {
+        mainApp.showDiscussions();
     }
 }
 
