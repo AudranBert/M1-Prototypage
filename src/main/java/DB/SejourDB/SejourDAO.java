@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
 
 public class SejourDAO {
     private Connexion connexion;
-    private SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-DD HH:MM:SS.SSS");
+    private SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
 
     public SejourDAO() {
         connexion = new Connexion("Database/DB.db");
@@ -85,20 +85,13 @@ public class SejourDAO {
         return sejourArrayList;
     }
 
-    public ArrayList<Sejour> searchSejourByName(String toSearch){
+    public ArrayList<Sejour> searchSejourByField(String field,String toSearch){
         connexion.connect();
-        ResultSet resultSet = connexion.query("SELECT * FROM Sejour WHERE Name LIKE '%"+toSearch+"%';");
+        ResultSet resultSet = connexion.query("SELECT * FROM Sejour WHERE "+field+" LIKE '%"+toSearch+"%';");
         ArrayList<Sejour> sejourArrayList = resultToSejourList(resultSet);
         connexion.close();
         return sejourArrayList;
 
     }
 
-    public ArrayList<Sejour> searchSejourByLocation(String toSearch){
-        connexion.connect();
-        ResultSet resultSet = connexion.query("SELECT * FROM Sejour WHERE Location LIKE '%"+toSearch+"%';");
-        ArrayList<Sejour> sejourArrayList = resultToSejourList(resultSet);
-        connexion.close();
-        return sejourArrayList;
-    }
 }

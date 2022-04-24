@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.text.Text;
 import prototyopage.Context;
 import prototyopage.MainApp;
 
@@ -84,28 +85,32 @@ public class ControllerDemanSej {
 
           /****************************INITIALISATION********************************/
           //autoselectionné la première case
-                combobox.getSelectionModel().select(0);
-                ResultSet resultSINIT= connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + col.get(0) + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
+                if (col.size()!=0) {
+                    combobox.getSelectionModel().select(0);
+                    ResultSet resultSINIT = connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + col.get(0) + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
 
 
-            //Initialisé la selection voyageur pour la première fois
-                int id_current_voyageurINIT=resultSINIT.getInt("voyageur");
-                ResultSet resINIT = connexion.query("SELECT * FROM User WHERE  UserId = '" + id_current_voyageurINIT + "';");
-                //récupérer son nom prénom et email age telephone
-                prenomlabel.setText(resINIT.getString("FirstName"));
-                nomlabel.setText(resINIT.getString("LastName"));
-                emaillabel.setText(resINIT.getString("email"));
-                telephonelabel.setText(resINIT.getString("telephone"));
+                    //Initialisé la selection voyageur pour la première fois
+                    int id_current_voyageurINIT = resultSINIT.getInt("voyageur");
+                    ResultSet resINIT = connexion.query("SELECT * FROM User WHERE  UserId = '" + id_current_voyageurINIT + "';");
+                    //récupérer son nom prénom et email age telephone
+                    prenomlabel.setText(resINIT.getString("FirstName"));
+                    nomlabel.setText(resINIT.getString("LastName"));
+                    emaillabel.setText(resINIT.getString("email"));
+                    telephonelabel.setText(resINIT.getString("telephone"));
 
-            // Initialisé le résumé séjour
-                ResultSet r= connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + col.get(0) + "';");
-                int id_current_SejourINIT=r.getInt("sejour");
-                System.out.println(id_current_SejourINIT);
-                ResultSet resINIT2 = connexion.query("SELECT * FROM Sejour WHERE  SejourId = '" + id_current_SejourINIT + "';");
-                nomSEJ.setText(resINIT2.getString("Name"));
-                 dateDeb.setText(resINIT2.getString("DateBegin"));
-                DateFin.setText(resINIT2.getString("DateEnd"));
+                    // Initialisé le résumé séjour
+                    ResultSet r = connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + col.get(0) + "';");
+                    int id_current_SejourINIT = r.getInt("sejour");
+                    System.out.println(id_current_SejourINIT);
+                    ResultSet resINIT2 = connexion.query("SELECT * FROM Sejour WHERE  SejourId = '" + id_current_SejourINIT + "';");
+                    nomSEJ.setText(resINIT2.getString("Name"));
+                    dateDeb.setText(resINIT2.getString("DateBegin"));
+                    DateFin.setText(resINIT2.getString("DateEnd"));
+                }
+                else {
 
+                }
 
         } catch (SQLException e) {
             e.printStackTrace();
