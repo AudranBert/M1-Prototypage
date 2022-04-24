@@ -21,7 +21,7 @@
          <content>
             <AnchorPane prefWidth="1078.0">
                <children>
-                  <VBox fx:id="boxSejour" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0" />
+                  <VBox fx:id="boxDiscussions" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </content>
