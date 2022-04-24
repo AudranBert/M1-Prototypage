@@ -87,4 +87,15 @@ public class VoyagerSejourDetailsControler extends ControllerAbstract {
     private void openReservationModal() {
         mainApp.showReservationModal();
     }
+
+    @FXML
+    protected void showChat() {
+        if (Context.getUser() != null && Context.getSejour() != null) {
+            mainApp.showChat(Context.getUser().getUserId(), Context.getSejour().getIdHost(), Context.getSejour().getSejourId());
+        }
+        else
+        {
+            System.out.println("Vous n'êtes pas connectés !");
+        }
+    }
 }

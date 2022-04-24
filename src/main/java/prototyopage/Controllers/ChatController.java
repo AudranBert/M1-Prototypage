@@ -1,4 +1,4 @@
-package prototyopage;
+package prototyopage.Controllers;
 
 import DB.Connexion;
 import DB.UserDB.User;
@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import prototyopage.MainApp;
+import prototyopage.Message;
 
 import java.lang.reflect.Array;
 import java.sql.ResultSet;

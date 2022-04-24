@@ -9,6 +9,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import prototyopage.Context;
+import prototyopage.MainApp;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -46,17 +49,14 @@ public class ControllerDemanSej {
 
     @FXML
     protected void showChat() {
-        if (mainApp.getUser() != null) {
-            mainApp.showChat(mainApp.getUser().getUserId(), id_current_voyageur, sejourSelected);
-        }
-        else
-        {
+        if (Context.getUser() != null) {
+            mainApp.showChat(Context.getUser().getUserId(), id_current_voyageur, sejourSelected);
+        } else {
             System.out.println("Vous n'êtes pas connectés !");
         }
     }
 
-    public void setMainApp(MainApp mainApp)
-    {
+    public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
 
