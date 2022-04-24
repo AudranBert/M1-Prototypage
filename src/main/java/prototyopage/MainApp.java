@@ -90,7 +90,7 @@ public class MainApp extends Application {
 
             Scene scene = new Scene(fxmlLoader.load());
 
-            //scene.getStylesheets().add("Style.css");
+            scene.getStylesheets().add("Style.css");
             ChatController controller = fxmlLoader.getController();
             controller.setMainApp(this);
             controller.initializeValues(idSender, idReceiver, numSejour);
@@ -158,6 +158,7 @@ public class MainApp extends Application {
 
             scene.getStylesheets().add("Style.css");
             stage.setTitle("Demande Sejour");
+
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){
