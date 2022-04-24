@@ -111,6 +111,7 @@ public class RechercheController {
                     addSejourToBox(sejourDao.searchSejourByField("Location",searchBar.getText()));
                     addSejourToBox(sejourDao.searchSejourByField("Description",searchBar.getText()));
                     addSejourToBox(sejourDao.searchSejourByField("DateBegin",searchBar.getText()));
+                    addSejourToBox(sejourDao.searchSejourByField("DateEnd",searchBar.getText()));
                 } else if (lastSearch=="" || lastSearch.length()>1){
                     listSejour.clear();
                     boxSejour.getChildren().clear();
