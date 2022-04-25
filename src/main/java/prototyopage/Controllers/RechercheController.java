@@ -86,15 +86,19 @@ public class RechercheController {
                         if (!(listDisplayedSejour.contains(listSejourToDisplay.get(index)))) {
                             Thread.sleep(0, 1);
                             addToListDisplayedSejour(listSejourToDisplay.get(index));
+                            VBox vBox=new VBox();
                             Text sejour = new Text();
                             String sejourText = "";
-                            sejourText += listSejourToDisplay.get(index).getName() + "\nOù? ";
-                            sejourText += listSejourToDisplay.get(index).getLocation() + "\n";
-                            sejourText += "Quand? De ";
+                            sejourText += listSejourToDisplay.get(index).getName();
+                            sejourText += "\nOù?  ";
+                            sejourText += listSejourToDisplay.get(index).getLocation();
+                            sejourText += "\n";
+                            sejourText += "Quand?  De ";
                             sejourText += listSejourToDisplay.get(index).getStrDateBegin();
                             sejourText += " jusqu'à ";
                             sejourText += listSejourToDisplay.get(index).getStrDateEnd();
                             sejour.setText(sejourText);
+                            vBox.getChildren().add(sejour);
                             Button button = new Button("", sejour);
                             button.setMaxWidth(10000000);
                             button.setAlignment(Pos.BASELINE_LEFT);
@@ -140,7 +144,7 @@ public class RechercheController {
     public void init() {
         listDisplayedSejour.clear();
         boxSejour.getChildren().clear();
-        lastSearch=" ";
+        lastSearch="";
         listSejourToDisplay=sejourDao.searchSejourByField("Name","");
         maxSejourToLoad=listSejourToDisplay.size();
         service.start();
@@ -157,6 +161,7 @@ public class RechercheController {
                 if (searchBar.getLength() > 1) {
                     final String search= searchBar.getText();
                     lastSearch = search;
+                    // je fais pls requetes dans le but d ordonner le resultat : les sejours avec ce qu on cherche dans le nom d abord et ainsi de suite
                     ArrayList<Sejour> names = sejourDao.searchSejourByField("Name", search);
                     Set<Sejour> set = new LinkedHashSet<>(names);
                     ArrayList<Sejour> loc = sejourDao.searchSejourByField("Location", search);
@@ -171,9 +176,9 @@ public class RechercheController {
                     maxSejourToLoad = listSejourToDisplay.size();
                     service.restart();
 
-                } else if (lastSearch == "" || lastSearch.length() > 1) {
-                    lastSearch = " ";
-                    listSejourToDisplay = sejourDao.searchSejourByField("Name", "");
+                } else if (lastSearch!="") {
+                    lastSearch = searchBar.getText();
+                    listSejourToDisplay = sejourDao.getSejours();
                     maxSejourToLoad = listSejourToDisplay.size();
                     service.restart();
                 }

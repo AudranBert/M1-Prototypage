@@ -17,7 +17,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="searchBar" alignment="TOP_CENTER" onAction="#backToHome" onKeyTyped="#search" promptText="Rechercher votre future voyage!" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="120.0">
+      <TextField fx:id="searchBar" alignment="TOP_CENTER" onKeyTyped="#search" promptText="Recherchez votre future voyage!" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="120.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

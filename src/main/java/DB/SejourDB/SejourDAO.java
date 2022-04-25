@@ -130,6 +130,14 @@ public class SejourDAO {
 
     }
 
+    public ArrayList<Sejour> searchSejourByFieldAndHost(int host,String field,String toSearch){
+        connexion.connect();
+        ResultSet resultSet = connexion.query("SELECT * FROM Sejour WHERE IdHost="+host+" AND "+field+" LIKE '%"+toSearch+"%';");
+        ArrayList<Sejour> sejourArrayList = resultToSejourList(resultSet);
+        connexion.close();
+        return sejourArrayList;
+
+    }
     public void updateSejour(Sejour sejour) {
         String query = "";
         query += "UPDATE Sejour SET ";
