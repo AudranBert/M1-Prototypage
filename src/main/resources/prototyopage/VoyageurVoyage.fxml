@@ -17,13 +17,18 @@
          <Font size="18.0" />
       </font>
    </Button>
-   <Label fx:id="sejourName" layoutX="489.0" layoutY="65.0" text="Composer un voyage">
+   <Label fx:id="sejourName" layoutX="676.0" layoutY="153.0" text="Composer un voyage">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Label>
+   <Label fx:id="sejourName1" layoutX="126.0" layoutY="155.0" text="Réservations">
       <font>
          <Font size="36.0" />
       </font>
    </Label>
    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <HBox layoutY="279.0" prefHeight="402.0" prefWidth="1244.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+   <HBox layoutX="40.0" layoutY="233.0" prefHeight="402.0" prefWidth="1244.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
       <children>
          <ScrollPane prefHeight="413.0" prefWidth="556.0" vbarPolicy="NEVER">
             <opaqueInsets>
@@ -60,4 +65,9 @@
          </ScrollPane>
       </children>
    </HBox>
+   <Text layoutX="400.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0">
+      <font>
+         <Font name="System Bold" size="36.0" />
+      </font>
+   </Text>
 </AnchorPane>

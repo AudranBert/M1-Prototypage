@@ -31,6 +31,12 @@ public class AccueilController {
     @FXML
     private Button voirHoteSejours;
 
+    @FXML
+    private Button voirVoyageurVoyage;
+
+    @FXML
+    private Button voirVoyageurSejours;
+
     public void setMainApp(MainApp mainApp)
     {
         this.mainApp = mainApp;
@@ -101,6 +107,8 @@ public class AccueilController {
             voirDemandes.setVisible(false);
             voirHoteSejours.setVisible(false);
             chatButton.setVisible(false);
+            voirVoyageurVoyage.setVisible(false);
+            voirVoyageurSejours.setVisible(false);
         }
     }
 

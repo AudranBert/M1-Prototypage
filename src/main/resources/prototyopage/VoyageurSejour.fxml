@@ -38,4 +38,9 @@
          </AnchorPane>
       </content>
    </ScrollPane>
+   <Text layoutX="400.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0">
+      <font>
+         <Font name="System Bold" size="36.0" />
+      </font>
+   </Text>
 </AnchorPane>
