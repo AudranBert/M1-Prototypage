@@ -116,8 +116,8 @@ public class MainApp extends Application {
 
             SejourDetailsControler controller = fxmlLoader.getController();
             controller.setMainApp(this);
-
             controller.init();
+            controller.setUserBox();
             fxmlLoader.setController(controller);
 
             scene.getStylesheets().add("Style.css");
@@ -195,7 +195,7 @@ public class MainApp extends Application {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("DemanSej.fxml"));
 
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
             ControllerDemanSej controller = fxmlLoader.getController();
             controller.setMainApp(this);
