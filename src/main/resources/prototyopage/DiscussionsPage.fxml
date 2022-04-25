@@ -32,7 +32,7 @@
             <Text fx:id="userIsTravelerText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
          </children>
       </VBox>
-      <Text layoutX="390.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="10.0">
+      <Text layoutX="390.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

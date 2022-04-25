@@ -31,7 +31,7 @@
                 <Button fx:id="voirDemandes" mnemonicParsing="false" onMouseClicked="#demSej" text="Voir les demandes séjours" />
          <Button fx:id="voirHoteSejours" mnemonicParsing="false" onAction="#showHoteSejours" text="Voir mes séjours en tant qu'hôte" />
             </VBox>
-      <Text layoutX="400.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0">
+      <Text layoutX="390.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

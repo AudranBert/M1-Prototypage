@@ -12,7 +12,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="searchBar" alignment="TOP_CENTER" onAction="#backToHome" onKeyTyped="#search" promptText="Rechercher votre future voyage!" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="120.0">
+      <TextField fx:id="searchBar" alignment="TOP_CENTER" layoutX="100.0" layoutY="120.0" onAction="#backToHome" onKeyTyped="#search" promptText="Rechercher votre future voyage!" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="120.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -37,10 +37,11 @@
             <Text fx:id="userIsTravelerText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
          </children>
       </VBox>
-      <Text layoutX="390.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="10.0">
+      <Text layoutX="390.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Text>
+      <Button fx:id="connexionButton" layoutX="1174.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#showConnection" text="Connexion" />
    </children>
 </AnchorPane>
