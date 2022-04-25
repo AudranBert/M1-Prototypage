@@ -33,24 +33,21 @@ public class SearchRunnable implements Runnable {
 //                }
 //            }
             if (find == false) {
-                controller.addToListDisplayedSejour(list.get(i));
+                int index=i;
+                controller.addToListDisplayedSejour(list.get(index));
                 Text sejour = new Text();
                 String sejourText="";
-                sejourText+=list.get(i).getName()+"\nOù? ";
-                sejourText+=list.get(i).getLocation()+"\n";
-                String date=list.get(i).getDateBegin().toInstant().toString();
+                sejourText+=list.get(index).getName()+"\nOù? ";
+                sejourText+=list.get(index).getLocation()+"\n";
                 sejourText+="Quand? De ";
-                String[] separated = date.split("T");
-                sejourText+=separated[0];
+                sejourText+=list.get(index).getStrDateBegin();
                 sejourText+=" jusqu'à ";
-                date=list.get(i).getDateEnd().toInstant().toString();
-                separated = date.split("T");
-                sejourText+=separated[0];
+                sejourText+=list.get(index).getStrDateEnd();
                 sejour.setText(sejourText);
                 Button button=new Button("",sejour);
                 button.setMaxWidth(10000000);
                 button.setAlignment(Pos.BASELINE_LEFT);
-                button.setId(String.valueOf(list.get(i).getSejourId()));
+                button.setId(String.valueOf(list.get(index).getSejourId()));
                 button.setOnAction((event) -> {    // lambda expression
                     Context.setSejourById(Integer.parseInt(button.getId()));
                     controller.openSejour();
