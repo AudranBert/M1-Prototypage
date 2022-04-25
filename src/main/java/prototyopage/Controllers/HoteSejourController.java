@@ -36,7 +36,6 @@ public class HoteSejourController extends ControllerAbstract {
     @FXML private javafx.scene.text.Text userNameText;
 
     @FXML private HBox sejourBox;
-    @FXML private Button bb;
 
     @FXML
     private TextField searchBar;
@@ -58,9 +57,12 @@ public class HoteSejourController extends ControllerAbstract {
         this.sejourBox.getChildren().clear();
 
         sejours = sejourDAO.getSejoursByHostId(Context.getUser().getUserId());
+        sejours.add(0, null);
+        /*
         if (sejours.size() == 0) {
             sejours.add(null);
         }
+        */
 
         adaptDisplayToContext();
     }
@@ -108,7 +110,7 @@ public class HoteSejourController extends ControllerAbstract {
         for (Sejour sejour : sejours) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(mainApp.getClass().getResource("SejourComponents/SejourVignetteFace.fxml"));
+                fxmlLoader.setLocation(mainApp.getClass().getResource("SejourComponents/SejourVignette.fxml"));
                 System.out.println(fxmlLoader);
                 Pane sejourVignette = fxmlLoader.load();
 

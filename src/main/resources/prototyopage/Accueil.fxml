@@ -37,6 +37,8 @@
          <Button fx:id="chatButton" mnemonicParsing="false" onMouseClicked="#showDiscussions" text="Voir vos discussions" />
                 <Button fx:id="voirDemandes" mnemonicParsing="false" onMouseClicked="#demSej" text="Voir les demandes séjours" />
          <Button fx:id="voirHoteSejours" mnemonicParsing="false" onAction="#showHoteSejours" text="Voir mes séjours en tant qu'hôte" />
+          <Button fx:id="voirVoyageurVoyage" mnemonicParsing="false" onAction="#showVoyageurVoyage" text="Editer un voyage en tant que Voyageur" />
+          <Button fx:id="voirVoyageurSejours" mnemonicParsing="false" onAction="#showVoyageurSejours" text="Voir mes demandes de séjour en tant que Voyageur" />
             </VBox>
             <Button fx:id="connexionButton" layoutX="1174.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#showConnection" text="Connexion" />
 

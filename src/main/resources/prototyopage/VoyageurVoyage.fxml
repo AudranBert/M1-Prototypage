@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.VoyageurVoyageController">
+   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToPredView" prefHeight="26.0" prefWidth="94.0" text="Retour">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
+   <Label fx:id="sejourName" layoutX="676.0" layoutY="153.0" text="Composer un voyage">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Label>
+   <Label fx:id="sejourName1" layoutX="126.0" layoutY="155.0" text="Réservations">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Label>
+   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <HBox layoutX="40.0" layoutY="233.0" prefHeight="402.0" prefWidth="1244.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+      <children>
+         <ScrollPane prefHeight="413.0" prefWidth="556.0" vbarPolicy="NEVER">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <content>
+               <AnchorPane fx:id="boxDemandes" prefHeight="399.0" prefWidth="370.0">
+                  <children>
+                     <VBox fx:id="sejourBox" prefHeight="399.0" prefWidth="371.0">
+                        <fx:include fx:id="vignette01" source="SejourComponents/SejourSmallVignette.fxml" />
+                        <fx:include fx:id="vignette02" source="SejourComponents/SejourSmallVignette.fxml" />
+                     </VBox>
+                  </children>
+               </AnchorPane>
+            </content>
+         </ScrollPane>
+         <ScrollPane prefHeight="402.0" prefWidth="1009.0" vbarPolicy="NEVER">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <content>
+               <AnchorPane prefHeight="397.0" prefWidth="823.0">
+                  <children>
+                     <HBox fx:id="voyageBox" alignment="CENTER" layoutX="-192.0" prefHeight="380.0" prefWidth="961.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <children>
+                           <fx:include fx:id="vignette1" source="SejourComponents/SejourVignette.fxml" />
+                           <SVGPath content="M 4 4 L 24 4 L 24 8 L 34 2 L 24 -4 L 24 0 L 4 0M 4 4 L 24 4 L 24 8 L 34 2 L 24 -4 L 24 0 L 4 0" fill="#4a4a4a" />
+                           <fx:include fx:id="vignette2" source="SejourComponents/SejourVignette.fxml" />
+                        </children>
+                     </HBox>
+                  </children>
+               </AnchorPane>
+            </content>
+         </ScrollPane>
+      </children>
+   </HBox>
+   <Text layoutX="400.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0">
+      <font>
+         <Font name="System Bold" size="36.0" />
+      </font>
+   </Text>
+</AnchorPane>

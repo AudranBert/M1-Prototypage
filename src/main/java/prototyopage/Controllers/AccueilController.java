@@ -31,6 +31,12 @@ public class AccueilController {
     @FXML
     private Button voirHoteSejours;
 
+    @FXML
+    private Button voirVoyageurVoyage;
+
+    @FXML
+    private Button voirVoyageurSejours;
+
     public void setMainApp(MainApp mainApp)
     {
         this.mainApp = mainApp;
@@ -69,6 +75,12 @@ public class AccueilController {
     @FXML
     protected void showHoteSejours() { mainApp.showHoteSejours(); }
 
+    @FXML
+    protected void showVoyageurSejours() { mainApp.showVoyageurSejours(); }
+
+    @FXML
+    protected void showVoyageurVoyage() { mainApp.showVoyageurVoyage(); }
+
     public void setUserBox(){
         if (Context.getUser()!=null){
             userNameText.setText(Context.getUser().getFirstName());
@@ -95,6 +107,8 @@ public class AccueilController {
             voirDemandes.setVisible(false);
             voirHoteSejours.setVisible(false);
             chatButton.setVisible(false);
+            voirVoyageurVoyage.setVisible(false);
+            voirVoyageurSejours.setVisible(false);
         }
     }
 
