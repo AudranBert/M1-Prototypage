@@ -15,6 +15,15 @@ public class SejourDAO {
     private Connexion connexion;
     private SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
 
+    public static final String SEJOUR_ID = "SejourId";
+    public static final String NAME = "Name";
+    public static final String LOCATION = "Location";
+    public static final String DATE_BEGIN = "DateBegin";
+    public static final String DATE_END = "DateEnd";
+    public static final String DESCRIPTION = "description";
+    public static final String HOST_ID = "idHost";
+    public static final String IMAGE_BUNDLE = "imageBundle";
+
     public SejourDAO() {
         connexion = new Connexion("Database/DB.db");
     }
@@ -121,4 +130,20 @@ public class SejourDAO {
 
     }
 
+    public void updateSejour(Sejour sejour) {
+        String query = "";
+        query += "UPDATE Sejour SET ";
+        query += NAME + " = '" + sejour.getName() + "', ";
+        query += LOCATION + " = '" + sejour.getLocation() + "', ";
+        query += DESCRIPTION + " = '" + sejour.getDescription() + "', ";
+        query += DATE_BEGIN + " = '" + sejour.getStrDateBegin() + "', ";
+        query += DATE_END + " = '" + sejour.getStrDateEnd() + "' ";
+        query += " WHERE " + SEJOUR_ID + " = '" + sejour.getSejourId() + "';";
+
+        System.out.println("query: " + query);
+
+        connexion.connect();
+        connexion.submitQuery(query);
+        connexion.close();
+    }
 }

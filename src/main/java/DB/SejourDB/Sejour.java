@@ -1,11 +1,12 @@
 package DB.SejourDB;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Sejour {
-    private static SimpleDateFormat DATE_FORMATER = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
 
     private int sejourId;
     private int imageBundle;
@@ -28,6 +29,23 @@ public class Sejour {
         this.IdHost = IdHost;
     }
 
+    public Sejour(int sejourId, int imageBundle, String name, String location, String dateBegin, String dateEnd,String description, int IdHost) {
+        try {
+            this.sejourId = sejourId;
+            this.imageBundle = imageBundle;
+            this.name = name;
+            this.location = location;
+            this.DateBegin = new GregorianCalendar();
+            this.DateBegin.setTime(dateFormater.parse(dateBegin));
+            this.DateEnd = new GregorianCalendar();
+            this.DateEnd.setTime(dateFormater.parse(dateEnd));
+            this.description=description;
+            this.IdHost = IdHost;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Sejour(String name, String location, GregorianCalendar dateBegin, GregorianCalendar dateEnd,String description, int IdHost) {
         this.sejourId = -1;
         this.imageBundle = 0;
@@ -37,6 +55,23 @@ public class Sejour {
         this.DateEnd = dateEnd;
         this.description =  description;
         this.IdHost = IdHost;
+    }
+
+    public Sejour(String name, String location, String dateBegin, String dateEnd,String description, int IdHost) {
+        try {
+            this.sejourId = -1;
+            this.imageBundle = 0;
+            this.name = name;
+            this.location = location;
+            this.DateBegin = new GregorianCalendar();
+            this.DateBegin.setTime(dateFormater.parse(dateBegin));
+            this.DateEnd = new GregorianCalendar();
+            this.DateEnd.setTime(dateFormater.parse(dateEnd));
+            this.description =  description;
+            this.IdHost = IdHost;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -76,21 +111,39 @@ public class Sejour {
 
     public Calendar getDateBegin() { return DateBegin; }
 
-    public String getStrDateBegin() { return DATE_FORMATER.format(this.DateBegin.getTime()); }
+    public String getStrDateBegin() { return dateFormater.format(this.DateBegin.getTime()); }
 
     public void setDateBegin(Calendar dateBegin) {
         DateBegin = dateBegin;
+    }
+
+    public void setDateBegin(String dateBegin) {
+        this.DateBegin = new GregorianCalendar();
+        try {
+            this.DateBegin.setTime(dateFormater.parse(dateBegin));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public Calendar getDateEnd() {
         return DateEnd;
     }
 
-    public String getStrDateEnd() { return DATE_FORMATER.format(this.DateEnd.getTime()); }
+    public String getStrDateEnd() { return dateFormater.format(this.DateEnd.getTime()); }
 
 
     public void setDateEnd(Calendar dateEnd) {
         DateEnd = dateEnd;
+    }
+
+    public void setDateEnd(String dateEnd) {
+        this.DateEnd = new GregorianCalendar();
+        try {
+            this.DateEnd.setTime(dateFormater.parse(dateEnd));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getIdHost() { return IdHost; }
@@ -103,8 +156,8 @@ public class Sejour {
                 + ", ImageBundle: " + this.imageBundle
                 + ", Name : " + this.name
                 + ", Location : " + this.location
-                + ", DateBegin : " + DATE_FORMATER.format(this.DateBegin.getTime())
-                + ", DateEnd : " + DATE_FORMATER.format(this.DateEnd.getTime())
+                + ", DateBegin : " + dateFormater.format(this.DateBegin.getTime())
+                + ", DateEnd : " + dateFormater.format(this.DateEnd.getTime())
                 + ", description : " + this.description
                 + ", IdHost : " + this.IdHost;
     }
