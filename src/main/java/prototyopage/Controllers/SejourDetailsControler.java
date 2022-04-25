@@ -32,6 +32,12 @@ import java.io.IOException;
 public class SejourDetailsControler extends ControllerAbstract {
     private MainApp mainApp;
 
+    // user
+    @FXML private VBox userBox;
+    @FXML private javafx.scene.text.Text userIsTravelerText;
+    @FXML private javafx.scene.text.Text userNameText;
+    @FXML private Button connexionButton;
+
     @FXML private Label sejourName;
     @FXML private Label locationi;
     @FXML private Text description;
@@ -335,5 +341,28 @@ public class SejourDetailsControler extends ControllerAbstract {
             Image image = new Image(file.toURI().toString());
             img2.setImage(image);
         }
+    }
+
+    public void setUserBox(){
+        if (Context.getUser()!=null){
+            userNameText.setText(Context.getUser().getFirstName());
+            connexionButton.setVisible(false);
+            if (Context.getUser().isHost()){
+                userIsTravelerText.setText("Hote");
+            }
+            else{
+                userIsTravelerText.setText("Voyageur");
+            }
+            userBox.setVisible(true);
+        }
+        else {
+            userBox.setVisible(false);
+            connexionButton.setVisible(true);
+        }
+    }
+
+    @FXML
+    protected void showConnection() {
+        mainApp.showConnection();
     }
 }

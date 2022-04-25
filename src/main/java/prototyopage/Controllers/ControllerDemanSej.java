@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import prototyopage.Context;
 import prototyopage.MainApp;
@@ -25,6 +26,14 @@ public class ControllerDemanSej {
     private int id_current_voyageur;
 
     private int sejourSelected;
+
+    // user
+    @FXML
+    private VBox userBox;
+    @FXML
+    private javafx.scene.text.Text userIsTravelerText;
+    @FXML
+    private javafx.scene.text.Text userNameText;
 
     @FXML
     private Label DateFin;
@@ -225,7 +234,6 @@ public class ControllerDemanSej {
         alert.setHeaderText("Veuiller selectionner une demande de séjour");
 
         alert.showAndWait();
-
     }
 
     }
@@ -235,6 +243,19 @@ public class ControllerDemanSej {
         this.mainApp.showHome();
     }
 
-
-
+    public void setUserBox(){
+        if (Context.getUser()!=null){
+            userNameText.setText(Context.getUser().getFirstName());
+            if (Context.getUser().isHost()){
+                userIsTravelerText.setText("Hote");
+            }
+            else{
+                userIsTravelerText.setText("Voyageur");
+            }
+            userBox.setVisible(true);
+        }
+        else {
+            userBox.setVisible(false);
+        }
+    }
 }

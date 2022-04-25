@@ -34,6 +34,8 @@ public class RechercheController {
     private javafx.scene.text.Text userIsTravelerText;
     @FXML
     private javafx.scene.text.Text userNameText;
+    @FXML
+    private Button connexionButton;
 
     // search part
     @FXML
@@ -124,6 +126,7 @@ public class RechercheController {
     public void setUserBox(){
         if (Context.getUser()!=null){
             userNameText.setText(Context.getUser().getFirstName());
+            connexionButton.setVisible(false);
             if (Context.getUser().isHost()){
                 userIsTravelerText.setText("Hote");
             }
@@ -134,6 +137,7 @@ public class RechercheController {
         }
         else {
             userBox.setVisible(false);
+            connexionButton.setVisible(true);
         }
     }
 
@@ -198,6 +202,11 @@ public class RechercheController {
 
     public void openSejour() {
         mainApp.showSejourDetails();
+    }
+
+    @FXML
+    protected void showConnection() {
+        mainApp.showConnection();
     }
 }
 

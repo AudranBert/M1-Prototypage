@@ -10,12 +10,23 @@ import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import prototyopage.Context;
 import prototyopage.MainApp;
 
 public class ControllerProfile {
+
+    // user
+    @FXML
+    private VBox userBox;
+    @FXML
+    private javafx.scene.text.Text userIsTravelerText;
+    @FXML
+    private javafx.scene.text.Text userNameText;
 
     @FXML
     private TextField ageuser;
@@ -32,6 +43,11 @@ public class ControllerProfile {
 
     @FXML
     private TextField telephoneuser;
+
+    @FXML
+    private PasswordField passworduser;
+    @FXML
+    private Label modification;
 
     private MainApp mainApp;
 
@@ -82,6 +98,7 @@ public class ControllerProfile {
                         mailuser.setText(resultSet.getString("email"));
                         ageuser.setText(String.valueOf(resultSet.getInt("age")));
                         telephoneuser.setText(String.valueOf(resultSet.getInt("telephone")));
+                        passworduser.setText(resultSet.getString("password"));
                     }
                 }
             } catch (SQLException e) {
@@ -96,18 +113,57 @@ public class ControllerProfile {
     void modifierProfile(ActionEvent event) {////remplacer id
         Connexion connexion = new Connexion("Database/DB.db");
         connexion.connect();
-        if (!prenomuser.getText().trim().isEmpty() && !nomuser.getText().trim().isEmpty() && !mailuser.getText().trim().isEmpty() && !ageuser.getText().trim().isEmpty() && !telephoneuser.getText().trim().isEmpty()) {
-            String query = "UPDATE `User` SET `FirstName` = '" + prenomuser.getText() + "', `LastName` = '" + nomuser.getText() + "' , `email` = '" + mailuser.getText() + "' , `age` = '" + Integer. parseInt(ageuser.getText()) + "' , `telephone` = '" + Integer. parseInt(telephoneuser.getText()) + "'  WHERE `UserId` = " + Context.getUser().getUserId();
+        if (!prenomuser.getText().trim().isEmpty() && !nomuser.getText().trim().isEmpty() && !mailuser.getText().trim().isEmpty() && !ageuser.getText().trim().isEmpty() && !telephoneuser.getText().trim().isEmpty() && passworduser.getText().length() >= 4) {
+            String query = "UPDATE `User` SET `FirstName` = '" + prenomuser.getText() + "', `LastName` = '" + nomuser.getText() + "' , `email` = '" + mailuser.getText() + "' , `age` = '" + Integer.parseInt(ageuser.getText()) + "' , `telephone` = '" + Integer.parseInt(telephoneuser.getText()) + "', `password` = '" + passworduser.getText() + "'  WHERE `UserId` = " + Context.getUser().getUserId();
+            modification.setText("Modification réussie !");
             connexion.submitQuery(query);
             connexion.close();
         }
-
+        else
+        {
+            String text = "";
+            if (prenomuser.getText().trim().isEmpty())
+                text += " Prénom invalide.";
+            if (nomuser.getText().trim().isEmpty())
+                text += " Nom invalide.";
+            if (mailuser.getText().trim().isEmpty())
+                text += " Mail invalide.";
+            if (ageuser.getText().trim().isEmpty())
+                text += " Âge invalide.";
+            if (telephoneuser.getText().trim().isEmpty())
+                text += " Téléphone invalide.";
+            if (passworduser.getText().length() < 4)
+                text += " Mot de passe trop court (moins de 4 caractères).";
+            modification.setText("Modification échouée..." + text);
+        }
     }
 
 
     @FXML
     void logout(ActionEvent event) {
         Context.setUser(null);
+        mainApp.showHome();
+    }
+
+
+    public void setUserBox(){
+        if (Context.getUser()!=null){
+            userNameText.setText(Context.getUser().getFirstName());
+            if (Context.getUser().isHost()){
+                userIsTravelerText.setText("Hote");
+            }
+            else{
+                userIsTravelerText.setText("Voyageur");
+            }
+            userBox.setVisible(true);
+        }
+        else {
+            userBox.setVisible(false);
+        }
+    }
+
+    @FXML
+    protected void close() {
         mainApp.showHome();
     }
 }
