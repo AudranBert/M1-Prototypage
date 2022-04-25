@@ -52,14 +52,15 @@ public class MainApp extends Application {
             viewHistory.push(this::showProfil);
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ProfilePage.fxml"));
 
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
             ControllerProfile controller = fxmlLoader.getController();
             controller.setMainApp(this);
             controller.setProfileValues();
+            controller.setUserBox();
 
             scene.getStylesheets().add("Style.css");
-            stage.setTitle("Profil");
+            stage.setTitle("Adeona");
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){
@@ -98,7 +99,7 @@ public class MainApp extends Application {
             ChatController controller = fxmlLoader.getController();
             controller.setMainApp(this);
             controller.initializeValues(idSender, idReceiver, numSejour);
-            stage.setTitle("Chat");
+            stage.setTitle("Adeona");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -115,12 +116,12 @@ public class MainApp extends Application {
 
             SejourDetailsControler controller = fxmlLoader.getController();
             controller.setMainApp(this);
-
             controller.init();
+            controller.setUserBox();
             fxmlLoader.setController(controller);
 
             scene.getStylesheets().add("Style.css");
-            stage.setTitle("Détail séjour");
+            stage.setTitle("Adeona");
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){
@@ -160,11 +161,12 @@ public class MainApp extends Application {
             HoteSejourController controller = fxmlLoader.getController();
             controller.setMainApp(this);
             controller.init();
+            controller.setUserBox();
 
             fxmlLoader.setController(controller);
 
             scene.getStylesheets().add("Style.css");
-            stage.setTitle("Détail séjour");
+            stage.setTitle("Adeona");
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){
@@ -227,7 +229,7 @@ public class MainApp extends Application {
             AccueilController controller = fxmlLoader.getController();
             controller.setMainApp(this);
             controller.setUserBox();
-            stage.setTitle("Accueil");
+            stage.setTitle("Adeona");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -240,13 +242,14 @@ public class MainApp extends Application {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("DemanSej.fxml"));
 
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
             ControllerDemanSej controller = fxmlLoader.getController();
             controller.setMainApp(this);
+            controller.setUserBox();
 
             scene.getStylesheets().add("Style.css");
-            stage.setTitle("Demande Sejour");
+            stage.setTitle("Adeona");
 
             stage.setScene(scene);
             stage.show();

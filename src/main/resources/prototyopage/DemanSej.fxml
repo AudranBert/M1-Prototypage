@@ -1,59 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.Blend?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.ControllerDemanSej">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.ControllerDemanSej">
    <children>
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#befff4" height="480.0" layoutX="643.0" layoutY="55.0" opacity="0.12" stroke="BLACK" strokeType="INSIDE" width="263.0" />
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#feffff" height="328.0" layoutX="670.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="213.0" />
-      <Button fx:id="buttondecliner" layoutX="688.0" layoutY="432.0" mnemonicParsing="false" onAction="#Decliner" stylesheets="@../Style.css" text="Décliner">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#befff4" height="480.0" layoutX="817.0" layoutY="131.0" opacity="0.12" stroke="BLACK" strokeType="INSIDE" width="263.0" />
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#feffff" height="328.0" layoutX="844.0" layoutY="171.0" stroke="BLACK" strokeType="INSIDE" width="213.0" />
+      <Button fx:id="buttondecliner" layoutX="862.0" layoutY="508.0" mnemonicParsing="false" onAction="#Decliner" stylesheets="@../Style.css" text="Décliner">
          <font>
             <Font size="13.0" />
          </font></Button>
-      <Button fx:id="buttonvalider" layoutX="791.0" layoutY="433.0" mnemonicParsing="false" onAction="#Valider" prefHeight="26.0" prefWidth="66.0" stylesheets="@../Style.css" text="Valider">
+      <Button fx:id="buttonvalider" layoutX="965.0" layoutY="509.0" mnemonicParsing="false" onAction="#Valider" prefHeight="26.0" prefWidth="78.0" stylesheets="@../Style.css" text="Valider">
          <font>
             <Font size="13.0" />
          </font></Button>
-      <Label layoutX="680.0" layoutY="247.0" prefHeight="18.0" prefWidth="46.0" stylesheets="@../Style.css" text="Prénom" />
-      <Label fx:id="prenomlabel" layoutX="791.0" layoutY="247.0" prefHeight="18.0" prefWidth="78.0" textFill="RED">
+      <Label layoutX="854.0" layoutY="323.0" prefHeight="18.0" prefWidth="46.0" stylesheets="@../Style.css" text="Prénom" />
+      <Label fx:id="prenomlabel" layoutX="930.0" layoutY="323.0" prefHeight="18.0" prefWidth="100.0" textFill="RED">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="683.0" layoutY="286.0" prefHeight="12.0" prefWidth="60.0" stylesheets="@../Style.css" text="Nom" />
-      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="720.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="100.0">
+      <Label layoutX="857.0" layoutY="362.0" prefHeight="12.0" prefWidth="60.0" stylesheets="@../Style.css" text="Nom" />
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="889.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="889.0" AnchorPane.rightAnchor="291.0" AnchorPane.topAnchor="176.0">
          <image>
             <Image url="@../Images/profile.png" />
          </image></ImageView>
-      <Label layoutX="14.0" layoutY="82.0" prefHeight="26.0" prefWidth="283.0" text="Selectionner Une demande de séjour">
+      <Label layoutX="156.0" layoutY="158.0" prefHeight="26.0" prefWidth="283.0" text="Selectionner Une demande de séjour">
          <font>
             <Font size="17.0" />
          </font></Label>
-      <ComboBox fx:id="combobox" layoutX="18.0" layoutY="118.0" onAction="#getElement" prefHeight="32.0" prefWidth="275.0" styleClass="list-cell" stylesheets="@../Style.css">
+      <ComboBox fx:id="combobox" layoutX="160.0" layoutY="194.0" onAction="#getElement" prefHeight="32.0" prefWidth="275.0" styleClass="list-cell" stylesheets="@../Style.css">
          <items>
             <FXCollections fx:factory="observableArrayList">
-               
+
             </FXCollections>
          </items>
       </ComboBox>
-      <Label layoutX="683.0" layoutY="319.0" prefHeight="12.0" prefWidth="60.0" stylesheets="@../Style.css" text="Email" />
-      <Label fx:id="nomlabel" layoutX="784.0" layoutY="286.0" prefHeight="18.0" prefWidth="78.0" textFill="RED">
+      <Label layoutX="857.0" layoutY="395.0" prefHeight="12.0" prefWidth="60.0" stylesheets="@../Style.css" text="Email" />
+      <Label fx:id="nomlabel" layoutX="930.0" layoutY="361.0" prefHeight="18.0" prefWidth="100.0" textFill="RED">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="683.0" layoutY="353.0" prefHeight="12.0" prefWidth="60.0" stylesheets="@../Style.css" text="Téléphone" />
-      <Label fx:id="emaillabel" layoutX="790.0" layoutY="319.0" prefHeight="18.0" prefWidth="78.0" textFill="RED" />
-      <Label fx:id="telephonelabel" layoutX="790.0" layoutY="353.0" prefHeight="18.0" prefWidth="78.0" textFill="RED" />
-      <Button layoutX="675.0" layoutY="484.0" mnemonicParsing="false" onAction="#showChat" prefHeight="26.0" prefWidth="194.0" stylesheets="@../Style.css" text="Discuter avec le voyageur" textAlignment="CENTER">
+
+      <Label layoutX="857.0" layoutY="429.0" prefHeight="12.0" prefWidth="60.0" stylesheets="@../Style.css" text="Téléphone" />
+      <Label fx:id="emaillabel" layoutX="930.0" layoutY="394.0" prefHeight="18.0" prefWidth="100.0" textFill="RED" />
+      <Label fx:id="telephonelabel" layoutX="935.0" layoutY="429.0" prefHeight="18.0" prefWidth="100.0" text="2" textFill="RED" />
+      <Button layoutX="849.0" layoutY="560.0" mnemonicParsing="false" onAction="#showChat" prefHeight="26.0" prefWidth="194.0" stylesheets="@../Style.css" text="Discuter avec le voyageur" textAlignment="CENTER">
+
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -64,23 +63,55 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour" prefHeight="38.0" prefWidth="66.0" text="Retour" />
-      <Label layoutX="725.0" layoutY="61.0" prefHeight="26.0" prefWidth="94.0" text="Voyageur">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour" prefHeight="39.0" prefWidth="78.0" text="Retour">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label layoutX="899.0" layoutY="137.0" prefHeight="26.0" prefWidth="94.0" text="Voyageur">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#1f93ff00" height="154.0" layoutX="361.0" layoutY="111.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
-      <Label layoutX="361.0" layoutY="82.0" prefHeight="26.0" prefWidth="275.0" text="Résumé d'un séjour">
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#1f93ff00" height="154.0" layoutX="503.0" layoutY="187.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
+      <Label layoutX="503.0" layoutY="158.0" prefHeight="26.0" prefWidth="275.0" text="Résumé d'un séjour">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="370.0" layoutY="141.0" prefHeight="18.0" prefWidth="78.0" text="Nom Séjour" />
-      <Label layoutX="369.0" layoutY="190.0" prefHeight="18.0" prefWidth="78.0" text="Date Début" />
-      <Label layoutX="370.0" layoutY="232.0" prefHeight="18.0" prefWidth="78.0" text="Date Fin" />
-      <Label fx:id="nomSEJ" layoutX="508.0" layoutY="141.0" prefHeight="18.0" prefWidth="94.0" />
-      <Label fx:id="dateDeb" layoutX="509.0" layoutY="193.0" prefHeight="18.0" prefWidth="114.0" />
-      <Label fx:id="DateFin" layoutX="510.0" layoutY="233.0" prefHeight="18.0" prefWidth="114.0" />
+      <Label layoutX="512.0" layoutY="217.0" prefHeight="18.0" prefWidth="78.0" text="Nom Séjour" />
+      <Label layoutX="511.0" layoutY="266.0" prefHeight="18.0" prefWidth="78.0" text="Date Début" />
+      <Label layoutX="512.0" layoutY="308.0" prefHeight="18.0" prefWidth="78.0" text="Date Fin" />
+      <Label fx:id="nomSEJ" layoutX="650.0" layoutY="217.0" prefHeight="18.0" prefWidth="114.0" />
+      <Label fx:id="dateDeb" layoutX="650.0" layoutY="269.0" prefHeight="18.0" prefWidth="114.0" />
+      <Label fx:id="DateFin" layoutX="650.0" layoutY="309.0" prefHeight="18.0" prefWidth="114.0" />
+       <Label layoutX="18.0" layoutY="282.0" prefHeight="26.0" prefWidth="283.0" text="Votre Planning des séjours validé">
+           <font>
+               <Font size="17.0" />
+           </font>
+       </Label>
+       <Button layoutX="14.0" layoutY="542.0" mnemonicParsing="false" onAction="#showPlanning" text="Actualiser" visible="false" />
+       <TableView fx:id="Tableplaning" layoutX="18.0" layoutY="308.0" prefHeight="200.0" prefWidth="413.0">
+           <columns>
+               <TableColumn fx:id="name" prefWidth="103.99999618530273" text="Nom Séjour" />
+               <TableColumn fx:id="localisation" prefWidth="99.19998168945312" text="Localisation" />
+               <TableColumn fx:id="DateDeb" prefWidth="108.80006408691406" text="Date Début" />
+               <TableColumn fx:id="DateEnd" minWidth="0.0" prefWidth="98.39996337890625" text="Date Fin" />
+           </columns></TableView>
+      <VBox fx:id="userBox" alignment="CENTER" layoutX="1150.0" layoutY="10.0" prefHeight="75.0" prefWidth="120.0" spacing="5.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/profile.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="userNameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
+            <Text fx:id="userIsTravelerText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <Text layoutX="390.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
