@@ -20,7 +20,9 @@ import prototyopage.MainApp;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class RechercheController {
     private MainApp mainApp;
@@ -47,33 +49,18 @@ public class RechercheController {
 
     private ArrayList<Sejour> listDisplayedSejour =new ArrayList<>();
     private ArrayList<Sejour> listSejourToDisplay =new ArrayList<>();
-    private int idxSejour=0;
-    private int maxSejourToLoad=10000;
+    private int maxSejourToLoad=1000;
 
     private String lastSearch="";
     // end search part
 
 
-    private ArrayList<Thread> threads=new ArrayList<>();
-
-    public synchronized VBox getBoxSejour(){
-        return this.boxSejour;
-    }
-
-
-    public synchronized void addToBoxSejour(Button button){
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                boxSejour.getChildren().add(button);
-            }
-        });
-
-    }
 
     public synchronized ArrayList<Sejour> getListDisplayedSejour(){
         return this.listDisplayedSejour;
     }
+
+
 
     public synchronized void addToListDisplayedSejour(Sejour sejour){
         this.listDisplayedSejour.add(sejour);
@@ -87,43 +74,51 @@ public class RechercheController {
             Node[] nodes = new Node[maxSejourToLoad];
             return new Task<Void>() {
                 protected Void call() throws Exception {
+                    Thread.sleep(250);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            boxSejour.getChildren().clear();
+                        }
+                    });
                     for (int i=0; i< nodes.length; i++) {
-                        Thread.sleep(0,1);
-                        final int index=i+idxSejour;
-                        addToListDisplayedSejour(listSejourToDisplay.get(index));
-                        Text sejour = new Text();
-                        String sejourText="";
-                        sejourText+=listSejourToDisplay.get(index).getName()+"\nOù? ";
-                        sejourText+=listSejourToDisplay.get(index).getLocation()+"\n";
-                        sejourText+="Quand? De ";
-                        sejourText+=listSejourToDisplay.get(index).getStrDateBegin();
-                        sejourText+=" jusqu'à ";
-                        sejourText+=listSejourToDisplay.get(index).getStrDateEnd();
-                        sejour.setText(sejourText);
-                        Button button=new Button("",sejour);
-                        button.setMaxWidth(10000000);
-                        button.setAlignment(Pos.BASELINE_LEFT);
-                        button.setId(String.valueOf(listSejourToDisplay.get(index).getSejourId()));
-                        button.setOnAction((event) -> {    // lambda expression
-                            Context.setSejourById(Integer.parseInt(button.getId()));
-                            openSejour();
-                            System.out.println("open sejour: " + button.getId());
-                        });
-                        //addToBoxSejour(button);
-                        nodes[index]=button;
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                boxSejour.getChildren().add(nodes[index]);
-                            }
-                        });
+                        final int index=i;
+                        if (!(listDisplayedSejour.contains(listSejourToDisplay.get(index)))) {
+                            Thread.sleep(0, 1);
+                            addToListDisplayedSejour(listSejourToDisplay.get(index));
+                            Text sejour = new Text();
+                            String sejourText = "";
+                            sejourText += listSejourToDisplay.get(index).getName() + "\nOù? ";
+                            sejourText += listSejourToDisplay.get(index).getLocation() + "\n";
+                            sejourText += "Quand? De ";
+                            sejourText += listSejourToDisplay.get(index).getStrDateBegin();
+                            sejourText += " jusqu'à ";
+                            sejourText += listSejourToDisplay.get(index).getStrDateEnd();
+                            sejour.setText(sejourText);
+                            Button button = new Button("", sejour);
+                            button.setMaxWidth(10000000);
+                            button.setAlignment(Pos.BASELINE_LEFT);
+                            button.setId(String.valueOf(listSejourToDisplay.get(index).getSejourId()));
+                            button.setOnAction((event) -> {    // lambda expression
+                                Context.setSejourById(Integer.parseInt(button.getId()));
+                                openSejour();
+                                System.out.println("open sejour: " + button.getId());
+                            });
+                            //addToBoxSejour(button);
+                            nodes[index] = button;
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    boxSejour.getChildren().add(nodes[index]);
+                                }
+                            });
+                        }
                     }
-                    idxSejour=idxSejour+maxSejourToLoad;
-
                     return null;
                 }
             };
         }
+
     };
 
     public void setUserBox(){
@@ -143,68 +138,52 @@ public class RechercheController {
     }
 
     public void init() {
-        search();
+        listDisplayedSejour.clear();
+        boxSejour.getChildren().clear();
+        lastSearch=" ";
+        listSejourToDisplay=sejourDao.searchSejourByField("Name","");
+        maxSejourToLoad=listSejourToDisplay.size();
+        service.start();
     }
-
-//    private void addSejourToBox(ArrayList<Sejour> list){
-//        Integer lenght = list.size();
-//
-//        for (int i=0;i<lenght;i=i+25) {
-//            List<Sejour> sublist;
-//            if (i+25<lenght) {
-//                sublist = list.subList(i, i + 25);
-//            }
-//            else {
-//                sublist = list.subList(i, lenght);
-//            }
-//            Thread t = new Thread(new SearchRunnable(sublist, this, this.mainApp));
-//            t.start();
-//            threads.add(t);
-//        }
-//    }
-
-//    private void addSejourToBox(){
-//        Integer lenght = listSejourToDisplay.size();
-//        if (lenght<endSejour){
-//            endSejour=lenght;
-//        }
-//        for (int i=startSejour;i<endSejour;i=i+25) {
-//
-//            List<Sejour> sublist;
-//            if (i+25<lenght) {
-//                sublist = listSejourToDisplay.subList(i, i + 25);
-//            }
-//            else {
-//                sublist = listSejourToDisplay.subList(i, lenght);
-//            }
-//            Thread t = new Thread(new SearchRunnable(sublist, this, this.mainApp));
-//            t.start();
-//            threads.add(t);
-//        }
-//        startSejour=endSejour;
-//        endSejour+=100;
-//    }
 
     @FXML
     private void search() {
-        if (searchBar.getLength() > 1) {
-            listDisplayedSejour.clear();
-            boxSejour.getChildren().clear();
-            lastSearch=searchBar.getText();
-            listSejourToDisplay=sejourDao.searchSejourByField("Name",searchBar.getText());
-            listSejourToDisplay=sejourDao.searchSejourByField("Location",searchBar.getText());
-            listSejourToDisplay=sejourDao.searchSejourByField("Description",searchBar.getText());
-            listSejourToDisplay=sejourDao.searchSejourByField("Description",searchBar.getText());
-            listSejourToDisplay=sejourDao.searchSejourByField("Description",searchBar.getText());
-        } else if (lastSearch=="" || lastSearch.length()>1){
-            listDisplayedSejour.clear();
-            boxSejour.getChildren().clear();
-            idxSejour=0;
-            lastSearch=" ";
-            listSejourToDisplay=sejourDao.searchSejourByField("Name","");
-            service.start();
-        }
+        listSejourToDisplay.clear();
+        listDisplayedSejour.clear();
+        service.cancel();
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                if (searchBar.getLength() > 1) {
+                    final String search= searchBar.getText();
+                    lastSearch = search;
+                    ArrayList<Sejour> names = sejourDao.searchSejourByField("Name", search);
+                    Set<Sejour> set = new LinkedHashSet<>(names);
+                    ArrayList<Sejour> loc = sejourDao.searchSejourByField("Location", search);
+                    set.addAll(loc);
+                    ArrayList<Sejour> desc = sejourDao.searchSejourByField("Description", search);
+                    set.addAll(desc);
+                    ArrayList<Sejour> dateBegin = sejourDao.searchSejourByField("DateBegin", search);
+                    set.addAll(dateBegin);
+                    ArrayList<Sejour> dateEnd = sejourDao.searchSejourByField("DateEnd", search);
+                    set.addAll(dateEnd);
+                    listSejourToDisplay = new ArrayList<>(set);
+                    maxSejourToLoad = listSejourToDisplay.size();
+                    service.restart();
+
+                } else if (lastSearch == "" || lastSearch.length() > 1) {
+                    lastSearch = " ";
+                    listSejourToDisplay = sejourDao.searchSejourByField("Name", "");
+                    maxSejourToLoad = listSejourToDisplay.size();
+                    service.restart();
+                }
+                return null;
+            }
+        };
+        task.run();
+
     }
+
 
     @FXML
     private void backToHome(){
