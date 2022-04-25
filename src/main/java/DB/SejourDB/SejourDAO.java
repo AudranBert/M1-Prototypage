@@ -33,18 +33,23 @@ public class SejourDAO {
         connexion.close();
     }
 
-    public Sejour resultSetToSejour(ResultSet resultSet) throws SQLException, ParseException {
-        Integer sejourId = resultSet.getInt("SejourId");
-        Integer imageBundle = resultSet.getInt("imageBundle");
-        String name = resultSet.getString("Name");
-        String location = resultSet.getString("Location");
-        Calendar dateBegin = GregorianCalendar.getInstance();
-        dateBegin.setTime(dateFormater.parse(resultSet.getString("DateBegin")));
-        Calendar dateEnd = GregorianCalendar.getInstance();
-        dateEnd.setTime(dateFormater.parse(resultSet.getString("DateEnd")));
-        String description = resultSet.getString("description");
-        int IdHost = resultSet.getInt("IdHost");
-        return new Sejour(sejourId, imageBundle, name, location, dateBegin, dateEnd,description, IdHost);
+    public Sejour resultSetToSejour(ResultSet resultSet) {
+        try {
+            Integer sejourId = resultSet.getInt("SejourId");
+            Integer imageBundle = resultSet.getInt("imageBundle");
+            String name = resultSet.getString("Name");
+            String location = resultSet.getString("Location");
+            Calendar dateBegin = GregorianCalendar.getInstance();
+            dateBegin.setTime(dateFormater.parse(resultSet.getString("DateBegin")));
+            Calendar dateEnd = GregorianCalendar.getInstance();
+            dateEnd.setTime(dateFormater.parse(resultSet.getString("DateEnd")));
+            String description = resultSet.getString("description");
+            int IdHost = resultSet.getInt("IdHost");
+            return new Sejour(sejourId, imageBundle, name, location, dateBegin, dateEnd,description, IdHost);
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public ArrayList<Sejour> getSejours() {
@@ -56,20 +61,42 @@ public class SejourDAO {
                 Sejour sejour = resultSetToSejour(resultSet);
                 sejourArrayList.add(sejour);
             }
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         connexion.close();
         return sejourArrayList;
     }
 
-    public Sejour getSejourById(int id) throws SQLException, ParseException {
+    public ArrayList<Sejour> getSejoursByHostId(Integer hostId) {
+        System.out.println("HostId" + hostId);
+        connexion.connect();
+        ResultSet resultSet = connexion.query("SELECT * FROM Sejour WHERE idHost = '" + hostId + "';");
+        ArrayList<Sejour> sejourArrayList = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                Sejour sejour = resultSetToSejour(resultSet);
+                sejourArrayList.add(sejour);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        connexion.close();
+        return sejourArrayList;
+    }
+
+    public Sejour getSejourById(int id) {
         connexion.connect();
         ResultSet resultSet = connexion.query("SELECT * FROM Sejour WHERE SejourId LIKE '%" + id + "%';");
-        resultSet.next();
-        Sejour sejour = resultSetToSejour(resultSet);
-        connexion.close();
-        return sejour;
+        try {
+            resultSet.next();
+            Sejour sejour = resultSetToSejour(resultSet);
+            connexion.close();
+            return sejour;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public ArrayList<Sejour> resultToSejourList(ResultSet resultSet){
@@ -79,7 +106,7 @@ public class SejourDAO {
                 Sejour sejour = resultSetToSejour(resultSet);
                 sejourArrayList.add(sejour);
             }
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return sejourArrayList;

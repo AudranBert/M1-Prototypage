@@ -72,6 +72,7 @@ public class ChatController{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        connexion.close();
 
         if (mainApp.getChats() != null) {
             for (Chat chat : mainApp.getChats()) {

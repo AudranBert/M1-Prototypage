@@ -15,4 +15,7 @@ module com.example.m1prototyopage {
     exports prototyopage;
     exports prototyopage.Controllers;
     opens prototyopage.Controllers to javafx.fxml;
+
+    exports prototyopage.Controllers.ComponentControllers;
+    opens prototyopage.Controllers.ComponentControllers to javafx.fxml;
 }
