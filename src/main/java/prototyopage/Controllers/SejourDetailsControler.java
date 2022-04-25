@@ -17,7 +17,7 @@ import prototyopage.Ressources.SVGpaths;
 
 import java.io.File;
 
-public class VoyagerDetailsControler extends ControllerAbstract {
+public class SejourDetailsControler extends ControllerAbstract {
     private MainApp mainApp;
 
     @FXML private Label sejourName;
@@ -31,6 +31,10 @@ public class VoyagerDetailsControler extends ControllerAbstract {
     @FXML private ImageView img2;
     @FXML private Button reservationActionButton;
     @FXML private Button chatButton;
+
+    public static final String VIEW_VOYAGER = "view_voyager";
+    public static final String VIEW_HOST = "view_host";
+    public static final String VIEW_DISCONNECTED = "view_disconnected";
 
     public void setMainApp(MainApp mainApp) { this.mainApp = mainApp; }
 
@@ -56,30 +60,47 @@ public class VoyagerDetailsControler extends ControllerAbstract {
     }
 
     public void adaptDisplayToContext(){
-        if (Context.getUser() != null) {  // Si on est connecté
-            DemSejDAO demSejDAO = new DemSejDAO();
-            DemSej demSej = demSejDAO.getDemSejByVoyagerAndSejour(Context.getUser().getUserId(), Context.getSejour().getSejourId());
-            Context.setDemSej(demSej);
+        // si connecté comme Voyageur ou si un hote visite le séjour d'un tiers
+        String viewType;
+        if (Context.getUser() != null) {
+            if (!Context.getUser().isHost()) {
+                viewType = VIEW_VOYAGER;
+            } else {
+                if (Context.getSejour().getIdHost() == Context.getUser().getUserId()) {
+                    viewType = VIEW_HOST;
+                } else {
+                    viewType = VIEW_VOYAGER;
+                }
+            }
+        } else {
+            viewType = VIEW_DISCONNECTED;
+        }
 
-            chatButton.setVisible(true);
+        switch (viewType) {
+            case VIEW_VOYAGER -> {
+                DemSejDAO demSejDAO = new DemSejDAO();
+                DemSej demSej = demSejDAO.getDemSejByVoyagerAndSejour(Context.getUser().getUserId(), Context.getSejour().getSejourId());
+                Context.setDemSej(demSej);
+                chatButton.setVisible(true);
+                if (demSej == null) {  // Si il n'existe pas de reservation
+                    statusLogo.setVisible(false);
+                    statusText.setVisible(false);
+                } else {  // Si il existe une reservation
+                    reservationActionButton.setText("Reservation");
 
-            if (demSej == null) {  // Si il n'existe pas de reservation
+                    statusText.setText(demSej.validationToString());
+                    statusText.setVisible(true);
+
+                    statusLogo.setContent(demSej.getSVG().get(SVGpaths.PATH));
+                    statusLogo.setFill(Paint.valueOf(demSej.getSVG().get(SVGpaths.COLOR)));
+                }
+            }
+            case VIEW_DISCONNECTED, VIEW_HOST -> {
+                reservationActionButton.setVisible(false);
+                chatButton.setVisible(false);
                 statusLogo.setVisible(false);
                 statusText.setVisible(false);
-            } else {  // Si il existe une reservation
-                reservationActionButton.setText("Reservation");
-
-                statusText.setText(demSej.validationToString());
-                statusText.setVisible(true);
-
-                statusLogo.setContent(demSej.getSVG().get(SVGpaths.PATH));
-                statusLogo.setFill(Paint.valueOf(demSej.getSVG().get(SVGpaths.COLOR)));
             }
-        } else {  // Si on est pas connecté
-            reservationActionButton.setVisible(false);
-            chatButton.setVisible(false);
-            statusLogo.setVisible(false);
-            statusText.setVisible(false);
         }
     }
 

@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 public class MainApp extends Application {
     Stage stage;
-    private ArrayList<Chat> chats = new ArrayList<Chat>();
-    private Stack<Runnable> viewHistory = new Stack<Runnable>();
+    private ArrayList<Chat> chats = new ArrayList<>();
+    private Stack<Runnable> viewHistory = new Stack<>();
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
         this.stage=stage;
         showHome();
     }
@@ -50,8 +50,7 @@ public class MainApp extends Application {
             viewHistory.push(this::showProfil);
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ProfilePage.fxml"));
 
-            Scene scene = null;
-            scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
 
             ControllerProfile controller = fxmlLoader.getController();
             controller.setMainApp(this);
@@ -112,7 +111,7 @@ public class MainApp extends Application {
 
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
-            VoyagerDetailsControler controller = fxmlLoader.getController();
+            SejourDetailsControler controller = fxmlLoader.getController();
             controller.setMainApp(this);
 
             controller.init();
@@ -193,8 +192,7 @@ public class MainApp extends Application {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("DemanSej.fxml"));
 
-            Scene scene = null;
-            scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
 
             ControllerDemanSej controller = fxmlLoader.getController();
             controller.setMainApp(this);
