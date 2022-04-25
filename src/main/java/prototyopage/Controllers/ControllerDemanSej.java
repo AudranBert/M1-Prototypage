@@ -234,7 +234,6 @@ public class ControllerDemanSej {
         alert.setHeaderText("Veuiller selectionner une demande de séjour");
 
         alert.showAndWait();
-
     }
 
     }
