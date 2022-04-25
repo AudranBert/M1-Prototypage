@@ -15,6 +15,8 @@ public class MainApp extends Application {
     private ArrayList<Chat> chats = new ArrayList<>();
     private Stack<Runnable> viewHistory = new Stack<>();
 
+    public Stage getStage() { return this.stage; }
+
     @Override
     public void start(Stage stage) {
         this.stage=stage;

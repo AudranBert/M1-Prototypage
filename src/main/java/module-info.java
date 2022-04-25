@@ -10,6 +10,8 @@ module com.example.m1prototyopage {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires java.desktop;
+    requires javafx.swing;
 
     opens prototyopage to javafx.fxml;
     exports prototyopage;

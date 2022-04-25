@@ -1,72 +1,279 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.SejourDetailsControler">
+<AnchorPane focusTraversable="true" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.SejourDetailsControler">
+   <SplitPane dividerPositions="0.76" prefHeight="539.0" prefWidth="1090.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="120.0">
+     <items>
+       <AnchorPane focusTraversable="true" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+               <VBox focusTraversable="true" prefHeight="200.0" prefWidth="823.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                     <Group fx:id="sejourNameGroup">
+                        <children>
+                           <Label fx:id="sejourName" text="SejourNamePlaceholder">
+                              <font>
+                                 <Font size="36.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </Group>
+                     <StackPane focusTraversable="true" prefHeight="36.0" prefWidth="823.0">
+                        <children>
+                           <HBox alignment="CENTER_RIGHT" focusTraversable="true" prefHeight="32.0" prefWidth="823.0">
+                              <children>
+                                 <Text fx:id="statusText" strokeType="OUTSIDE" strokeWidth="0.0" text="En attente" textAlignment="RIGHT" wrappingWidth="80.6796289429808">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font>
+                                 </Text>
+                                 <Group>
+                                    <children>
+                                       <SVGPath fx:id="statusIcon" content="M 0 0 L 0 29 L 29 29 L 29 0M 0 0 L 0 29 L 29 29 L 29 0" fill="#dd7302" />
+                                    </children>
+                                    <HBox.margin>
+                                       <Insets left="10.0" />
+                                    </HBox.margin>
+                                 </Group>
+                              </children>
+                              <StackPane.margin>
+                                 <Insets right="10.0" />
+                              </StackPane.margin>
+                           </HBox>
+                           <HBox alignment="CENTER_LEFT" focusTraversable="true" prefHeight="32.0" prefWidth="823.0">
+                              <children>
+                                 <Group>
+                                    <children>
+                                       <SVGPath fx:id="locationIcon" content="M 0 0 L 0 32 L 22 32 L 22 0 M 0 0 L 0 32 L 20 32 M 0 0 L 0 32 L 20 32 M 0 0 L 0 32M 0 0 L 0 32 L 22 32 L 22 0 M 0 0 L 0 32 L 20 32 M 0 0 L 0 32 L 20 32 M 0 0 L 0 32" fill="#106ecd" />
+                                    </children>
+                                 </Group>
+                                 <Group fx:id="locationGroup" focusTraversable="true">
+                                    <children>
+                                       <Label fx:id="locationi" text="LocationPlaceholder">
+                                          <font>
+                                             <Font size="24.0" />
+                                          </font>
+                                       </Label>
+                                    </children>
+                                    <HBox.margin>
+                                       <Insets left="10.0" />
+                                    </HBox.margin>
+                                 </Group>
+                              </children>
+                           </HBox>
+                        </children>
+                        <VBox.margin>
+                           <Insets top="20.0" />
+                        </VBox.margin>
+                     </StackPane>
+                     <StackPane prefHeight="190.0" prefWidth="823.0">
+                        <children>
+                           <HBox alignment="CENTER_LEFT" prefHeight="220.0" prefWidth="823.0">
+                              <children>
+                                 <StackPane alignment="BOTTOM_CENTER" prefHeight="150.0" prefWidth="200.0">
+                                    <children>
+                                       <ImageView fx:id="img1" fitHeight="315.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@../Images/Sejours/1/img_1.jpg" />
+                                          </image>
+                                       </ImageView>
+                                       <Button fx:id="modifierImg1Button" mnemonicParsing="false" onAction="#modifierImg1" text="Modifier">
+                                          <StackPane.margin>
+                                             <Insets bottom="10.0" />
+                                          </StackPane.margin>
+                                       </Button>
+                                    </children>
+                                 </StackPane>
+                              </children>
+                              <StackPane.margin>
+                                 <Insets right="350.0" />
+                              </StackPane.margin>
+                           </HBox>
+                           <HBox alignment="CENTER_RIGHT" prefHeight="375.0" prefWidth="823.0">
+                              <children>
+                                 <StackPane alignment="BOTTOM_CENTER" prefHeight="150.0" prefWidth="200.0">
+                                    <children>
+                                       <ImageView fx:id="img2" fitHeight="315.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@../Images/Sejours/1/img_2.jpg" />
+                                          </image>
+                                       </ImageView>
+                                       <Button fx:id="modifierImg2Button" mnemonicParsing="false" onAction="#modifierImg2" text="Modifier">
+                                          <StackPane.margin>
+                                             <Insets bottom="10.0" />
+                                          </StackPane.margin>
+                                       </Button>
+                                    </children>
+                                    <HBox.margin>
+                                       <Insets />
+                                    </HBox.margin>
+                                 </StackPane>
+                              </children>
+                              <opaqueInsets>
+                                 <Insets />
+                              </opaqueInsets>
+                              <StackPane.margin>
+                                 <Insets left="330.0" />
+                              </StackPane.margin>
+                           </HBox>
+                        </children>
+                        <VBox.margin>
+                           <Insets top="20.0" />
+                        </VBox.margin>
+                     </StackPane>
+                     <StackPane prefHeight="54.0" prefWidth="823.0">
+                        <children>
+                           <HBox alignment="TOP_RIGHT" focusTraversable="true" prefHeight="100.0" prefWidth="200.0">
+                              <children>
+                                 <Button fx:id="actionButton" mnemonicParsing="false" onAction="#openReservationModal" text="Réserver" />
+                              </children>
+                              <StackPane.margin>
+                                 <Insets left="700.0" right="10.0" />
+                              </StackPane.margin>
+                           </HBox>
+                           <HBox focusTraversable="true" prefHeight="0.0" prefWidth="823.0">
+                              <children>
+                                 <Group fx:id="descriptionGroup">
+                                    <children>
+                                       <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="DescriptionPlaceHolder" wrappingWidth="566.9021377563477">
+                                          <font>
+                                             <Font size="19.0" />
+                                          </font>
+                                       </Text>
+                                    </children>
+                                 </Group>
+                              </children>
+                              <StackPane.margin>
+                                 <Insets right="120.0" />
+                              </StackPane.margin>
+                           </HBox>
+                        </children>
+                        <VBox.margin>
+                           <Insets top="15.0" />
+                        </VBox.margin>
+                     </StackPane>
+                  </children>
+               </VBox>
+            </children>
+         </AnchorPane>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+               <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <children>
+                           <HBox alignment="CENTER" prefHeight="34.0" prefWidth="258.0">
+                              <children>
+                                 <VBox alignment="CENTER" prefHeight="63.0" prefWidth="83.0">
+                                    <children>
+                                       <Label alignment="CENTER" prefHeight="26.0" prefWidth="110.0" text="Début" textAlignment="CENTER" textFill="#4a4a4a">
+                                          <font>
+                                             <Font name="System Bold" size="20.0" />
+                                          </font>
+                                       </Label>
+                                       <HBox alignment="CENTER" prefHeight="37.0" prefWidth="64.0">
+                                          <children>
+                                             <Group>
+                                                <children>
+                                                   <SVGPath fx:id="dateBeginIcon" content="M 0 0 L 0 37 L 37 37 L 37 0M 0 0 L 0 37 L 37 37 L 37 0" fill="#4a4a4a" />
+                                                </children>
+                                             </Group>
+                                          </children>
+                                       </HBox>
+                                    </children>
+                                 </VBox>
+                                 <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0">
+                                    <children>
+                                       <Group fx:id="dateBeginGroup">
+                                          <children>
+                                             <Text fx:id="dateBegin" fill="#4a4a4a" strokeType="OUTSIDE" strokeWidth="0.0" text="XX/XX/XXXX" wrappingWidth="121.7703857421875">
+                                                <font>
+                                                   <Font size="21.0" />
+                                                </font>
+                                             </Text>
+                                          </children>
+                                       </Group>
+                                    </children>
+                                 </VBox>
+                              </children>
+                           </HBox>
+                           <HBox alignment="CENTER" prefHeight="34.0" prefWidth="258.0">
+                              <children>
+                                 <VBox alignment="CENTER" prefHeight="63.0" prefWidth="83.0">
+                                    <children>
+                                       <Label alignment="CENTER" prefHeight="26.0" prefWidth="110.0" text="Fin" textAlignment="CENTER" textFill="#4a4a4a">
+                                          <font>
+                                             <Font name="System Bold" size="20.0" />
+                                          </font>
+                                       </Label>
+                                       <HBox alignment="CENTER" prefHeight="37.0" prefWidth="64.0">
+                                          <children>
+                                             <Group>
+                                                <children>
+                                                   <SVGPath fx:id="dateEndIcon" content="M 0 0 L 0 37 L 37 37 L 37 0M 0 0 L 0 37 L 37 37 L 37 0" fill="#4a4a4a" />
+                                                </children>
+                                             </Group>
+                                          </children>
+                                       </HBox>
+                                    </children>
+                                 </VBox>
+                                 <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0">
+                                    <children>
+                                       <Group fx:id="dateEndGroup">
+                                          <children>
+                                             <Text fx:id="dateEnd" fill="#4a4a4a" strokeType="OUTSIDE" strokeWidth="0.0" text="XX/XX/XXXX" wrappingWidth="121.7703857421875">
+                                                <font>
+                                                   <Font size="21.0" />
+                                                </font>
+                                             </Text>
+                                          </children>
+                                       </Group>
+                                    </children>
+                                 </VBox>
+                              </children>
+                              <padding>
+                                 <Insets top="60.0" />
+                              </padding>
+                           </HBox>
+                        </children>
+                        <StackPane.margin>
+                           <Insets bottom="100.0" top="100.0" />
+                        </StackPane.margin>
+                     </VBox>
+                     <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                           <Button fx:id="chatButton" mnemonicParsing="false" onMouseClicked="#showChat" prefHeight="26.0" prefWidth="181.0" text="Chat avec l'hôte">
+                              <HBox.margin>
+                                 <Insets bottom="61.0" />
+                              </HBox.margin></Button>
+                        </children>
+                        <StackPane.margin>
+                           <Insets top="430.0" />
+                        </StackPane.margin>
+                     </HBox>
+                  </children>
+               </StackPane>
+            </children>
+         </AnchorPane>
+     </items>
+   </SplitPane>
    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToPredView" prefHeight="26.0" prefWidth="94.0" text="Retour">
       <font>
          <Font size="18.0" />
       </font>
    </Button>
-
-   <SVGPath content="M-3.81282e-15,-135.403 C-52.2656,-135.403 -94.7821,-92.8865 -94.7821,-40.6209 C-94.7821,30.3303 -3.81282e-15,135.403 -3.81282e-15,135.403 C-3.81282e-15,135.403 94.7821,30.3303 94.7821,-40.6209 C94.7821,-92.8865 52.2656,-135.403 -3.81282e-15,-135.403 Z M-3.81282e-15,-6.77015 C-18.6856,-6.77015 -33.8508,-21.9353 -33.8508,-40.6209 C-33.8508,-59.3065 -18.6856,-74.4717 -3.81282e-15,-74.4717 C18.6856,-74.4717 33.8508,-59.3065 33.8508,-40.6209 C33.8508,-21.9353 18.6856,-6.77015 -3.81282e-15,-6.77015 Z M-3.81282e-15,-135.403 C-52.2656,-135.403 -94.7821,-92.8865 -94.7821,-40.6209 C-94.7821,30.3303 -3.81282e-15,135.403 -3.81282e-15,135.403 C-3.81282e-15,135.403 94.7821,30.3303 94.7821,-40.6209 C94.7821,-92.8865 52.2656,-135.403 -3.81282e-15,-135.403 Z M-3.81282e-15,-6.77015 C-18.6856,-6.77015 -33.8508,-21.9353 -33.8508,-40.6209 C-33.8508,-59.3065 -18.6856,-74.4717 -3.81282e-15,-74.4717 C18.6856,-74.4717 33.8508,-59.3065 33.8508,-40.6209 C33.8508,-21.9353 18.6856,-6.77015 -3.81282e-15,-6.77015 Z " fill="#106ecd" layoutX="130.0" layoutY="209.0" scaleX="0.12" scaleY="0.12" />
-   <Label fx:id="sejourName" layoutX="121.0" layoutY="136.0" text="SejourNamePlaceholder">
-      <font>
-         <Font size="36.0" />
-      </font>
-   </Label>
-   <ImageView fx:id="img1" fitHeight="315.0" layoutX="121.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../Images/Sejours/1/img_1.jpg"/>
-   </ImageView>
-   <ImageView fx:id="img2" fitHeight="315.0" layoutX="506.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../Images/Sejours/1/img_2.jpg"/>
-   </ImageView>
-   <Text fx:id="description" layoutX="121.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DescriptionPlaceHolder" wrappingWidth="596.4175796508789">
-      <font>
-         <Font size="19.0" />
-      </font>
-   </Text>
-   <Label fx:id="locationi" layoutX="154.0" layoutY="195.0" text="LocationPlaceholder">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Label>
-   <Label layoutX="1000.0" layoutY="298.0" text="Début" textAlignment="CENTER" textFill="#4a4a4a">
-      <font>
-         <Font name="System Bold" size="20.0" />
-      </font>
-   </Label>
-   <SVGPath content="M81.61,4.73C81.61,2.12,84.19,0,87.38,0s5.77,2.12,5.77,4.73V25.45c0,2.61-2.58,4.73-5.77,4.73s-5.77-2.12-5.77-4.73V4.73ZM66.11,105.66c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1ZM15.85,68.94c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1Zm25.14-10.1H107c.8,0,.8,10.1,0,10.1H91.25c-.8,0-.8-10.1,0-10.1ZM15.85,87.3c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1ZM41,87.3c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1Zm25.14,0c-.8,0-.8-10.1,0-10.1H107c.8,0,.8,10.1,0,10.1Zm-75.4,18.36c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1ZM29.61,4.73C29.61,2.12,32.19,0,35.38,0s5.77,2.12,5.77,4.73V25.45c0,2.61-2.58,4.73-5.77,4.73s-5.77-2.12-5.77-4.73V4.73ZM6.4,43.47H116.47v-22a3,3,0,0,0-.86-2.07,2.92,2.92,0,0,0-2.07-.86H103a3.2,3.2,0,0,1,0-6.4h10.55a9.36,9.36,0,0,1,9.33,9.33v92.09a9.36,9.36,0,0,1-9.33,9.33H9.33A9.36,9.36,0,0,1,0,113.55V21.47a9.36,9.36,0,0,1,9.33-9.33H20.6a3.2,3.2,0,1,1,0,6.4H9.33a3,3,0,0,0-2.07.86,2.92,2.92,0,0,0-.86,2.07v22Zm110.08,6.41H6.4v63.67a3,3,0,0,0,.86,2.07,2.92,2.92,0,0,0,2.07.86H113.55a3,3,0,0,0,2.07-.86,2.92,2.92,0,0,0,.86-2.07V49.88ZM50.43,18.54a3.2,3.2,0,0,1,0-6.4H71.92a3.2,3.2,0,1,1,0,6.4ZM81.61,4.73C81.61,2.12,84.19,0,87.38,0s5.77,2.12,5.77,4.73V25.45c0,2.61-2.58,4.73-5.77,4.73s-5.77-2.12-5.77-4.73V4.73ZM66.11,105.66c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1ZM15.85,68.94c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1Zm25.14-10.1H107c.8,0,.8,10.1,0,10.1H91.25c-.8,0-.8-10.1,0-10.1ZM15.85,87.3c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1ZM41,87.3c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1Zm25.14,0c-.8,0-.8-10.1,0-10.1H107c.8,0,.8,10.1,0,10.1Zm-75.4,18.36c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1ZM29.61,4.73C29.61,2.12,32.19,0,35.38,0s5.77,2.12,5.77,4.73V25.45c0,2.61-2.58,4.73-5.77,4.73s-5.77-2.12-5.77-4.73V4.73ZM6.4,43.47H116.47v-22a3,3,0,0,0-.86-2.07,2.92,2.92,0,0,0-2.07-.86H103a3.2,3.2,0,0,1,0-6.4h10.55a9.36,9.36,0,0,1,9.33,9.33v92.09a9.36,9.36,0,0,1-9.33,9.33H9.33A9.36,9.36,0,0,1,0,113.55V21.47a9.36,9.36,0,0,1,9.33-9.33H20.6a3.2,3.2,0,1,1,0,6.4H9.33a3,3,0,0,0-2.07.86,2.92,2.92,0,0,0-.86,2.07v22Zm110.08,6.41H6.4v63.67a3,3,0,0,0,.86,2.07,2.92,2.92,0,0,0,2.07.86H113.55a3,3,0,0,0,2.07-.86,2.92,2.92,0,0,0,.86-2.07V49.88ZM50.43,18.54a3.2,3.2,0,0,1,0-6.4H71.92a3.2,3.2,0,1,1,0,6.4Z" fill="#4a4a4a" layoutX="965.0" layoutY="287.0" scaleX="0.3" scaleY="0.3" />
-   <Text fx:id="dateBegin" fill="#4a4a4a" layoutX="1066.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XX/XX/XXXX" wrappingWidth="139.864990234375">
-      <font>
-         <Font size="21.0" />
-      </font>
-   </Text>
    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Label layoutX="1014.0" layoutY="413.0" prefHeight="26.0" prefWidth="26.0" text="Fin" textAlignment="CENTER" textFill="#4a4a4a">
-      <font>
-         <Font name="System Bold" size="20.0" />
-      </font>
-   </Label>
-   <SVGPath content="M81.61,4.73C81.61,2.12,84.19,0,87.38,0s5.77,2.12,5.77,4.73V25.45c0,2.61-2.58,4.73-5.77,4.73s-5.77-2.12-5.77-4.73V4.73ZM66.11,105.66c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1ZM15.85,68.94c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1Zm25.14-10.1H107c.8,0,.8,10.1,0,10.1H91.25c-.8,0-.8-10.1,0-10.1ZM15.85,87.3c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1ZM41,87.3c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1Zm25.14,0c-.8,0-.8-10.1,0-10.1H107c.8,0,.8,10.1,0,10.1Zm-75.4,18.36c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1ZM29.61,4.73C29.61,2.12,32.19,0,35.38,0s5.77,2.12,5.77,4.73V25.45c0,2.61-2.58,4.73-5.77,4.73s-5.77-2.12-5.77-4.73V4.73ZM6.4,43.47H116.47v-22a3,3,0,0,0-.86-2.07,2.92,2.92,0,0,0-2.07-.86H103a3.2,3.2,0,0,1,0-6.4h10.55a9.36,9.36,0,0,1,9.33,9.33v92.09a9.36,9.36,0,0,1-9.33,9.33H9.33A9.36,9.36,0,0,1,0,113.55V21.47a9.36,9.36,0,0,1,9.33-9.33H20.6a3.2,3.2,0,1,1,0,6.4H9.33a3,3,0,0,0-2.07.86,2.92,2.92,0,0,0-.86,2.07v22Zm110.08,6.41H6.4v63.67a3,3,0,0,0,.86,2.07,2.92,2.92,0,0,0,2.07.86H113.55a3,3,0,0,0,2.07-.86,2.92,2.92,0,0,0,.86-2.07V49.88ZM50.43,18.54a3.2,3.2,0,0,1,0-6.4H71.92a3.2,3.2,0,1,1,0,6.4ZM81.61,4.73C81.61,2.12,84.19,0,87.38,0s5.77,2.12,5.77,4.73V25.45c0,2.61-2.58,4.73-5.77,4.73s-5.77-2.12-5.77-4.73V4.73ZM66.11,105.66c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1ZM15.85,68.94c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1Zm25.14-10.1H107c.8,0,.8,10.1,0,10.1H91.25c-.8,0-.8-10.1,0-10.1ZM15.85,87.3c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1ZM41,87.3c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H81.9c.8,0,.8,10.1,0,10.1Zm25.14,0c-.8,0-.8-10.1,0-10.1H107c.8,0,.8,10.1,0,10.1Zm-75.4,18.36c-.8,0-.8-10.1,0-10.1H31.64c.8,0,.8,10.1,0,10.1Zm25.13,0c-.8,0-.8-10.1,0-10.1H56.77c.8,0,.8,10.1,0,10.1ZM29.61,4.73C29.61,2.12,32.19,0,35.38,0s5.77,2.12,5.77,4.73V25.45c0,2.61-2.58,4.73-5.77,4.73s-5.77-2.12-5.77-4.73V4.73ZM6.4,43.47H116.47v-22a3,3,0,0,0-.86-2.07,2.92,2.92,0,0,0-2.07-.86H103a3.2,3.2,0,0,1,0-6.4h10.55a9.36,9.36,0,0,1,9.33,9.33v92.09a9.36,9.36,0,0,1-9.33,9.33H9.33A9.36,9.36,0,0,1,0,113.55V21.47a9.36,9.36,0,0,1,9.33-9.33H20.6a3.2,3.2,0,1,1,0,6.4H9.33a3,3,0,0,0-2.07.86,2.92,2.92,0,0,0-.86,2.07v22Zm110.08,6.41H6.4v63.67a3,3,0,0,0,.86,2.07,2.92,2.92,0,0,0,2.07.86H113.55a3,3,0,0,0,2.07-.86,2.92,2.92,0,0,0,.86-2.07V49.88ZM50.43,18.54a3.2,3.2,0,0,1,0-6.4H71.92a3.2,3.2,0,1,1,0,6.4Z" fill="#4a4a4a" layoutX="966.0" layoutY="400.0" scaleX="0.3" scaleY="0.3" />
-   <Text fx:id="dateEnd" fill="#4a4a4a" layoutX="1063.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XX/XX/XXXX" wrappingWidth="139.864990234375">
-      <font>
-         <Font size="21.0" />
-      </font>
-   </Text>
-   <Button fx:id="reservationActionButton" layoutX="856.0" layoutY="576.0" mnemonicParsing="false" onAction="#openReservationModal" text="Réserver" />
-   <SVGPath fx:id="statusLogo" content="M0,-143.451 C-79.1851,-143.451 -143.451,-79.1851 -143.451,0 C-143.451,79.1851 -79.472,143.451 0,143.451 C79.1851,143.451 143.451,79.1851 143.451,0 C143.451,-79.1851 79.1851,-143.451 0,-143.451 Z M0,114.761 C-63.4055,114.761 -114.761,63.4055 -114.761,0 C-114.761,-63.4055 -63.4055,-114.761 0,-114.761 C63.4055,-114.761 114.761,-63.4055 114.761,0 C114.761,63.4055 63.4055,114.761 0,114.761 Z M7.17256,-86.0708 L-14.3451,-86.0708 L-14.3451,14.3451 L61.684,59.9626 L72.5863,42.1747 L7.17256,2.86903 L7.17256,-86.0708 Z M0,-143.451 C-79.1851,-143.451 -143.451,-79.1851 -143.451,0 C-143.451,79.1851 -79.472,143.451 0,143.451 C79.1851,143.451 143.451,79.1851 143.451,0 C143.451,-79.1851 79.1851,-143.451 0,-143.451 Z M0,114.761 C-63.4055,114.761 -114.761,63.4055 -114.761,0 C-114.761,-63.4055 -63.4055,-114.761 0,-114.761 C63.4055,-114.761 114.761,-63.4055 114.761,0 C114.761,63.4055 63.4055,114.761 0,114.761 Z M7.17256,-86.0708 L-14.3451,-86.0708 L-14.3451,14.3451 L61.684,59.9626 L72.5863,42.1747 L7.17256,2.86903 L7.17256,-86.0708 Z " fill="#dd7302" layoutX="908.0" layoutY="211.0" scaleX="0.1" scaleY="0.1" strokeMiterLimit="0.0" />
-   <Text fx:id="statusText" layoutX="810.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En attente" textAlignment="RIGHT" wrappingWidth="80.6796289429808">
-      <font>
-         <Font size="16.0" />
-      </font>
-   </Text>
-   <Button fx:id="chatButton" layoutX="1008.0" layoutY="517.0" mnemonicParsing="false" onMouseClicked="#showChat" text="Chat avec l'hôte" />
 </AnchorPane>
