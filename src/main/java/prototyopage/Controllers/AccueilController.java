@@ -28,6 +28,9 @@ public class AccueilController {
     @FXML
     private Button voirDemandes;
 
+    @FXML
+    private Button voirHoteSejours;
+
     public void setMainApp(MainApp mainApp)
     {
         this.mainApp = mainApp;
@@ -60,17 +63,21 @@ public class AccueilController {
         mainApp.showProfil();
     }
 
+    @FXML
+    protected void showHoteSejours() { mainApp.showHoteSejours(); }
 
     public void setUserBox(){
         if (Context.getUser()!=null){
             userNameText.setText(Context.getUser().getFirstName());
             if (Context.getUser().isHost()){
                 userIsTravelerText.setText("Hote");
-                 voirDemandes.setVisible(true);
+                voirDemandes.setVisible(true);
+                voirHoteSejours.setVisible(true);
             }
             else{
                 userIsTravelerText.setText("Voyageur");
                 voirDemandes.setVisible(false);
+                voirHoteSejours.setVisible(false);
             }
             userBox.setVisible(true);
             welcomeText.setText("Bonjour " + Context.getUser().getFirstName());
@@ -83,6 +90,7 @@ public class AccueilController {
             welcomeText.setVisible(false);
             connexionButton.setVisible(true);
             voirDemandes.setVisible(false);
+            voirHoteSejours.setVisible(false);
         }
     }
 }

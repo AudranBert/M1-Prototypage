@@ -73,6 +73,7 @@ public class ChatController{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        connexion.close();
 
         //On récupère le chat :
         if (mainApp.getChat().get(numSejour) != null) {

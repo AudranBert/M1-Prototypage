@@ -23,11 +23,7 @@ public class Context {
 
     public static void setSejourById(int sejourId){
         SejourDAO sejourDao = new SejourDAO();
-        try {
-            setSejour(sejourDao.getSejourById(sejourId));
-        } catch (SQLException | ParseException e) {
-            e.printStackTrace();
-        }
+        setSejour(sejourDao.getSejourById(sejourId));
     }
 
     public static DemSej getDemSej() { return demSej; }

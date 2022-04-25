@@ -1,8 +1,5 @@
 package prototyopage;
 
-import DB.SejourDB.Sejour;
-import DB.SejourDB.SejourDAO;
-import DB.UserDB.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,8 +7,6 @@ import javafx.stage.Stage;
 import prototyopage.Controllers.*;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.Stack;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +30,7 @@ public class MainApp extends Application {
 
     public void showConnection() {
         try {
+            viewHistory.push(this::showConnection);
             //Charger le fichier fxml associé
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("ConnectionPage.fxml")); //On charge la vue souhaitée
@@ -52,6 +48,7 @@ public class MainApp extends Application {
   
     public void showProfil()  {
         try {
+            viewHistory.push(this::showProfil);
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ProfilePage.fxml"));
 
             Scene scene = null;
@@ -70,9 +67,9 @@ public class MainApp extends Application {
         }
     }
 
-    public void showSearchBar()
-    {
+    public void showSearchBar() {
         try {
+            viewHistory.push(this::showSearchBar);
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Recherche.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -109,14 +106,14 @@ public class MainApp extends Application {
         }
     }
 
-    public void showVoyagerSejourDetails()  {
+    public void showSejourDetails()  {
         try {
-            viewHistory.push(this::showVoyagerSejourDetails);
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("VoyagerSejourDetails.fxml"));
+            viewHistory.push(this::showSejourDetails);
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("SejourDetails.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
-            VoyagerSejourDetailsControler controller = fxmlLoader.getController();
+            VoyagerDetailsControler controller = fxmlLoader.getController();
             controller.setMainApp(this);
 
             controller.init();
@@ -133,7 +130,7 @@ public class MainApp extends Application {
 
     public void showReservationModal() {
         try {
-            viewHistory.push(this::showVoyagerSejourDetails);
+            viewHistory.push(this::showReservationModal);
             //Charger le fichier fxml associé
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(MainApp.class.getResource("ReservationModal.fxml")); //On charge la vue souhaitée
@@ -152,8 +149,32 @@ public class MainApp extends Application {
         }
     }
 
+    public void showHoteSejours() {
+        try {
+            viewHistory.push(this::showHoteSejours);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("HoteSejours.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+
+            HoteSejourController controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.init();
+
+            fxmlLoader.setController(controller);
+
+            scene.getStylesheets().add("Style.css");
+            stage.setTitle("Détail séjour");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public void showHome(){
         try {
+            viewHistory.push(this::showHome);
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Accueil.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             scene.getStylesheets().add("Style.css");
@@ -166,7 +187,6 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 
