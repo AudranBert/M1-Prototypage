@@ -161,6 +161,7 @@ public class MainApp extends Application {
             HoteSejourController controller = fxmlLoader.getController();
             controller.setMainApp(this);
             controller.init();
+            controller.setUserBox();
 
             fxmlLoader.setController(controller);
 
@@ -199,6 +200,7 @@ public class MainApp extends Application {
 
             ControllerDemanSej controller = fxmlLoader.getController();
             controller.setMainApp(this);
+            controller.setUserBox();
 
             scene.getStylesheets().add("Style.css");
             stage.setTitle("Demande Sejour");

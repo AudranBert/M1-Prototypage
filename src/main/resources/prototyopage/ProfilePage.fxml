@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.ControllerProfile">
+<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.ControllerProfile">
    <center>
       <AnchorPane prefHeight="720.0" prefWidth="1179.0" BorderPane.alignment="CENTER">
          <children>
@@ -82,6 +75,16 @@
                </children>
             </VBox>
             <PasswordField fx:id="passworduser" layoutX="830.0" layoutY="465.0" />
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="23.0" prefWidth="92.0" text="Retour">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="modification" alignment="CENTER" layoutX="358.0" layoutY="534.0" prefHeight="73.0" prefWidth="579.0" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

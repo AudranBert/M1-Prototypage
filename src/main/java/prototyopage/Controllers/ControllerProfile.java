@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -45,6 +46,8 @@ public class ControllerProfile {
 
     @FXML
     private PasswordField passworduser;
+    @FXML
+    private Label modification;
 
     private MainApp mainApp;
 
@@ -112,8 +115,26 @@ public class ControllerProfile {
         connexion.connect();
         if (!prenomuser.getText().trim().isEmpty() && !nomuser.getText().trim().isEmpty() && !mailuser.getText().trim().isEmpty() && !ageuser.getText().trim().isEmpty() && !telephoneuser.getText().trim().isEmpty() && passworduser.getText().length() >= 4) {
             String query = "UPDATE `User` SET `FirstName` = '" + prenomuser.getText() + "', `LastName` = '" + nomuser.getText() + "' , `email` = '" + mailuser.getText() + "' , `age` = '" + Integer.parseInt(ageuser.getText()) + "' , `telephone` = '" + Integer.parseInt(telephoneuser.getText()) + "', `password` = '" + passworduser.getText() + "'  WHERE `UserId` = " + Context.getUser().getUserId();
+            modification.setText("Modification réussie !");
             connexion.submitQuery(query);
             connexion.close();
+        }
+        else
+        {
+            String text = "";
+            if (prenomuser.getText().trim().isEmpty())
+                text += " Prénom invalide.";
+            if (nomuser.getText().trim().isEmpty())
+                text += " Nom invalide.";
+            if (mailuser.getText().trim().isEmpty())
+                text += " Mail invalide.";
+            if (ageuser.getText().trim().isEmpty())
+                text += " Âge invalide.";
+            if (telephoneuser.getText().trim().isEmpty())
+                text += " Téléphone invalide";
+            if (passworduser.getText().length() < 4)
+                text += " Mot de passe trop court (moins de 4 caractères).";
+            modification.setText("Modification échouée..." + text);
         }
     }
 
@@ -139,6 +160,11 @@ public class ControllerProfile {
         else {
             userBox.setVisible(false);
         }
+    }
+
+    @FXML
+    protected void close() {
+        mainApp.showHome();
     }
 }
 

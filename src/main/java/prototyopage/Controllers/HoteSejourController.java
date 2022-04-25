@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import prototyopage.Context;
 import prototyopage.Controllers.ComponentControllers.SejourVignetteController;
@@ -23,6 +24,11 @@ public class HoteSejourController extends ControllerAbstract {
     private MainApp mainApp = null;
     private ArrayList<SejourVignetteController> vignettesControlers = new ArrayList();
     private ArrayList<Sejour> sejours = new ArrayList<>();
+
+    // user
+    @FXML private VBox userBox;
+    @FXML private javafx.scene.text.Text userIsTravelerText;
+    @FXML private javafx.scene.text.Text userNameText;
 
     @FXML private HBox sejourBox;
     @FXML private Button bb;
@@ -72,6 +78,22 @@ public class HoteSejourController extends ControllerAbstract {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void setUserBox(){
+        if (Context.getUser()!=null){
+            userNameText.setText(Context.getUser().getFirstName());
+            if (Context.getUser().isHost()){
+                userIsTravelerText.setText("Hote");
+            }
+            else{
+                userIsTravelerText.setText("Voyageur");
+            }
+            userBox.setVisible(true);
+        }
+        else {
+            userBox.setVisible(false);
         }
     }
 }
