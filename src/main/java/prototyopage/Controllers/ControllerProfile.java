@@ -131,7 +131,7 @@ public class ControllerProfile {
             if (ageuser.getText().trim().isEmpty())
                 text += " Âge invalide.";
             if (telephoneuser.getText().trim().isEmpty())
-                text += " Téléphone invalide";
+                text += " Téléphone invalide.";
             if (passworduser.getText().length() < 4)
                 text += " Mot de passe trop court (moins de 4 caractères).";
             modification.setText("Modification échouée..." + text);
