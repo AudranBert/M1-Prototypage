@@ -34,12 +34,12 @@
       </VBox>
       <Text layoutX="390.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="14.0">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold" size="46.0" />
          </font>
       </Text>
       <Label alignment="CENTER" layoutX="100.0" layoutY="95.0" prefHeight="18.0" prefWidth="1080.0" text="Vos discussions" textAlignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font size="23.0" />
          </font>
       </Label>
    </children>

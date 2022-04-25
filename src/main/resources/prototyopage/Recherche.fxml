@@ -39,7 +39,7 @@
       </VBox>
       <Text layoutX="390.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adeona" textAlignment="CENTER" wrappingWidth="500.0" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="14.0">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold" size="46.0" />
          </font>
       </Text>
       <Button fx:id="connexionButton" layoutX="1174.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#showConnection" text="Connexion" />

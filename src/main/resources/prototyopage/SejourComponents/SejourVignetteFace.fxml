@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.SVGPath?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane onMouseClicked="#openSejourDetail" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.ComponentControllers.SejourVignetteController">
+<StackPane onMouseClicked="#openSejourDetail" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.ComponentControllers.SejourVignetteController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 18 18 18 18; -fx-border-radius: 18 18 18 18; -fx-border-color: darkgrey; -fx-border-width: 3;">
          <children>
@@ -41,7 +36,7 @@
                               <Insets left="25.0" />
                            </HBox.margin>
                         </SVGPath>
-                        <Label fx:id="locationText" text="LocationPlaceholder" textFill="#4a4a4a">
+                        <Label fx:id="locationText" styleClass="label1" stylesheets="@../../Style.css" text="LocationPlaceholder" textFill="#4a4a4a">
                            <HBox.margin>
                               <Insets left="15.0" />
                            </HBox.margin>
