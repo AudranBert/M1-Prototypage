@@ -13,7 +13,8 @@ module com.example.m1prototyopage {
     requires java.desktop;
     requires javafx.swing;
 
-    opens prototyopage to javafx.fxml;
+    opens prototyopage to javafx.graphics, javafx.fxml, javafx.base;
+    opens DB.SejourDB to javafx.graphics, javafx.fxml, javafx.base;
     exports prototyopage;
     exports prototyopage.Controllers;
     opens prototyopage.Controllers to javafx.fxml;

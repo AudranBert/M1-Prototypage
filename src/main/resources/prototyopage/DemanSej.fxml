@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.ControllerDemanSej">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.ControllerDemanSej">
    <children>
       <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#befff4" height="480.0" layoutX="785.0" layoutY="131.0" opacity="0.12" stroke="BLACK" strokeType="INSIDE" width="263.0" />
       <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#feffff" height="328.0" layoutX="812.0" layoutY="171.0" stroke="BLACK" strokeType="INSIDE" width="213.0" />
@@ -47,10 +54,12 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
+
       <Label layoutX="825.0" layoutY="429.0" prefHeight="12.0" prefWidth="60.0" stylesheets="@../Style.css" text="Téléphone" />
       <Label fx:id="emaillabel" layoutX="910.0" layoutY="394.0" prefHeight="18.0" prefWidth="100.0" textFill="RED" />
       <Label fx:id="telephonelabel" layoutX="910.0" layoutY="428.0" prefHeight="18.0" prefWidth="100.0" textFill="RED" />
       <Button layoutX="817.0" layoutY="560.0" mnemonicParsing="false" onAction="#showChat" prefHeight="26.0" prefWidth="194.0" stylesheets="@../Style.css" text="Discuter avec le voyageur" textAlignment="CENTER">
+
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -82,7 +91,19 @@
       <Label fx:id="nomSEJ" layoutX="650.0" layoutY="217.0" prefHeight="18.0" prefWidth="114.0" />
       <Label fx:id="dateDeb" layoutX="650.0" layoutY="269.0" prefHeight="18.0" prefWidth="114.0" />
       <Label fx:id="DateFin" layoutX="650.0" layoutY="309.0" prefHeight="18.0" prefWidth="114.0" />
-
+       <Label layoutX="18.0" layoutY="282.0" prefHeight="26.0" prefWidth="283.0" text="Votre Planning des séjours validé">
+           <font>
+               <Font size="17.0" />
+           </font>
+       </Label>
+       <Button layoutX="14.0" layoutY="542.0" mnemonicParsing="false" onAction="#showPlanning" text="Actualiser" visible="false" />
+       <TableView fx:id="Tableplaning" layoutX="18.0" layoutY="308.0" prefHeight="200.0" prefWidth="413.0">
+           <columns>
+               <TableColumn fx:id="name" prefWidth="103.99999618530273" text="Nom Séjour" />
+               <TableColumn fx:id="localisation" prefWidth="99.19998168945312" text="Localisation" />
+               <TableColumn fx:id="DateDeb" prefWidth="108.80006408691406" text="Date Début" />
+               <TableColumn fx:id="DateEnd" minWidth="0.0" prefWidth="98.39996337890625" text="Date Fin" />
+           </columns></TableView>
       <VBox fx:id="userBox" alignment="CENTER" layoutX="1150.0" layoutY="10.0" prefHeight="75.0" prefWidth="120.0" spacing="5.0">
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
