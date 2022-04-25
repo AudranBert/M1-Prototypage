@@ -70,4 +70,32 @@ public class DemSejDAO {
         }
         return null;
     }
+
+    public void markDemSejAsPartOfTrip(int voyagerId, int sejourId) {
+        String query = "";
+        query += "UPDATE DemSej SET ";
+        query += "isVoyageStep = '1' ";
+        query += "WHERE sejour = '" + sejourId + "' ";
+        query += "AND voyageur = '" + voyagerId + "';";
+
+        System.out.println("query: " + query);
+
+        connexion.connect();
+        connexion.submitQuery(query);
+        connexion.close();
+    }
+
+    public void unmarkDemSejAsPartOfTrip(int voyagerId, int sejourId) {
+        String query = "";
+        query += "UPDATE DemSej SET ";
+        query += "isVoyageStep  = '0' ";
+        query += "WHERE sejour = '" + sejourId + "' ";
+        query += "AND voyageur = '" + voyagerId + "';";
+
+        System.out.println("query: " + query);
+
+        connexion.connect();
+        connexion.submitQuery(query);
+        connexion.close();
+    }
 }

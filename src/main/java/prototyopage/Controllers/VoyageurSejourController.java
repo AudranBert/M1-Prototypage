@@ -19,7 +19,7 @@ import prototyopage.MainApp;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class HoteSejourController extends ControllerAbstract {
+public class VoyageurSejourController extends ControllerAbstract {
     private MainApp mainApp = null;
     private ArrayList<SejourVignetteController> vignettesControlers = new ArrayList();
     private ArrayList<Sejour> sejours = new ArrayList<>();
@@ -42,13 +42,10 @@ public class HoteSejourController extends ControllerAbstract {
 
         this.sejourBox.getChildren().clear();
 
-        sejours = sejourDAO.getSejoursByHostId(Context.getUser().getUserId());
-        sejours.add(0, null);
-        /*
+        sejours = sejourDAO.getSejoursfromDemSejByVoyageurId(Context.getUser().getUserId());
         if (sejours.size() == 0) {
             sejours.add(null);
         }
-        */
 
         adaptDisplayToContext();
     }

@@ -172,6 +172,52 @@ public class MainApp extends Application {
         }
     }
 
+    public void showVoyageurSejours() {
+        try {
+            viewHistory.push(this::showVoyageurSejours);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("VoyageurSejour.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+
+            VoyageurSejourController controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.init();
+
+            fxmlLoader.setController(controller);
+
+            scene.getStylesheets().add("Style.css");
+            stage.setTitle("Séjours du voyageur");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void showVoyageurVoyage() {
+        try {
+            viewHistory.push(this::showVoyageurVoyage);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("VoyageurVoyage.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+
+            VoyageurVoyageController controller = fxmlLoader.getController();
+            controller.setMainApp(this);
+            controller.init();
+
+            fxmlLoader.setController(controller);
+
+            scene.getStylesheets().add("Style.css");
+            stage.setTitle("Adeona");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public void showHome(){
         try {
             viewHistory.push(this::showHome);

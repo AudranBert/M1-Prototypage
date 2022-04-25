@@ -94,6 +94,23 @@ public class SejourDAO {
         return sejourArrayList;
     }
 
+    public ArrayList<Sejour> getSejoursfromDemSejByVoyageurId(Integer voyageurId) {
+        System.out.println("voyageurId" + voyageurId);
+        connexion.connect();
+        ResultSet resultSet = connexion.query("SELECT * FROM Sejour JOIN DemSej ON SejourId = sejour WHERE voyageur = '" + voyageurId + "';");
+        ArrayList<Sejour> sejourArrayList = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                Sejour sejour = resultSetToSejour(resultSet);
+                sejourArrayList.add(sejour);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        connexion.close();
+        return sejourArrayList;
+    }
+
     public Sejour getSejourById(int id) {
         connexion.connect();
         ResultSet resultSet = connexion.query("SELECT * FROM Sejour WHERE SejourId LIKE '%" + id + "%';");
@@ -145,5 +162,24 @@ public class SejourDAO {
         connexion.connect();
         connexion.submitQuery(query);
         connexion.close();
+    }
+
+    public ArrayList<Sejour> getVoyageFromDemSejByVoyagerId(Integer voyageurId) {
+        System.out.println("voyageurId" + voyageurId);
+        connexion.connect();
+        ResultSet resultSet = connexion.query("SELECT * FROM Sejour JOIN DemSej ON SejourId = sejour WHERE voyageur = '" + voyageurId + "' and isVoyageStep = '1';");
+        ArrayList<Sejour> sejourArrayList = new ArrayList<>();
+        if (!(resultSet == null)) {
+            try {
+                while (resultSet.next()) {
+                    Sejour sejour = resultSetToSejour(resultSet);
+                    sejourArrayList.add(sejour);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        connexion.close();
+        return sejourArrayList;
     }
 }

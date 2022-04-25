@@ -69,6 +69,12 @@ public class AccueilController {
     @FXML
     protected void showHoteSejours() { mainApp.showHoteSejours(); }
 
+    @FXML
+    protected void showVoyageurSejours() { mainApp.showVoyageurSejours(); }
+
+    @FXML
+    protected void showVoyageurVoyage() { mainApp.showVoyageurVoyage(); }
+
     public void setUserBox(){
         if (Context.getUser()!=null){
             userNameText.setText(Context.getUser().getFirstName());
