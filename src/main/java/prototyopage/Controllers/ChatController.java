@@ -6,13 +6,12 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import prototyopage.Chat;
 import prototyopage.MainApp;
 import prototyopage.Message;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ChatController{
@@ -75,14 +74,20 @@ public class ChatController{
         }
         connexion.close();
 
-        //On récupère le chat :
-        if (mainApp.getChat().get(numSejour) != null) {
-            for (Message msg : mainApp.getChat().get(numSejour)) {
-                //Si les envoyeurs et destinataires sont bien ceux de ce chat
-                if ((msg.getSender() == idSender && msg.getReceiver() == idReceiver)) {
-                    ((Label) rightVbox.getChildren().get(msg.getNumMessage())).setText(msg.getContent());
-                } else if (msg.getSender() == idReceiver && msg.getReceiver() == idSender) {
-                    ((Label) leftVbox.getChildren().get(msg.getNumMessage())).setText(msg.getContent());
+        if (mainApp.getChats() != null) {
+            for (Chat chat : mainApp.getChats()) {
+                //Si les envoyeurs et destinataires sont bien ceux de ce chat et de ce sejour
+                if (((chat.getIdUser1() == idSender && chat.getIdUser2() == idReceiver) || (chat.getIdUser1() == idReceiver && chat.getIdUser2() == idSender)) && chat.getIdSejour() == numSejour)
+                {
+                    for (Message msg : chat.getMessages()) {
+                        //On place les messages du chat
+                        if ((msg.getSender() == idSender && msg.getReceiver() == idReceiver)) {
+                            ((Label) rightVbox.getChildren().get(msg.getNumMessage())).setText(msg.getContent());
+                        } else if (msg.getSender() == idReceiver && msg.getReceiver() == idSender) {
+                            ((Label) leftVbox.getChildren().get(msg.getNumMessage())).setText(msg.getContent());
+                        }
+                    }
+                    break;
                 }
             }
         }
@@ -100,28 +105,42 @@ public class ChatController{
         ((Label) leftVbox.getChildren().get(nbrMessages - 1)).setText("");
 
         //Mise à jour des données
-        if (mainApp.getChat().get(numSejour) != null) {
-            Iterator<Message> chatCopy = mainApp.getChat().get(numSejour).iterator(); //Iterator copie du bon chat permettant de boucler et en même temps supprimer des objets
-            while (chatCopy.hasNext()) {
-                Message msg = chatCopy.next();
-                if ((msg.getSender() == idSender && msg.getReceiver() == idReceiver) || msg.getSender() == idReceiver && msg.getReceiver() == idSender) { //Vérification que le destinataire et l'envoyeur sont dans ce chat
-                    if (msg.getNumMessage() > 0) { //Si le message n'est pas tout en haut (numéro 0)
-                        msg.setNumMessage(msg.getNumMessage() - 1); //On décalle le numéro du message de 1
-                    } else if (msg.getNumMessage() == 0) { //Si le message se situe tout en haut
-                        chatCopy.remove(); //On le supprime de notre chat
+        if (mainApp.getChats() != null) {
+            for (Chat chat : mainApp.getChats()) {
+                if (((chat.getIdUser1() == idSender && chat.getIdUser2() == idReceiver) || (chat.getIdUser1() == idReceiver && chat.getIdUser2() == idSender)) && chat.getIdSejour() == numSejour)
+                {
+                    Iterator<Message> chatCopy = chat.getMessages().iterator(); //Iterator copie du bon chat permettant de boucler et en même temps supprimer des objets
+                    while (chatCopy.hasNext()) {
+                        Message msg = chatCopy.next();
+                        if ((msg.getSender() == idSender && msg.getReceiver() == idReceiver) || msg.getSender() == idReceiver && msg.getReceiver() == idSender) { //Vérification que le destinataire et l'envoyeur sont dans ce chat
+                            if (msg.getNumMessage() > 0) { //Si le message n'est pas tout en haut (numéro 0)
+                                msg.setNumMessage(msg.getNumMessage() - 1); //On décalle le numéro du message de 1
+                            } else if (msg.getNumMessage() == 0) { //Si le message se situe tout en haut
+                                chatCopy.remove(); //On le supprime de notre chat
+                            }
+                        }
                     }
+                    break;
                 }
             }
         }
 
         //Création du nouveau message
         Message newMessage = new Message(idSender, idReceiver, messageContent, 6);
-        if (mainApp.getChat().containsKey(numSejour)) { //Si ce n'est pas le premier msg du chat
-            mainApp.getChat().get(numSejour).add(newMessage); //On rajoute ce msg au chat
-        } else { //Si c'est le premier msg du chat
-            ArrayList<Message> newMessageList = new ArrayList<Message>();
-            newMessageList.add(newMessage);
-            mainApp.getChat().put(numSejour, newMessageList); //On rajoute la clé et le chat correspondant
+        boolean added = false;
+        for (Chat chat : mainApp.getChats()) {
+            //Si les envoyeurs et destinataires sont bien ceux de ce chat et le sejour est le bon
+            if (((chat.getIdUser1() == idSender && chat.getIdUser2() == idReceiver) || (chat.getIdUser1() == idReceiver && chat.getIdUser2() == idSender)) && chat.getIdSejour() == numSejour) {
+                chat.getMessages().add(newMessage);
+                added = true;
+                break;
+            }
+        }
+        if (!added)
+        {
+            Chat chat = new Chat(idReceiver, idSender, numSejour);
+            chat.getMessages().add(newMessage);
+            mainApp.getChats().add(chat);
         }
 
         messageField.clear();

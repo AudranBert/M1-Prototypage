@@ -31,6 +31,7 @@
 
                 <Label fx:id="welcomeText" />
                <Button mnemonicParsing="false" onMouseClicked="#showSearchBar" text="Recherche" />
+         <Button fx:id="chatButton" mnemonicParsing="false" onMouseClicked="#showDiscussions" text="Voir vos discussions" />
                 <Button fx:id="voirDemandes" mnemonicParsing="false" onMouseClicked="#demSej" text="Voir les demandes séjours" />
          <Button fx:id="voirHoteSejours" mnemonicParsing="false" onAction="#showHoteSejours" text="Voir mes séjours en tant qu'hôte" />
             </VBox>

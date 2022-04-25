@@ -84,10 +84,10 @@ public class RechercheController {
 
     private void addSejourToBox(ArrayList<Sejour> list){
         Integer lenght = list.size();
-        for (int i=0;i<lenght;i=i+10) {
+        for (int i=0;i<lenght;i=i+25) {
             List<Sejour> sublist;
-            if (i+10<lenght) {
-                sublist = list.subList(i, i + 10);
+            if (i+25<lenght) {
+                sublist = list.subList(i, i + 25);
             }
             else {
                 sublist = list.subList(i, lenght);
@@ -107,14 +107,16 @@ public class RechercheController {
                     listSejour.clear();
                     boxSejour.getChildren().clear();
                     lastSearch=searchBar.getText();
-                    addSejourToBox(sejourDao.searchSejourByName(searchBar.getText()));
-                    addSejourToBox(sejourDao.searchSejourByLocation(searchBar.getText()));
+                    addSejourToBox(sejourDao.searchSejourByField("Name",searchBar.getText()));
+                    addSejourToBox(sejourDao.searchSejourByField("Location",searchBar.getText()));
+                    addSejourToBox(sejourDao.searchSejourByField("Description",searchBar.getText()));
+                    addSejourToBox(sejourDao.searchSejourByField("DateBegin",searchBar.getText()));
+                    addSejourToBox(sejourDao.searchSejourByField("DateEnd",searchBar.getText()));
                 } else if (lastSearch=="" || lastSearch.length()>1){
                     listSejour.clear();
                     boxSejour.getChildren().clear();
                     lastSearch=" ";
-                    addSejourToBox(sejourDao.searchSejourByName(""));
-                    addSejourToBox(sejourDao.searchSejourByLocation(""));
+                    addSejourToBox(sejourDao.searchSejourByField("Name",""));
                 }
                 return null;
             }
@@ -124,7 +126,7 @@ public class RechercheController {
 
     @FXML
     private void backToHome(){
-        this.mainApp.showHome();
+        this.mainApp.backView();
     }
 
     public void setMainApp(MainApp mainApp)
