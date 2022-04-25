@@ -17,6 +17,19 @@ public class Sejour {
     private String description;
     private int IdHost;
 
+    @Override
+    public boolean equals(Object o){
+        if (!(o instanceof Sejour)){
+            //implicit null check
+            return false;
+        }
+        return this.sejourId==((Sejour)o).sejourId;
+    }
+
+    @Override
+    public int hashCode(){
+        return this.sejourId;
+    }
 
     public Sejour(int sejourId, int imageBundle, String name, String location, Calendar dateBegin, Calendar dateEnd,String description, int IdHost) {
         this.sejourId = sejourId;
