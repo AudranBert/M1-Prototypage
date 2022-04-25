@@ -52,11 +52,12 @@ public class MainApp extends Application {
             viewHistory.push(this::showProfil);
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ProfilePage.fxml"));
 
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
             ControllerProfile controller = fxmlLoader.getController();
             controller.setMainApp(this);
             controller.setProfileValues();
+            controller.setUserBox();
 
             scene.getStylesheets().add("Style.css");
             stage.setTitle("Profil");
