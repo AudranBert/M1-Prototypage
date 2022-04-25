@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prototyopage.Controllers.HoteSejourController">
-   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToPredView" prefHeight="26.0" prefWidth="94.0" text="Retour">
+   <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#backToPredView" prefHeight="26.0" prefWidth="94.0" text="Retour">
       <font>
          <Font size="18.0" />
       </font>
