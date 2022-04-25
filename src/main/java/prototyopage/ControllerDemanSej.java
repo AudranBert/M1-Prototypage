@@ -1,30 +1,51 @@
 package prototyopage;
 
 import DB.Connexion;
+import DB.SejourDB.Sejour;
+import DB.SejourDB.SejourDAO;
 import DB.UserDB.User;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.util.Callback;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerDemanSej {
-
     private MainApp mainApp;
 
     private int id_current_voyageur;
 
     private int sejourSelected;
 
+
+
+
+    @FXML
+    private TableColumn<Sejour, String> DateDeb;
+
+    @FXML
+    private TableColumn<Sejour, String> DateEnd;
+
+    @FXML
+    private TableColumn<Sejour, String> localisation;
+
+    @FXML
+    private TableColumn<Sejour, String> name;
     @FXML
     private Label DateFin;
     @FXML
@@ -33,6 +54,16 @@ public class ControllerDemanSej {
     private Label nomSEJ;
     @FXML
     private ComboBox<String> combobox;
+
+
+    @FXML
+    private TableView<Sejour> Tableplaning  ;
+
+
+
+    private ObservableList<Sejour> testdata = FXCollections.observableArrayList();
+
+
     @FXML
     private Label emaillabel;
     private Label welText;
@@ -47,6 +78,12 @@ public class ControllerDemanSej {
     @FXML
     private Label telephonelabel;
 
+
+
+
+
+
+    //Les méthodes
     @FXML
     protected void showChat() {
         if (mainApp.getUser() != null) {
@@ -64,31 +101,34 @@ public class ControllerDemanSej {
     }
 
     @FXML
-    public void initialize() throws SQLException, ClassNotFoundException{
+    public void initialize() {
+
+
         //connexion
             Connexion connexion = new Connexion("Database/DB.db");
             connexion.connect();
+
         // initialisé la combobox
             //ResultSet resultSet = connexion.query("SELECT * FROM DemSej WHERE host = '" + 22 + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
-            ResultSet resultSet = connexion.query("SELECT * FROM DemSej join sejour on DemSej.sejour = sejour.SejourId WHERE sejour.IdHost = '" + 22 + "' ;");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
-            List<String> col = new ArrayList<String>();
+            ResultSet resultSet = connexion.query("SELECT * FROM DemSej join sejour on DemSej.sejour = sejour.SejourId WHERE sejour.IdHost = '" + 22 + "' ;");//this.mainApp.getUser().getUserId() ne marche pas le Initialize()
+            List<String> col1 = new ArrayList<String>();
             try {
                 int i =0;
                 while (resultSet.next()) {
-                    col.add(String.valueOf(resultSet.getInt("id_demande")));
+                    col1.add(String.valueOf(resultSet.getInt("id_demande")));
                i=i+1;
                 }
                 combobox.getItems().clear();
-                for (int j = 0; j < col.size(); j++) {
-                    System.out.println(col.get(j));
-                    ObservableList obList = FXCollections.observableList(col);
+                for (int j = 0; j < col1.size(); j++) {
+                    System.out.println(col1.get(j));
+                    ObservableList obList = FXCollections.observableList(col1);
                     combobox.setItems(obList);
                 }
 
           /****************************INITIALISATION********************************/
           //autoselectionné la première case
                 combobox.getSelectionModel().select(0);
-                ResultSet resultSINIT= connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + col.get(0) + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
+                ResultSet resultSINIT= connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + col1.get(0) + "';");//ici je doit doit mettre l'id de connexion après l'avoir récupéré
 
 
             //Initialisé la selection voyageur pour la première fois
@@ -100,9 +140,11 @@ public class ControllerDemanSej {
                 emaillabel.setText(resINIT.getString("email"));
                 telephonelabel.setText(resINIT.getString("telephone"));
 
+
+
             // Initialisé le résumé séjour
-                ResultSet r= connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + col.get(0) + "';");
-                int id_current_SejourINIT=r.getInt("sejour");
+                ResultSet r_= connexion.query("SELECT * FROM DemSej WHERE id_demande = '" + col1.get(0) + "';");
+                int id_current_SejourINIT=r_.getInt("sejour");
                 System.out.println(id_current_SejourINIT);
                 ResultSet resINIT2 = connexion.query("SELECT * FROM Sejour WHERE  SejourId = '" + id_current_SejourINIT + "';");
                 nomSEJ.setText(resINIT2.getString("Name"));
@@ -110,11 +152,62 @@ public class ControllerDemanSej {
                 DateFin.setText(resINIT2.getString("DateEnd"));
 
 
+             //Initialisé table view
+
+                //connexion
+                Connexion connexion1 = new Connexion("Database/DB.db");
+                connexion1.connect();
+
+                //Query
+                ResultSet r = connexion1.query("SELECT * FROM DemSej WHERE validation = '" + 1 + "';");
+                List<String> col = new ArrayList<String>();
+
+                try {
+                    int o = 0;
+                    while (r.next()) {
+                        col.add(String.valueOf(r.getInt("sejour")));
+                        o = o + 1;
+                    }//while
+
+                    for (int j = 0; j < col.size(); j++) {
+
+                        ResultSet r1 = connexion1.query("SELECT Name , Location , DateBegin , DateEnd  FROM Sejour WHERE SejourId = '" + col.get(j) + "';");
+
+
+                        while (r1.next()) {
+                            SejourDAO sejourDao = new SejourDAO();
+                            Sejour sejour;
+                            sejour = sejourDao.getSejourById(Integer.parseInt(col.get(j)));
+                            sejour.setDateBeginS(sejour.getStrDateBegin());
+                            sejour.setDateEndS(sejour.getStrDateEnd());
+                            testdata.add(sejour);
+
+                        }//while
+
+
+                    }//for
+
+                }catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                name.setCellValueFactory(new PropertyValueFactory<>("name"));
+             localisation.setCellValueFactory(new PropertyValueFactory<>("location"));
+             DateDeb.setCellValueFactory(new PropertyValueFactory<>("DateBeginS"));
+             DateEnd.setCellValueFactory(new PropertyValueFactory<>("DateEndS"));
+
+             Tableplaning.setItems(testdata);
+
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         connexion.close();
     }
+
+
 
 
     @FXML
@@ -231,8 +324,66 @@ public class ControllerDemanSej {
     @FXML
      void retour(){
         this.mainApp.showHome();
+        System.out.println(this.mainApp.getUser().getUserId());
     }
 
+    @FXML
+    void showPlanning() throws Exception {
+        Tableplaning.getItems().clear();
+
+//connexion
+        Connexion connexion1 = new Connexion("Database/DB.db");
+        connexion1.connect();
+
+        //Query
+        ResultSet r = connexion1.query("SELECT * FROM DemSej WHERE validation = '" + 1 + "';");
+        List<String> col = new ArrayList<String>();
+
+        try {
+            int o = 0;
+            while (r.next()) {
+                col.add(String.valueOf(r.getInt("sejour")));
+                o = o + 1;
+            }//while
+
+            for (int j = 0; j < col.size(); j++) {
+
+                ResultSet r1 = connexion1.query("SELECT Name , Location , DateBegin , DateEnd  FROM Sejour WHERE SejourId = '" + col.get(j) + "';");
 
 
-}
+                while (r1.next()) {
+                    SejourDAO sejourDao = new SejourDAO();
+                    Sejour sejour;
+                    sejour = sejourDao.getSejourById(Integer.parseInt(col.get(j)));
+                    sejour.setDateBeginS(sejour.getStrDateBegin());
+                    sejour.setDateEndS(sejour.getStrDateEnd());
+                    testdata.add(sejour);
+
+                }//while
+
+
+            }//for
+
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        localisation.setCellValueFactory(new PropertyValueFactory<>("location"));
+        DateDeb.setCellValueFactory(new PropertyValueFactory<>("DateBeginS"));
+        DateEnd.setCellValueFactory(new PropertyValueFactory<>("DateEndS"));
+        Tableplaning.setItems(testdata); }}
+
+
+
+
+
+
+
+
+
+
+
+
+

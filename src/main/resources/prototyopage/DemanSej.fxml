@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -53,7 +55,7 @@
       <Label layoutX="683.0" layoutY="353.0" prefHeight="12.0" prefWidth="60.0" stylesheets="@../Style.css" text="Téléphone" />
       <Label fx:id="emaillabel" layoutX="790.0" layoutY="319.0" prefHeight="18.0" prefWidth="78.0" textFill="RED" />
       <Label fx:id="telephonelabel" layoutX="790.0" layoutY="353.0" prefHeight="18.0" prefWidth="78.0" textFill="RED" />
-      <Button layoutX="675.0" layoutY="484.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="194.0" stylesheets="@../Style.css" text="Discuter avec le voyageur" textAlignment="CENTER">
+      <Button layoutX="675.0" layoutY="484.0" mnemonicParsing="false" onAction="#showChat" prefHeight="26.0" prefWidth="194.0" stylesheets="@../Style.css" text="Discuter avec le voyageur" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -77,10 +79,23 @@
          </font>
       </Label>
       <Label layoutX="370.0" layoutY="141.0" prefHeight="18.0" prefWidth="78.0" text="Nom Séjour" />
-      <Label layoutX="369.0" layoutY="190.0" prefHeight="18.0" prefWidth="78.0" text="Date Début" />
-      <Label layoutX="370.0" layoutY="232.0" prefHeight="18.0" prefWidth="78.0" text="Date Fin" />
+      <Label layoutX="370.0" layoutY="190.0" prefHeight="18.0" prefWidth="78.0" text="Date Début" />
+      <Label layoutX="371.0" layoutY="232.0" prefHeight="18.0" prefWidth="78.0" text="Date Fin" />
       <Label fx:id="nomSEJ" layoutX="508.0" layoutY="141.0" prefHeight="18.0" prefWidth="94.0" />
       <Label fx:id="dateDeb" layoutX="509.0" layoutY="193.0" prefHeight="18.0" prefWidth="114.0" />
       <Label fx:id="DateFin" layoutX="510.0" layoutY="233.0" prefHeight="18.0" prefWidth="114.0" />
+      <Label layoutX="18.0" layoutY="282.0" prefHeight="26.0" prefWidth="283.0" text="Votre Planning des séjours validé">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Button layoutX="14.0" layoutY="542.0" mnemonicParsing="false" onAction="#showPlanning" text="Actualisé" />
+      <TableView fx:id="Tableplaning" layoutX="18.0" layoutY="308.0" prefHeight="200.0" prefWidth="413.0">
+         <columns>
+            <TableColumn fx:id="name" prefWidth="103.99999618530273" text="Nom Séjour" />
+            <TableColumn fx:id="localisation" prefWidth="99.19998168945312" text="Localisation" />
+            <TableColumn fx:id="DateDeb" prefWidth="108.80006408691406" text="Date Début" />
+            <TableColumn fx:id="DateEnd" minWidth="0.0" prefWidth="98.39996337890625" text="Date Fin" />
+         </columns></TableView>
    </children>
 </AnchorPane>

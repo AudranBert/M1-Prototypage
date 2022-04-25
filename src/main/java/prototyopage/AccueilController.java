@@ -67,6 +67,7 @@ public class AccueilController {
 
     public void setUserBox(){
         if (mainApp.getUser()!=null){
+
             userNameText.setText(mainApp.getUser().getFirstName());
             if (mainApp.getUser().isHost()){
                 userIsTravelerText.setText("Hote");

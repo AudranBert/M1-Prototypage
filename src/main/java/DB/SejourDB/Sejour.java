@@ -7,17 +7,40 @@ import java.util.GregorianCalendar;
 public class Sejour {
     private static SimpleDateFormat DATE_FORMATER = new SimpleDateFormat("yyyy-MM-dd");
 
+
+
     private int sejourId;
     private int imageBundle;
     private String name;
     private String location;
     private Calendar DateBegin;
     private Calendar DateEnd;
+    private String DateBeginS;
+    private String DateEndS;
     private String description;
     private int IdHost;
 
+    public String getDateBeginS() {
+        return DateBeginS;
+    }
 
-    public Sejour(int sejourId, int imageBundle, String name, String location, Calendar dateBegin, Calendar dateEnd,String description, int IdHost) {
+    public void setDateBeginS(String dateBeginS) {
+        DateBeginS = dateBeginS;
+    }
+
+    public String getDateEndS() {
+        return DateEndS;
+    }
+
+    public void setDateEndS(String dateEndS) {
+        DateEndS = dateEndS;
+    }
+
+
+    public Sejour(){}
+
+
+    public Sejour(int sejourId, int imageBundle, String name, String location, Calendar dateBegin, Calendar dateEnd, String description, int IdHost) {
         this.sejourId = sejourId;
         this.imageBundle = imageBundle;
         this.name = name;
@@ -37,6 +60,14 @@ public class Sejour {
         this.DateEnd = dateEnd;
         this.description =  description;
         this.IdHost = IdHost;
+    }
+
+    public Sejour(String name, String location, String dateBegin, String  dateEnd) {
+        this.name = name;
+        this.location = location;
+        this.DateBeginS = dateBegin;
+        this.DateEndS = dateEnd;
+
     }
 
 

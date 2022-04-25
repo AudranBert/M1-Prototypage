@@ -11,6 +11,7 @@ module com.example.m1prototyopage {
     requires eu.hansolo.tilesfx;
     requires java.sql;
 
-    opens prototyopage to javafx.fxml;
+    opens prototyopage to javafx.graphics, javafx.fxml, javafx.base;
+    opens DB.SejourDB to javafx.graphics, javafx.fxml, javafx.base;
     exports prototyopage;
 }
